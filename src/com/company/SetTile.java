@@ -35,7 +35,7 @@ public class SetTile {
             for (int x = XPoint; x < XPoint + StringTile.length; x++) {
                 FieldValue = StringTile[1][1];
                 TileWidth.add(x, FieldValue);
-            }
+            }tgfghf
 
         }
     }
