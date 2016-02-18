@@ -15,6 +15,8 @@ public class TheField {
     //2D Array veld
     public String[][] Field;
 
+
+
     public void ArrayField () {
         Field = new String[X_WIDTH][Y_LENGTH];
     }
@@ -22,17 +24,19 @@ public class TheField {
 
     // 2D ArrayList veld
     public ArrayList<ArrayList<String>> ListField;
+    private String FieldValue;
+    public ArrayList<String> FieldLength;
 
     public void ArrayListField() {
-        ListField = new ArrayList<ArrayList<String>>();
-
+        ListField = new ArrayList<>();
+        FieldLength = new ArrayList<>();
 
         for (int x = 0; x < X_WIDTH; x++) {
-            ArrayList<String> FieldLength = new ArrayList<String>();
+            FieldLength = new ArrayList<>();
             ListField.add(x, FieldLength);
 
             for (int y = 0; y < Y_LENGTH; y++) {
-                String FieldValue = "null";
+                String FieldValue = "00";
                 FieldLength.add(y, FieldValue);
             }
         }
