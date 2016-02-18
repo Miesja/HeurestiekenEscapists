@@ -22,4 +22,20 @@ public class Main {
 
 
     }
+
+    public printField()
+    {
+        for( int i = 0; i < Y_LENGTH; i++ )
+        {
+            String Row = new String;
+            Row = "";
+            for( int j = 0; j < X_WIDTH; j++)
+            {
+                String A = new String;
+                A = StringTile[ i ][ j ]
+                Row += A;
+            }
+            System.out.println( Row );
+        }
+    }
 }
