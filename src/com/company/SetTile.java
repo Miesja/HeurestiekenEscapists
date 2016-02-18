@@ -24,7 +24,7 @@ public class SetTile {
 
 
     // het villen van de Tile[][] in een 2D ArrayList ListField
-    private ArrayList<ArrayList<String>> ListField = new ArrayList<ArrayList<String>>();
+    private ArrayList<ArrayList<String>> ListField = new ArrayList<> ();
     private String FieldValue;
 
     public void SetTileInListField(String[][] StringTile, int XPoint, int YPoint) {
@@ -35,7 +35,7 @@ public class SetTile {
             for (int x = XPoint; x < XPoint + StringTile.length; x++) {
                 FieldValue = StringTile[1][1];
                 TileWidth.add(x, FieldValue);
-            }tgfghf
+            }
 
         }
     }
