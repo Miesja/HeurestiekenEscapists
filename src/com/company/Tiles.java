@@ -48,7 +48,7 @@ public class Tiles {
     public String [][] Tile3G;
     public String [][] Tile2A;
 
-    private void Tiles () {
+    private void Tegels () {
 
         Tile7A = new String[X_TILE_7A][Y_TILE_7A];
         for (int i = 0; i < X_TILE_7A; i++) {
