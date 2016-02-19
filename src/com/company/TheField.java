@@ -6,18 +6,18 @@ import java.util.ArrayList;
  * Created by Mies on 17/02/16.
  */
 public class TheField {
-    
+
+    // de dimensies van het veld.
     public static final int X_WIDTH = 17;
     public static final int Y_LENGTH = 17;
 
 
 
     //2D Array veld
-    public String[][] Field;
-
-
+    public Tile[][] Field;
 
     public void ArrayField () {
+
         Field = new String[X_WIDTH][Y_LENGTH];
     }
 
@@ -42,7 +42,6 @@ public class TheField {
         }
 
     }
-
 
 
 }

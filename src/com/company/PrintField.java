@@ -1,27 +1,20 @@
 package com.company;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-public class Main {
+/**
+ * Created by Mies on 18/02/16.
+ */
+public class PrintField {
+
+
     TheField veld = new TheField();
     TheTiles tegel = new TheTiles();
     SetTile zetTegel = new SetTile();
 
-    static public ArrayList<ArrayList<String>> ListField = new ArrayList<> ();
-    static public String FieldValue;
 
-    public void main(String[] args) {
-
-
-        ListField = new ArrayList<ArrayList<String>>();
-
-        veld.ArrayListField();
-        zetTegel.SetTileInListField(tegel.Tile7A,0,0);
-
-
-
-    }
 
     public void printField() {
 
@@ -36,4 +29,24 @@ public class Main {
             System.out.println( Row );
         }
     }
+
+
+
+
+
+
+
+
+
+
+    /*/ print een ArrayLis
+    public void printListField(ArrayList<ArrayList<String>){
+
+    }
+    */
+
+
+
+
+
 }
