@@ -4,26 +4,29 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class Main {
-    TheField veld = new TheField();
-    TheTiles tegel = new TheTiles();
-    SetTile zetTegel = new SetTile();
+
 
     static public ArrayList<ArrayList<String>> ListField = new ArrayList<> ();
     static public String FieldValue;
 
-    public void main(String[] args) {
+    public static void main(String[] args) {
+        //TheField veld = new TheField();
+        //TheTiles tegel = new TheTiles();
+        //SetTile zetTegel = new SetTile();
 
+        //ListField = new ArrayList<>();
 
-        ListField = new ArrayList<ArrayList<String>>();
+        //veld.ArrayListField();
+        //zetTegel.SetTileInListField(tegel.Tile7A,0,0);
 
-        veld.ArrayListField();
-        zetTegel.SetTileInListField(tegel.Tile7A,0,0);
+        generateRowOptions rowOptions = new generateRowOptions();
+        rowOptions.run();
 
 
 
     }
 
-    public void printField() {
+   /* public void printField() {
 
         for( int i = 0; i < 17; i++ )
         {
@@ -35,5 +38,5 @@ public class Main {
             }
             System.out.println( Row );
         }
-    }
+    }*/
 }

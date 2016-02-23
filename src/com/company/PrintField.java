@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by Mies on 18/02/16.
  */
-public class PrintField {
+/*public class PrintField {
 
 
     TheField veld = new TheField();
@@ -28,7 +28,7 @@ public class PrintField {
             }
             System.out.println( Row );
         }
-    }
+    }*/
 
 
 
@@ -49,4 +49,4 @@ public class PrintField {
 
 
 
-}
+//}

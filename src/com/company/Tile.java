@@ -3,7 +3,7 @@ package com.company;
 /**
  * Created by Mies on 18/02/16.
  */
-public class Tile {
+/*public class Tile {
     int width;
 
     public Tile(int width) {
@@ -21,4 +21,4 @@ public class Tile {
     public String toString() {
         return "hello";
     }
-}
+}*/

@@ -3,6 +3,7 @@ package com.company;
 /**
  * Created by Mies on 17/02/16.
  */
+/*
 public class TheTiles {
     public static final int X_TILE_7A = 7;
     public static final int Y_TILE_7A = 7;
@@ -146,4 +147,4 @@ public class TheTiles {
 
 
 
-}
+//}

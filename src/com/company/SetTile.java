@@ -1,11 +1,11 @@
-package com.company;
+/*package com.company;
 
 import java.util.ArrayList;
 
 /**
  * Created by Mies on 17/02/16.
  */
-public class SetTile {
+/*public class SetTile {
 
     TheField veld = new TheField();
     TheTiles tegel = new TheTiles();
@@ -53,3 +53,4 @@ public class SetTile {
     }
 }
 
+*/
