@@ -8,6 +8,7 @@ public class Main {
 
     static public ArrayList<ArrayList<String>> ListField = new ArrayList<> ();
     static public String FieldValue;
+    Grid veld = new Grid
 
     public static void main(String[] args) {
         //TheField veld = new TheField();
@@ -48,30 +49,24 @@ public class Main {
     Tile Tegel = new Tile;
 
 
-    private void makeTile() {
+    private void makeTiles() {
 
-        Tile TileA = new Tile (7,7,"a");
-        Tile TileB = new Tile(7,7,"b");
-        Tile TileC = new Tile(7,7,"c");
-        Tile TileD = new Tile(5,5,"d");
-        Tile TileE = new Tile(5,5,"e");
-        Tile TileF = new Tile(5,5,"f");
-        Tile TileG = new Tile(3,3,"g");
-        Tile TileH = new Tile(3,3,"h");
-        Tile TileI = new Tile(3,3,"i");
-        Tile TileJ = new Tile(2,2,"j");
-
-
-
-
-
+        Tile tileA = new Tile(7,7,"a");
+        Tile tileB = new Tile(7,7,"b");
+        Tile tileC = new Tile(7,7,"c");
+        Tile tileD = new Tile(5,5,"d");
+        Tile tileE = new Tile(5,5,"e");
+        Tile tileF = new Tile(5,5,"f");
+        Tile tileG = new Tile(3,3,"g");
+        Tile tileH = new Tile(3,3,"h");
+        Tile tileI = new Tile(3,3,"i");
+        Tile tileJ = new Tile(3,3,"j");
+        Tile tileK = new Tile(3,3,"k");
+        Tile tileL = new Tile(2,2,"l");
     }
 
 
     public run (){
-        makeTile();
-        tegel.setTile(TileA, 4,6);
-
 
 
 

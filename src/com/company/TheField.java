@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 
     //2D Array veld
-    public Tile[][] Field;
+    public velden[][] Field;
 
     public void ArrayField () {
 

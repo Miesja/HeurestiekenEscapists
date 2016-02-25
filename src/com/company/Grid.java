@@ -8,22 +8,26 @@ public class Grid {
     public static final int X_WIDTH = 17;
     public static final int Y_LENGTH = 17;
 
-    public Grid ( int lengte, int breedte)
+    int lengte;
+    int breedte;
+    String[][] field;
+
+    public Grid ( int l, int b)
     {
-        lengte = this.lengte;
-        breedte = this.breedte;
+
+        lengte = l;
+        breedte = b;
+        field = new String [lengte][breedte];
     }
 
-    Field = new String[X_WIDTH][Y_LENGTH];
-}
     public void printVeld()
     {
-        for( int i = 0; i < X_WIDTH; i++ )
+        for( int i = 0; i < lengte; i++ )
         {
             String Row = "";
-            for( int j = 0; j < Y_LENGTH; j++)
+            for( int j = 0; j < breedte; j++)
             {
-                String A = veld.Field[ i ][ j ];
+                String A = field[ i ][ j ];
                 Row += A;
             }
             System.out.println( Row );
