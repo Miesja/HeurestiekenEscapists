@@ -5,7 +5,6 @@ package com.company;
  */
 public class Grid {
 
-    /*
     int lengte;
     int breedte;
 
@@ -28,5 +27,4 @@ public class Grid {
             System.out.println( Row );
         }
     }
-     */
 }
