@@ -20,16 +20,16 @@ public class Main {
 
         Tile tileA = new Tile(7,7," a ");
         Tile tileB = new Tile(7,7," b ");
-        Tile tileC = new Tile(7,7,"c");
-        Tile tileD = new Tile(5,5,"d");
-        Tile tileE = new Tile(5,5,"e");
-        Tile tileF = new Tile(5,5,"f");
-        Tile tileG = new Tile(3,3,"g");
-        Tile tileH = new Tile(3,3,"h");
-        Tile tileI = new Tile(3,3,"i");
-        Tile tileJ = new Tile(3,3,"j");
-        Tile tileK = new Tile(3,3,"k");
-        Tile tileL = new Tile(2,2,"l");
+        Tile tileC = new Tile(7,7," c ");
+        Tile tileD = new Tile(5,5," d ");
+        Tile tileE = new Tile(5,5," e ");
+        Tile tileF = new Tile(5,5," f ");
+        Tile tileG = new Tile(3,3," g ");
+        Tile tileH = new Tile(3,3," h ");
+        Tile tileI = new Tile(3,3," i ");
+        Tile tileJ = new Tile(3,3," j ");
+        Tile tileK = new Tile(3,3," k ");
+        Tile tileL = new Tile(2,2," l ");
 
         Grid veld = new Grid(17,17);
 
