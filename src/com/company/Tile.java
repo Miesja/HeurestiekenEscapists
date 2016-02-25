@@ -35,6 +35,8 @@ package com.company;
             //name = "";
             this.name = name;
 
+
+
         }
 
         public void setTile(int x, int y) {

@@ -19,14 +19,9 @@ public class Main {
         //veld.ArrayListField();
         //zetTegel.SetTileInListField(tegel.Tile7A,0,0);
 
-        Tile tilea = new Tile(2,2,"a");
-        //Grid.setTile(tilea.width, tilea.length, 2,3);
 
-        Tile tileb = new Tile(3,4, "b");
-        tileb.setTile(4,4);
 
         generateRowOptions rowOptions = new generateRowOptions();
-        rowOptions.tileWidths.add(tileb);
 
         rowOptions.run();
 
