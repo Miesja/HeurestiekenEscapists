@@ -5,8 +5,7 @@ Created by Mies on 18/02/16.
 
 public class Tile {
 
-    Grid veld = new Grid;
-    RowOptionsGenerator combi = RowOptionsGenerator;
+    RowOptionsGenerator combi = new RowOptionsGenerator();
 
     int width;
     int length;

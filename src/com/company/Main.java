@@ -8,7 +8,6 @@ public class Main {
 
     static public ArrayList<ArrayList<String>> ListField = new ArrayList<> ();
     static public String FieldValue;
-    Grid veld = new Grid
 
     public static void main(String[] args) {
         //TheTiles tegel = new TheTiles();
