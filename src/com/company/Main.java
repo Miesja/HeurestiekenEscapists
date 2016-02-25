@@ -42,5 +42,6 @@ public class Main {
 
     /*Waarom zijn bananen krom?
     Als ze recht zijn vallen ze om
-    pom pom pom*/
+    pom pom pom
+    ze liggen krom van het lachen*/
 }
