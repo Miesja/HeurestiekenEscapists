@@ -1,17 +1,17 @@
-/*package com.company;
+package com.company;
 
 import java.util.ArrayList;
 
 /**
  * Created by Mies on 17/02/16.
  */
-/*public class SetTile {
+public class SetTile {
 
-    TheField veld = new TheField();
-    TheTiles tegel = new TheTiles();
-    SetTile zetTegel = new SetTile();
-
-
+    //TheField veld = new TheField();
+    //Tile tegel1 = new Tile();
+    //SetTile zetTegel = new SetTile();
+}
+/*
     // instance variables die de Locatie aanwijzen voor de te zetten tegel.
     public int XPoint;
     public int YPoint;
@@ -25,11 +25,17 @@ import java.util.ArrayList;
                 Field[x][y] = Tile.name;
             }
         }
-        Tile tile  new Tile(3);
-        Tile tile2  new Tile(5);
-        System.out.println(tile);
-        int width = tile.width();
+
     }
+
+    setTile(tile2, x, y){
+        for(int i=x, )
+    }
+
+    Tile tile  new Tile(3);
+    Tile tile2  new Tile(5);
+    System.out.println(tile);
+    int width = tile.width();
 
 
     // het villen van de Tile[][] in een 2D ArrayList ListField
@@ -51,6 +57,5 @@ import java.util.ArrayList;
 
         }
     }
-}
+}*/
 
-*/

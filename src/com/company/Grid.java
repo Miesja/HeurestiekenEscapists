@@ -3,10 +3,12 @@ package com.company;
 /**
  * Created by Bas on 25-2-2016.
  */
+/*
 public class Grid {
 
     int lengte;
     int breedte;
+
 
     public Grid ( int lengte, int breedte)
     {
@@ -28,3 +30,4 @@ public class Grid {
         }
     }
 }
+*/
