@@ -5,16 +5,12 @@ package com.company;
  */
 public class Grid {
 
-    public static final int X_WIDTH = 17;
-    public static final int Y_LENGTH = 17;
-
     int lengte;
     int breedte;
     String[][] field;
 
     public Grid ( int l, int b)
     {
-
         lengte = l;
         breedte = b;
         field = new String [lengte][breedte];

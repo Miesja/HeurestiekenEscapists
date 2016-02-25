@@ -11,7 +11,6 @@ public class Main {
     Grid veld = new Grid
 
     public static void main(String[] args) {
-        //TheField veld = new TheField();
         //TheTiles tegel = new TheTiles();
         //SetTile zetTegel = new SetTile();
 
