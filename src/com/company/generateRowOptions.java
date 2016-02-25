@@ -16,7 +16,7 @@ public class generateRowOptions {
     ArrayList<ArrayList<Integer>> archive = new ArrayList<>();
 
     public void run() {
-        tileWidths.addAll(Arrays.asList(2,3,3,3,3,3,3,3,5,5,5,7,7,7));
+        //tileWidths.addAll(Arrays.asList(2,3,3,3,3,3,3,3,5,5,5,7,7,7));
         makeOptions();
         System.out.println(options);
     }

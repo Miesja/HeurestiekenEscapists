@@ -35,15 +35,14 @@ package com.company;
             //name = "";
             this.name = name;
 
-
         }
 
         public void setTile(int x, int y) {
             System.out.println(name);
             System.out.println(width);
 
+
         }
-    tile3a.setTile(3,4)
 
     }
 

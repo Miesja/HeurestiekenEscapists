@@ -10,7 +10,7 @@ public class Main {
     static public String FieldValue;
 
     public static void main(String[] args) {
-        //TheField veld = new TheField();
+        TheField veld = new TheField();
         //TheTiles tegel = new TheTiles();
         //SetTile zetTegel = new SetTile();
 
@@ -20,15 +20,15 @@ public class Main {
         //zetTegel.SetTileInListField(tegel.Tile7A,0,0);
 
         Tile tilea = new Tile(2,2,"a");
-        tilea.setTile(2,3);
+        //Grid.setTile(tilea.width, tilea.length, 2,3);
 
         Tile tileb = new Tile(3,4, "b");
         tileb.setTile(4,4);
 
-        //generateRowOptions rowOptions = new generateRowOptions();
-        //rowOptions.run();
+        generateRowOptions rowOptions = new generateRowOptions();
+        rowOptions.tileWidths.add(tileb);
 
-
+        rowOptions.run();
 
     }
 

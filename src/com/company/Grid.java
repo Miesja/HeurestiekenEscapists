@@ -3,17 +3,17 @@ package com.company;
 /**
  * Created by Bas on 25-2-2016.
  */
-/*
+
 public class Grid {
 
     int lengte;
     int breedte;
 
 
-    public Grid ( int lengte, int breedte)
+    public Grid ( int l, int b)
     {
-        lengte = this.lengte;
-        breedte = this.breedte;
+        lengte = l;
+        breedte = b;
     }
 
     public void maakVeld()
@@ -23,11 +23,10 @@ public class Grid {
             String Row = "";
             for( int j = 0; j < breedte; j++)
             {
-                String A = veld.Field[ i ][ j ];
-                Row += A;
+               // String A = TheField.Field[ i ][ j ];
+               // Row += A;
             }
             System.out.println( Row );
         }
     }
 }
-*/
