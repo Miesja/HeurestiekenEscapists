@@ -47,20 +47,6 @@ public class Main {
 
     }
 
-   /* public void printField() {
-
-        for( int i = 0; i < 17; i++ )
-        {
-            String Row = "";
-            for( int j = 0; j < 17; j++)
-            {
-                String A = veld.Field[ i ][ j ];
-                Row += A;
-            }
-            System.out.println( Row );
-        }
-    }*/
-
     /*Waarom zijn bananen krom?
     Als ze recht zijn vallen ze om
     pom pom pom
