@@ -6,6 +6,7 @@ Created by Mies on 18/02/16.
 public class Tile {
 
     Grid veld = new Grid;
+    RowOptionsGenerator combi = RowOptionsGenerator;
 
     int width;
     int length;
@@ -15,16 +16,8 @@ public class Tile {
         this.width = width;
         this.length = length;
         this.name = name;
+        combi.tileWidths.add(width);
     }
-
-    public void SetTile(int XPoint, int YPoint) {
-        for (int x = XPoint; x < (XPoint + width); x++) {
-            for (int y = YPoint; y < YPoint + length; y++) {
-                veld.field[x][y] = name;
-            }
-        }
-    }
-
 }
 
 
