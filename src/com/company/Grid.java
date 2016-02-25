@@ -16,6 +16,12 @@ public class Grid {
         lengte = l;
         breedte = b;
         field = new String [lengte][breedte];
+
+        for (int i=0; i<lengte; i++){
+            for(int j=0; j<breedte; j++){
+                field[i][j]= " 0 ";
+            }
+        }
     }
 
     // het neerzetten van de tegel in de grid.
