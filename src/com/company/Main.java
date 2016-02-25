@@ -44,4 +44,36 @@ public class Main {
     Als ze recht zijn vallen ze om
     pom pom pom
     ze liggen krom van het lachen*/
+
+    Tile Tegel = new Tile;
+
+
+    private void makeTile() {
+
+        Tile TileA = new Tile (7,7,"a");
+        Tile TileB = new Tile(7,7,"b");
+        Tile TileC = new Tile(7,7,"c");
+        Tile TileD = new Tile(5,5,"d");
+        Tile TileE = new Tile(5,5,"e");
+        Tile TileF = new Tile(5,5,"f");
+        Tile TileG = new Tile(3,3,"g");
+        Tile TileH = new Tile(3,3,"h");
+        Tile TileI = new Tile(3,3,"i");
+        Tile TileJ = new Tile(2,2,"j");
+
+
+
+
+
+    }
+
+
+    public run (){
+        makeTile();
+        tegel.setTile(TileA, 4,6);
+
+
+
+
+    }
 }
