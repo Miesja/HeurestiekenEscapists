@@ -5,19 +5,11 @@ import java.util.ArrayList;
 
 public class Main {
 
-
-    static public ArrayList<ArrayList<String>> ListField = new ArrayList<> ();
-    static public String FieldValue;
-
     public static void main(String[] args) {
-        //TheTiles tegel = new TheTiles();
-        //SetTile zetTegel = new SetTile();
+        // het maken van een veld van 17x17, gevuld met "0".
+        Grid veld = new Grid(17,17);
 
-        //ListField = new ArrayList<>();
-
-        //veld.ArrayListField();
-        //zetTegel.SetTileInListField(tegel.Tile7A,0,0);
-
+        // de tegels voor het eerste veld.
         Tile tileA = new Tile(7,7," a ");
         Tile tileB = new Tile(7,7," b ");
         Tile tileC = new Tile(7,7," c ");
@@ -31,7 +23,6 @@ public class Main {
         Tile tileK = new Tile(3,3," k ");
         Tile tileL = new Tile(2,2," l ");
 
-        Grid veld = new Grid(17,17);
 
         veld.SetTile(tileA, 3, 3);
         veld.SetTile(tileL, 16,16);

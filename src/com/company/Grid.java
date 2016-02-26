@@ -4,8 +4,7 @@ package com.company;
  * Created by Bas on 25-2-2016.
  */
 public class Grid {
-
-
+    
     //instance variables.
     int lengte;
     int breedte;
