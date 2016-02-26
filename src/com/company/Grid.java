@@ -12,8 +12,7 @@ public class Grid {
     String[][] field;
 
     // Constructor om het veld met lengte l en breedte b, gevuld met "0", te maken.
-    public Grid ( int l, int b)
-    {
+    public Grid ( int l, int b) {
         lengte = l;
         breedte = b;
         field = new String [lengte][breedte];
@@ -25,7 +24,7 @@ public class Grid {
         }
     }
 
-    // het neerzetten van de tegel (type:Tile) in het veld. op coordinaat xPoint en yPoint
+    // het neerzetten van een tegel (type:Tile) in het veld. op coordinaat xPoint en yPoint
     public void SetTile(Tile tegel, int XPoint, int YPoint) {
         for (int x = XPoint-1; x < (XPoint-1 + tegel.width); x++) {
             for (int y = YPoint-1; y < YPoint-1 + tegel.length; y++) {
