@@ -16,7 +16,7 @@ public class RowOptionsGenerator {
     ArrayList<ArrayList<Integer>> archive = new ArrayList<>();
 
     public void run() {
-        
+
         makeOptions();
         System.out.println(options);
     }
