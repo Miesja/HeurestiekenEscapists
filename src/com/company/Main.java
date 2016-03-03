@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Stack;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -26,7 +28,15 @@ public class Main {
         veld.printVeld();
         options rowOptions = new options();
         rowOptions.run();
+
+        Stack<Grid> fillingFields  = new Stack();
+
+        fillingFields.push(veld);
+        
+
+
     }
+
 
     /*Waarom zijn bananen krom?
     Als ze recht zijn vallen ze om
