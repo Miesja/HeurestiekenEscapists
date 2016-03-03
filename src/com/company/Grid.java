@@ -3,7 +3,7 @@ package com.company;
 /**
  * Created by Bas on 25-2-2016.
  */
-public class grid {
+public class Grid {
     
     //instance variables.
     int lengte;
@@ -11,7 +11,7 @@ public class grid {
     String[][] field;
 
     // Constructor om het veld met lengte l en breedte b, gevuld met "0", te maken.
-    public grid(int l, int b) {
+    public Grid(int l, int b) {
         lengte = l;
         breedte = b;
         field = new String [lengte][breedte];
@@ -27,7 +27,9 @@ public class grid {
     public void SetTile(Tile tegel, int XPoint, int YPoint) {
         for (int x = XPoint-1; x < (XPoint-1 + tegel.width); x++) {
             for (int y = YPoint-1; y < YPoint-1 + tegel.length; y++) {
-                field[x][y] = tegel.name;
+                if (controleerPlaats(x,y)==true) {
+                    field[x][y] = tegel.name;
+                }
             }
         }
     }
@@ -43,5 +45,18 @@ public class grid {
             }
             System.out.println( Row );
         }
+    }
+
+    // controleert of er geen tegel ligt waar de nieuwe tegel geplaatst wilt worden
+    public boolean controleerPlaats( int x, int y){
+        String s = field[x][y];
+        boolean vrij;
+        if(s!=" 0 "){
+            vrij = false;
+        }
+        else{
+            vrij = true;
+        }
+        return vrij;
     }
 }
