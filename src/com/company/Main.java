@@ -1,12 +1,19 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class Main {
 
+    static ArrayList<Grid> velden = new ArrayList<>();
+    static Stack<Grid> fillingFields  = new Stack();
+
+
+
     public static void main(String[] args) {
         // het maken van een veld van 17x17, gevuld met "0".
         Grid veld = new Grid(17,17);
+
 
         // de tegels voor het eerste veld.
         Tile tileA = new Tile(7,7," a ");
@@ -23,16 +30,26 @@ public class Main {
         Tile tileL = new Tile(2,2," l ");
 
 
-        veld.SetTile(tileA, 3, 3);
-        veld.SetTile(tileL, 16,16);
-        veld.printVeld();
+/*
+        velden.get(velden.size()-1).SetTile(tileA, 3, 3);
+        velden.get(velden.size()-1).printVeld();
+        velden.get(velden.size()-1).SetTile(tileK,10,10);
+        velden.get(velden.size()-1).printVeld();
+*/
+        fillingFields.peek().SetTile(tileA, 3, 3);
+        fillingFields.peek().printVeld();
+        fillingFields.peek().SetTile(tileK,10,10);
+        fillingFields.peek().printVeld();
+
+
+
         options rowOptions = new options();
         rowOptions.run();
 
-        Stack<Grid> fillingFields  = new Stack();
 
         fillingFields.push(veld);
-        
+
+
 
 
     }
