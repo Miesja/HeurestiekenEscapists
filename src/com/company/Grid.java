@@ -61,7 +61,6 @@ public class Grid {
     public boolean controleerPlaats(Tile tegel, int XPoint, int YPoint){
         boolean vrij;
         int klopt = 0;
-        //String klopt = "";
         for (int x = XPoint-1; x < (XPoint-1 + tegel.width); x++) {
             for (int y = YPoint - 1; y < YPoint - 1 + tegel.length; y++) {
                 String s = field[x][y];
@@ -70,12 +69,13 @@ public class Grid {
                 }
             }
         }
-            if( klopt==(tegel.width*tegel.length)){
-                vrij = true;
-            }
-            else {
-                vrij = false;
-            }
+        //Controleert of alle plaatsen leeg zijn
+        if( klopt==(tegel.width*tegel.length)){
+            vrij = true;
+        }
+        else {
+            vrij = false;
+        }
         return vrij;
     }
 }
