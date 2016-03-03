@@ -27,7 +27,7 @@ public class Main {
         veld.SetTile(tileA, 3, 3);
         veld.SetTile(tileL, 16,16);
         veld.printVeld();
-        RowOptionsGenerator rowOptions = new RowOptionsGenerator();
+        options rowOptions = new options();
         rowOptions.run();
 
 

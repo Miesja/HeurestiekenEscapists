@@ -8,7 +8,7 @@ import java.util.Queue;
 /**
  * Created by Manon Schriever on 23-02-16.
  */
-public class RowOptionsGenerator {
+public class options {
     static ArrayList<Integer> tileWidths = new ArrayList<>();
     static int fieldSize = 17;
     ArrayList<ArrayList<Integer>> options = new ArrayList<>();

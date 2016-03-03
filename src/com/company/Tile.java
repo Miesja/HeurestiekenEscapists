@@ -5,7 +5,6 @@ Created by Mies on 18/02/16.
 
 public class Tile {
 
-    RowOptionsGenerator combi = new RowOptionsGenerator();
 
     int width;
     int length;
@@ -16,7 +15,7 @@ public class Tile {
         this.width = width;
         this.length = length;
         this.name = name;
-        combi.tileWidths.add(width);
+        options.tileWidths.add(width);
     }
 }
 
