@@ -1,7 +1,7 @@
 package com.company;
 
 import java.util.*;
-public class options {
+public class Options {
 
     static ArrayList<Tile> tiles = new ArrayList<>();
     static int fieldSize = 17;
