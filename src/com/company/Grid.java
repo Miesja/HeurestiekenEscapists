@@ -3,7 +3,7 @@ package com.company;
 /**
  * Created by Bas on 25-2-2016.
  */
-public class Grid {
+public class grid {
     
     //instance variables.
     int lengte;
@@ -11,7 +11,7 @@ public class Grid {
     String[][] field;
 
     // Constructor om het veld met lengte l en breedte b, gevuld met "0", te maken.
-    public Grid ( int l, int b) {
+    public grid(int l, int b) {
         lengte = l;
         breedte = b;
         field = new String [lengte][breedte];
