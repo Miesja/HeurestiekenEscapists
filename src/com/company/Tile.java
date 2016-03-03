@@ -15,7 +15,6 @@ public class Tile {
         this.width = width;
         this.length = length;
         this.name = name;
-        //options.tileWidths.add(width);
         options.tiles.add(this);
     }
 }
