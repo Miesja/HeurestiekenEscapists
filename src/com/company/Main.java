@@ -1,10 +1,10 @@
 package com.company;
 
-public class main {
+public class Main {
 
     public static void main(String[] args) {
         // het maken van een veld van 17x17, gevuld met "0".
-        grid veld = new grid(17,17);
+        Grid veld = new Grid(17,17);
 
         // de tegels voor het eerste veld.
         Tile tileA = new Tile(7,7," a ");
