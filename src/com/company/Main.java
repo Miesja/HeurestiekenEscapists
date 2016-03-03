@@ -38,7 +38,7 @@ public class Main {
 */
         fillingFields.peek().SetTile(tileA, 3, 3);
         fillingFields.peek().printVeld();
-        fillingFields.peek().SetTile(tileK,10,10);
+        fillingFields.peek().SetTile(tileK,9,9);
         fillingFields.peek().printVeld();
 
 
