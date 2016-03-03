@@ -18,11 +18,9 @@ public class Grid {
         field = new String[lengte][breedte];
 
         if (Main.fillingFields.empty()){
-      //  if (Main.velden.isEmpty()) {
             for (int i = 0; i < lengte; i++) {
                 for (int j = 0; j < breedte; j++) {
                     field[i][j] = " 0 ";
-                 //   Main.velden.add(this);
                     Main.fillingFields.push(this);
                 }
             }
@@ -34,23 +32,21 @@ public class Grid {
         breedte = grid.breedte;
         field = new String [lengte][breedte];
         for (int i=0; i<lengte; i++){
-           for(int j=0; j<breedte; j++){
+            for(int j=0; j<breedte; j++){
                field[i][j] = grid.field[i][j];
 
             }
         }
-
     }
 
 
     // het neerzetten van een tegel (type:Tile) in het veld. op coordinaat xPoint en yPoint
     public Grid SetTile(Tile tegel, int XPoint, int YPoint) {
-
         if (controleerPlaats(tegel, XPoint, YPoint)) {
             Grid copy = new Grid(this);
             for (int x = XPoint - 1; x < (XPoint - 1 + tegel.width); x++) {
                 for (int y = YPoint - 1; y < YPoint - 1 + tegel.length; y++) {
-                        copy.field[x][y] = tegel.name;
+                        copy.field[y][x] = tegel.name;
                 }
             }
             return copy;
@@ -78,14 +74,14 @@ public class Grid {
         int klopt = 0;
         for (int x = XPoint-1; x < (XPoint-1 + tegel.width); x++) {
             for (int y = YPoint - 1; y < YPoint - 1 + tegel.length; y++) {
-                String s = field[x][y];
+                String s = field[y][x];
                 if (s.equals(" 0 ")) {
                     klopt++;
                 }
             }
         }
         //Controleert of alle plaatsen leeg zijn
-        if( klopt==(tegel.width*tegel.length)){
+        if(klopt==(tegel.width*tegel.length)){
             vrij = true;
         }
         else {

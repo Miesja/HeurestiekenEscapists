@@ -30,43 +30,51 @@ public class Main {
         Tile tileL = new Tile(2,2," l ");
 
 
-/*
-        velden.get(velden.size()-1).SetTile(tileA, 3, 3);
-        velden.get(velden.size()-1).printVeld();
-        velden.get(velden.size()-1).SetTile(tileK,10,10);
-        velden.get(velden.size()-1).printVeld();
-*/
+
         veld.printVeld();
+        System.out.println( );
 
 
-
+        // zet een Tile neer op het veld en voegt het nieuwe veld toe aan een stack "fillingFields"
         Grid check = veld.SetTile(tileK,9,9);
         if (check != null) {
             fillingFields.push(check);
+        }else{
+        System.out.println("de tegel past niet");
         }
 
-
-        System.out.println( );
 
         fillingFields.peek().printVeld();
         System.out.println( );
 
-        Grid check2 = veld.SetTile(tileB,5,5);
+
+
+        Grid check2 = fillingFields.pop().SetTile(tileB,1,1);
         if (check2 != null) {
-            fillingFields.push(fillingFields.pop(check2));
+            fillingFields.push(check2);
+        }else{
+            System.out.println("de tegel past niet");
         }
 
-
-
-
-        fillingFields.peek().printVeld();
-        System.out.println( );
-
-        System.out.println( );
-
-        System.out.println( );
         fillingFields.peek().printVeld();
 
+        System.out.println( );
+
+
+        Grid check3 = fillingFields.pop().SetTile(tileL,1,12);
+        if (check3 !=null){
+                fillingFields.push(check3);
+        }else{
+            System.out.println("de tegel past niet");
+        }
+
+        fillingFields.peek().printVeld();
+
+        System.out.println( );
+
+
+
+        System.out.println( );
 
         Options rowOptions = new Options();
         rowOptions.run();
