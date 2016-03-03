@@ -29,9 +29,7 @@ public class options {
             }
             archive.add(parent);
             if(checkSum(parent)==fieldSize){
-              //  if(!checkDuplicates(parent, options)) {
-                    options.add(parent);
-              //  }
+                options.add(parent);
             }
             else if(checkSum(parent)<fieldSize){
                 ArrayList<Tile> possChildren = new ArrayList<>(tiles);
@@ -44,9 +42,7 @@ public class options {
         for(int i=0; i<list.size(); i++){
             ArrayList<Tile> element = new ArrayList<>();
             element.add((Tile) list.get(i));
-            //if(!checkDuplicates(element, queue)){
-                queue.add(element);
-           // }
+            queue.add(element);
         }
     }
 
@@ -67,23 +63,8 @@ public class options {
         for(int i=0; i<childrenOptions.size(); i++){
             ArrayList<Tile> child = new ArrayList<>(parent);
             child.add((Tile) childrenOptions.get(i));
-           // if(!checkDuplicates(child, archive) && !checkDuplicates(child, queue)){
-                queue.add(child);
-            //}
+            queue.add(child);
         }
     }
 
-   /* private boolean checkDuplicates(ArrayList element, ArrayList list){
-        if(list.contains(element)){
-            return true;
-        }
-        return false;
-    }
-
-    private boolean checkDuplicates(ArrayList element, Queue list){
-        if(list.contains(element)){
-            return true;
-        }
-        return false;
-    }*/
 }
