@@ -59,4 +59,6 @@ public class Grid {
         }
         return vrij;
     }
+
+    //#GitHub fail ;(
 }
