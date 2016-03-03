@@ -60,7 +60,7 @@ public class Grid {
     // controleert of er geen tegel ligt waar de nieuwe tegel geplaatst wilt worden
     public boolean controleerPlaats(Tile tegel, int XPoint, int YPoint){
         for (int x = XPoint-1; x < (XPoint-1 + tegel.width); x++) {
-            for (int y = YPoint-1; y < YPoint-1 + tegel.length; y++) {
+            for (int y = YPoint - 1; y < YPoint - 1 + tegel.length; y++) {
                 String s = field[x][y];
                 boolean vrij;
                 if (s.equals(" 0 ")) {
@@ -70,5 +70,6 @@ public class Grid {
                 }
                 return vrij;
             }
+        }
     }
 }
