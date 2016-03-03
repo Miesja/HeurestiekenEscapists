@@ -44,6 +44,8 @@ public class Main {
         }
 
 
+        System.out.println( );
+
         fillingFields.peek().printVeld();
         System.out.println( );
 
@@ -57,7 +59,6 @@ public class Main {
         }
 
         fillingFields.peek().printVeld();
-
         System.out.println( );
 
 
@@ -72,9 +73,9 @@ public class Main {
 
         System.out.println( );
 
-
-
         System.out.println( );
+        fillingFields.peek().printVeld();
+
 
         Options rowOptions = new Options();
         rowOptions.run();
