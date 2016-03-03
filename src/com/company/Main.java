@@ -36,11 +36,23 @@ public class Main {
         velden.get(velden.size()-1).SetTile(tileK,10,10);
         velden.get(velden.size()-1).printVeld();
 */
-        fillingFields.peek().SetTile(tileA, 3, 3);
-        fillingFields.peek().printVeld();
-        fillingFields.peek().SetTile(tileK,10,10);
-        fillingFields.peek().printVeld();
+        veld.printVeld();
 
+        fillingFields.push(veld.SetTile(tileK,9,9));
+        System.out.println( );
+
+        fillingFields.peek().printVeld();
+        System.out.println( );
+
+        fillingFields.push(fillingFields.pop().SetTile(tileB,5,5));
+
+        fillingFields.peek().printVeld();
+        System.out.println( );
+
+        System.out.println( );
+
+        System.out.println( );
+        fillingFields.peek().printVeld();
 
 
         Options rowOptions = new Options();

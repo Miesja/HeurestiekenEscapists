@@ -15,7 +15,7 @@ public class Tile {
         this.width = width;
         this.length = length;
         this.name = name;
-        options.tiles.add(this);
+        Options.tiles.add(this);
     }
 }
 

@@ -29,21 +29,38 @@ public class Grid {
         }
     }
 
+    public Grid(Grid grid) {
+        lengte = grid.lengte;
+        breedte = grid.breedte;
+        field = new String [lengte][breedte];
+        for (int i=0; i<lengte; i++){
+           for(int j=0; j<breedte; j++){
+               field[i][j] = grid.field[i][j];
+
+            }
+        }
+
+    }
 
 
     // het neerzetten van een tegel (type:Tile) in het veld. op coordinaat xPoint en yPoint
-    public void SetTile(Tile tegel, int XPoint, int YPoint) {
+    public Grid SetTile(Tile tegel, int XPoint, int YPoint) {
        // Main.velden.add(Main.velden.get(Main.velden.size() - 1));
-        Main.fillingFields.push(Main.fillingFields.peek());
+        //Main.fillingFields.push(Main.fillingFields.peek());
+        Grid copy = new Grid (this);
+        //Main.fillingFields.push(copy);
+
         for (int x = XPoint-1; x < (XPoint-1 + tegel.width); x++) {
             for (int y = YPoint-1; y < YPoint-1 + tegel.length; y++) {
                 if (controleerPlaats(x,y)) {
                     //    Main.velden.get(Main.velden.size()-1).field [x][y] = tegel.name;
-                    Main.fillingFields.pop().field[x][y] = tegel.name;
+                    copy.field[x][y] = tegel.name;
                 }
             }
         }
+        return copy;
     }
+
 
     // het printen van het veld.
     public void printVeld() {
@@ -67,6 +84,7 @@ public class Grid {
         else{
             vrij = false;
         }
+
         return vrij;
     }
 }
