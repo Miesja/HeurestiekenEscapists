@@ -30,7 +30,6 @@ public class Main {
         Tile tileL = new Tile(2,2," l ");
 
 
-
         veld.printVeld();
         System.out.println( );
 
@@ -43,9 +42,7 @@ public class Main {
         System.out.println("de tegel past niet");
         }
 
-
-        System.out.println( );
-
+        
         fillingFields.peek().printVeld();
         System.out.println( );
 
@@ -70,18 +67,14 @@ public class Main {
         }
 
         fillingFields.peek().printVeld();
-
         System.out.println( );
 
-        System.out.println( );
-        fillingFields.peek().printVeld();
 
 
         Options rowOptions = new Options();
         rowOptions.run();
 
 
-        fillingFields.push(veld);
 
 
 
