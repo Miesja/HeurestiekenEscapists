@@ -47,7 +47,9 @@ public class Grid {
     public Grid SetTile(Tile tegel, int XPoint, int YPoint) {
        // Main.velden.add(Main.velden.get(Main.velden.size() - 1));
         //Main.fillingFields.push(Main.fillingFields.peek());
-        Grid copy = new Grid (this);
+        if (controleerPlaats(tegel, XPoint, YPoint)) {
+
+            Grid copy = new Grid (this);
         //Main.fillingFields.push(copy);
 
         for (int x = XPoint-1; x < (XPoint-1 + tegel.width); x++) {
@@ -75,16 +77,24 @@ public class Grid {
     }
 
     // controleert of er geen tegel ligt waar de nieuwe tegel geplaatst wilt worden
-    public boolean controleerPlaats( int x, int y){
-        String s = field[x][y];
+    public boolean controleerPlaats(Tile tegel, int XPoint, int YPoint){
         boolean vrij;
-        if(s.equals(" 0 ")){
+        int klopt = 0;
+        for (int x = XPoint-1; x < (XPoint-1 + tegel.width); x++) {
+            for (int y = YPoint - 1; y < YPoint - 1 + tegel.length; y++) {
+                String s = field[x][y];
+                if (s.equals(" 0 ")) {
+                    klopt++;
+                }
+            }
+        }
+        //Controleert of alle plaatsen leeg zijn
+        if( klopt==(tegel.width*tegel.length)){
             vrij = true;
         }
-        else{
+        else {
             vrij = false;
         }
-
         return vrij;
     }
 }
