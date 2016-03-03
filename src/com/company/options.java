@@ -1,14 +1,8 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
-
-/**
- * Created by Manon Schriever on 23-02-16.
- */
+import java.util.*;
 public class options {
+
     static ArrayList<Tile> tiles = new ArrayList<>();
     static int fieldSize = 17;
     ArrayList<ArrayList<Tile>> options = new ArrayList<>();
