@@ -51,11 +51,7 @@ public class Main {
         fillingFields.peek().printVeld();
         System.out.println( );
 
-        Grid check2 = veld.SetTile(tileB,5,5);
-        if (check2 != null) {
-            fillingFields.push(fillingFields.pop(check2));
-        }
-
+        
 
 
 
