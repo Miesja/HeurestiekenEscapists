@@ -43,7 +43,7 @@ public class Main {
 
 
 
-        options rowOptions = new options();
+        Options rowOptions = new Options();
         rowOptions.run();
 
 

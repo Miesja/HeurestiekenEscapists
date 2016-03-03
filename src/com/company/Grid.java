@@ -37,14 +37,13 @@ public class Grid {
         Main.fillingFields.push(Main.fillingFields.peek());
         for (int x = XPoint-1; x < (XPoint-1 + tegel.width); x++) {
             for (int y = YPoint-1; y < YPoint-1 + tegel.length; y++) {
-            //    Main.velden.get(Main.velden.size()-1).field [x][y] = tegel.name;
-                Main.fillingFields.pop().field [x][y]= tegel.name;
-
-
+                if (controleerPlaats(x,y)) {
+                    //    Main.velden.get(Main.velden.size()-1).field [x][y] = tegel.name;
+                    Main.fillingFields.pop().field[x][y] = tegel.name;
+                }
             }
         }
     }
-
 
     // het printen van het veld.
     public void printVeld() {
@@ -56,5 +55,18 @@ public class Grid {
             }
             System.out.println( Row );
         }
+    }
+
+    // controleert of er geen tegel ligt waar de nieuwe tegel geplaatst wilt worden
+    public boolean controleerPlaats( int x, int y){
+        String s = field[x][y];
+        boolean vrij;
+        if(s.equals(" 0 ")){
+            vrij = true;
+        }
+        else{
+            vrij = false;
+        }
+        return vrij;
     }
 }
