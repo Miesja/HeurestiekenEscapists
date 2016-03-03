@@ -33,11 +33,11 @@ public class Grid {
 
     // het neerzetten van een tegel (type:Tile) in het veld. op coordinaat xPoint en yPoint
     public void SetTile(Tile tegel, int XPoint, int YPoint) {
-       // Main.velden.add(Main.velden.get(Main.velden.size() - 1));
-        Main.fillingFields.push(Main.fillingFields.peek());
-        for (int x = XPoint-1; x < (XPoint-1 + tegel.width); x++) {
-            for (int y = YPoint-1; y < YPoint-1 + tegel.length; y++) {
-                if (controleerPlaats(x,y)) {
+        if (controleerPlaats(tegel, XPoint, YPoint)) {
+            // Main.velden.add(Main.velden.get(Main.velden.size() - 1));
+            Main.fillingFields.push(Main.fillingFields.peek());
+            for (int x = XPoint - 1; x < (XPoint - 1 + tegel.width); x++) {
+                for (int y = YPoint - 1; y < YPoint - 1 + tegel.length; y++) {
                     //    Main.velden.get(Main.velden.size()-1).field [x][y] = tegel.name;
                     Main.fillingFields.pop().field[x][y] = tegel.name;
                 }
@@ -58,15 +58,17 @@ public class Grid {
     }
 
     // controleert of er geen tegel ligt waar de nieuwe tegel geplaatst wilt worden
-    public boolean controleerPlaats( int x, int y){
-        String s = field[x][y];
-        boolean vrij;
-        if(s.equals(" 0 ")){
-            vrij = true;
-        }
-        else{
-            vrij = false;
-        }
-        return vrij;
+    public boolean controleerPlaats(Tile tegel, int XPoint, int YPoint){
+        for (int x = XPoint-1; x < (XPoint-1 + tegel.width); x++) {
+            for (int y = YPoint-1; y < YPoint-1 + tegel.length; y++) {
+                String s = field[x][y];
+                boolean vrij;
+                if (s.equals(" 0 ")) {
+                    vrij = true;
+                } else {
+                    vrij = false;
+                }
+                return vrij;
+            }
     }
 }
