@@ -45,23 +45,19 @@ public class Grid {
 
     // het neerzetten van een tegel (type:Tile) in het veld. op coordinaat xPoint en yPoint
     public Grid SetTile(Tile tegel, int XPoint, int YPoint) {
-       // Main.velden.add(Main.velden.get(Main.velden.size() - 1));
-        //Main.fillingFields.push(Main.fillingFields.peek());
+
         if (controleerPlaats(tegel, XPoint, YPoint)) {
-
-            Grid copy = new Grid (this);
-        //Main.fillingFields.push(copy);
-
-        for (int x = XPoint-1; x < (XPoint-1 + tegel.width); x++) {
-            for (int y = YPoint-1; y < YPoint-1 + tegel.length; y++) {
-                if (controleerPlaats(x,y)) {
-                    //    Main.velden.get(Main.velden.size()-1).field [x][y] = tegel.name;
-                    copy.field[x][y] = tegel.name;
+            Grid copy = new Grid(this);
+            for (int x = XPoint - 1; x < (XPoint - 1 + tegel.width); x++) {
+                for (int y = YPoint - 1; y < YPoint - 1 + tegel.length; y++) {
+                        copy.field[x][y] = tegel.name;
                 }
             }
+            return copy;
         }
-        return copy;
+        return null;
     }
+
 
 
     // het printen van het veld.

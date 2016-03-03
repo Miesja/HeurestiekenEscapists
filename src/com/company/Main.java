@@ -38,13 +38,26 @@ public class Main {
 */
         veld.printVeld();
 
-        fillingFields.push(veld.SetTile(tileK,9,9));
+
+
+        Grid check = veld.SetTile(tileK,9,9);
+        if (check != null) {
+            fillingFields.push(check);
+        }
+
+
         System.out.println( );
 
         fillingFields.peek().printVeld();
         System.out.println( );
 
-        fillingFields.push(fillingFields.pop().SetTile(tileB,5,5));
+        Grid check2 = veld.SetTile(tileB,5,5);
+        if (check2 != null) {
+            fillingFields.push(fillingFields.pop(check2));
+        }
+
+
+
 
         fillingFields.peek().printVeld();
         System.out.println( );
