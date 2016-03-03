@@ -27,11 +27,6 @@ public class Main {
         veld.printVeld();
         Options rowOptions = new Options();
         rowOptions.run();
-
-
-
-
-
     }
 
     /*Waarom zijn bananen krom?
