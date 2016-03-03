@@ -1,13 +1,10 @@
 package com.company;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-
-public class Main {
+public class main {
 
     public static void main(String[] args) {
         // het maken van een veld van 17x17, gevuld met "0".
-        Grid veld = new Grid(17,17);
+        grid veld = new grid(17,17);
 
         // de tegels voor het eerste veld.
         Tile tileA = new Tile(7,7," a ");
