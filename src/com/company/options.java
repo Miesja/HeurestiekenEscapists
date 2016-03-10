@@ -19,7 +19,7 @@ public class Options {
             System.out.print("], ");
         }
     }
-
+    
     private void makeOptions(){
         makeStartQueue(tiles);
         while(true){

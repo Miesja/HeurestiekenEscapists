@@ -7,7 +7,7 @@ import java.util.Stack;
 public class Main {
 
     static Stack<Grid> fieldStack  = new Stack();
-    static ArrayList<Tile> usedTiles = new Array();
+    static ArrayList<Tile> usedTiles = new ArrayList<>();
 
 
 
@@ -33,7 +33,7 @@ public class Main {
         Tile tileK = new Tile(3,3," k ");
         Tile tileL = new Tile(2,2," l ");
 
-
+/*
         // zet een Tile neer op het veld en voegt het nieuwe veld toe aan een stack "fieldStack"
         Grid check = veld.SetTile(tileK,9,9);
         if (check != null) {
@@ -67,16 +67,22 @@ public class Main {
         }
 
         fieldStack.peek().printVeld();
-        System.out.println( );
+        System.out.println( );*/
 
 
 
         Options rowOptions = new Options();
         rowOptions.run();
 
-        Options.tiles
+        createField();
+        fieldStack.peek().printVeld();
 
 
+
+
+
+
+/*
         for (int x=0; x<veld.breedte; x++) {
             for (int y = 0; y < veld.lengte; y++) {
                 if (fieldStack.pop()[y][x] = 0) {
@@ -89,9 +95,30 @@ public class Main {
             }
         }
 
+*/
 
 
+    }
 
+    public static void createField() {
+        for (Tile tile : Options.tiles) {
+            addTile(tile);
+        }
+    }
+
+    public static void addTile(Tile tile){
+        Grid vorigVeld = fieldStack.peek();
+        for (int x=0; x<vorigVeld.breedte; x++) {
+            for (int y = 0; y < vorigVeld.lengte; y++) {
+                if (fieldStack.pop().field[y][x].equals(" 0 ")) {
+                    Grid newGrid = fieldStack.pop().SetTile(tile, x, y);
+                    if (newGrid != null) {
+                        fieldStack.push(newGrid);
+                        usedTiles.add(tile);
+                    }
+                }
+            }
+        }
     }
 
 
