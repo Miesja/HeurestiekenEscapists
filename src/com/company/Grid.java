@@ -73,7 +73,7 @@ public class Grid {
         boolean vrij;
         int klopt = 0;
         for (int x = XPoint; x < (XPoint + tegel.width); x++) {
-            for (int y = YPoint; y < YPoint + tegel.length; y++) {
+            for (int y = YPoint; y < (YPoint + tegel.length); y++) {
                 String s = field[x][y];
                 if (s.equals(" 0 ")) {
                     klopt++;
