@@ -6,15 +6,18 @@ import java.util.Stack;
 
 public class Main {
 
-    static Stack<Grid> fieldStack  = new Stack();
-    static ArrayList<Tile> usedTiles = new ArrayList<>();
-    static Grid veld;
+
 
 
 
     public static void main(String[] args) {
+        Stack<Grid> fieldStack  = new Stack();
+        ArrayList<Tile> usedTiles = new ArrayList<>();
+        Grid veld;
+
         // het maken van een veld van 17x17, gevuld met "0".
         veld = new Grid(17,17);
+        fieldStack.push(veld);
 
         veld.printVeld();
         System.out.println( );
@@ -75,11 +78,7 @@ public class Main {
        // Options rowOptions = new Options();
        // rowOptions.run();
 
-        createField();
-        while(!fieldStack.isEmpty()){
-            fieldStack.pop().printVeld();
-            System.out.println();
-        }
+
 
 
 
@@ -104,27 +103,7 @@ public class Main {
 
     }
 
-    public static void createField() {
-        for (Tile tile : Options.tiles) {
-            addTile(tile, veld);
-        }
-    }
 
-    public static void addTile(Tile tile, Grid veld){
-        for (int x=0; x<veld.breedte; x++) {
-            for (int y = 0; y < veld.lengte; y++) {
-                if (veld.field[x][y].equals(" 0 ")) {
-                    Grid newGrid = veld.SetTile(tile, x, y);
-                    if (newGrid != null) {
-                        fieldStack.push(newGrid);
-                        usedTiles.add(tile);
-                    }
-                }
-                break;
-            }
-            break;
-        }
-    }
 
 
     /*Waarom zijn bananen krom?
