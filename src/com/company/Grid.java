@@ -93,4 +93,26 @@ public class Grid {
         }
         return vrij;
     }
+
+    public void createField(Grid veld) {
+        for (Tile tile : Options.tiles) {
+            addTile(tile, veld);
+        }
+    }
+
+    public  void addTile(Tile tile, Grid veld){
+        for (int x=0; x<veld.breedte; x++) {
+            for (int y = 0; y < veld.lengte; y++) {
+                if (veld.field[x][y].equals(" 0 ")) {
+                    Grid newGrid = veld.SetTile(tile, x, y);
+                    if (newGrid != null) {
+                        fieldStack.push(newGrid);
+                        usedTiles.add(tile);
+                        return;
+                    }
+
+                }
+            }
+        }
+    }
 }
