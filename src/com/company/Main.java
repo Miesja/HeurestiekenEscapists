@@ -8,12 +8,13 @@ public class Main {
 
     static Stack<Grid> fieldStack  = new Stack();
     static ArrayList<Tile> usedTiles = new ArrayList<>();
+    static Grid veld;
 
 
 
     public static void main(String[] args) {
         // het maken van een veld van 17x17, gevuld met "0".
-        Grid veld = new Grid(17,17);
+        veld = new Grid(17,17);
 
         veld.printVeld();
         System.out.println( );
@@ -75,7 +76,10 @@ public class Main {
        // rowOptions.run();
 
         createField();
-        fieldStack.peek().printVeld();
+        while(!fieldStack.isEmpty()){
+            fieldStack.pop().printVeld();
+            System.out.println();
+        }
 
 
 
@@ -102,22 +106,23 @@ public class Main {
 
     public static void createField() {
         for (Tile tile : Options.tiles) {
-            addTile(tile);
+            addTile(tile, veld);
         }
     }
 
-    public static void addTile(Tile tile){
-        Grid oldGrid = fieldStack.peek();
-        for (int x=0; x<oldGrid.breedte; x++) {
-            for (int y = 0; y < oldGrid.lengte; y++) {
-                if (fieldStack.peek().field[x][y].equals(" 0 ")) {
-                    Grid newGrid = fieldStack.pop().SetTile(tile, x, y);
+    public static void addTile(Tile tile, Grid veld){
+        for (int x=0; x<veld.breedte; x++) {
+            for (int y = 0; y < veld.lengte; y++) {
+                if (veld.field[x][y].equals(" 0 ")) {
+                    Grid newGrid = veld.SetTile(tile, x, y);
                     if (newGrid != null) {
                         fieldStack.push(newGrid);
                         usedTiles.add(tile);
                     }
                 }
+                break;
             }
+            break;
         }
     }
 
