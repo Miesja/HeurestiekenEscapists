@@ -107,10 +107,10 @@ public class Main {
     }
 
     public static void addTile(Tile tile){
-        Grid vorigVeld = fieldStack.peek();
-        for (int x=0; x<vorigVeld.breedte; x++) {
-            for (int y = 0; y < vorigVeld.lengte; y++) {
-                if (fieldStack.pop().field[x][y].equals(" 0 ")) {
+        Grid oldGrid = fieldStack.peek();
+        for (int x=0; x<oldGrid.breedte; x++) {
+            for (int y = 0; y < oldGrid.lengte; y++) {
+                if (fieldStack.peek().field[x][y].equals(" 0 ")) {
                     Grid newGrid = fieldStack.pop().SetTile(tile, x, y);
                     if (newGrid != null) {
                         fieldStack.push(newGrid);
