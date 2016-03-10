@@ -17,16 +17,16 @@ public class Grid {
         breedte = b;
         field = new String[lengte][breedte];
 
-        if (Main.fillingFields.empty()){
+        if (Main.fieldStack.empty()){
             for (int i = 0; i < lengte; i++) {
                 for (int j = 0; j < breedte; j++) {
                     field[i][j] = " 0 ";
-                    Main.fillingFields.push(this);
+                    Main.fieldStack.push(this);
                 }
             }
         }
     }
-
+    // het copiëren van een grid door een grid te maken adhv een andere grid.
     public Grid(Grid grid) {
         lengte = grid.lengte;
         breedte = grid.breedte;

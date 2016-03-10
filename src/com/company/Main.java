@@ -1,18 +1,22 @@
 package com.company;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Stack;
 
 public class Main {
 
-    static ArrayList<Grid> velden = new ArrayList<>();
-    static Stack<Grid> fillingFields  = new Stack();
+    static Stack<Grid> fieldStack  = new Stack();
+    static ArrayList<Tile> usedTiles = new Array();
 
 
 
     public static void main(String[] args) {
         // het maken van een veld van 17x17, gevuld met "0".
         Grid veld = new Grid(17,17);
+
+        veld.printVeld();
+        System.out.println( );
 
 
         // de tegels voor het eerste veld.
@@ -30,43 +34,39 @@ public class Main {
         Tile tileL = new Tile(2,2," l ");
 
 
-        veld.printVeld();
-        System.out.println( );
-
-
-        // zet een Tile neer op het veld en voegt het nieuwe veld toe aan een stack "fillingFields"
+        // zet een Tile neer op het veld en voegt het nieuwe veld toe aan een stack "fieldStack"
         Grid check = veld.SetTile(tileK,9,9);
         if (check != null) {
-            fillingFields.push(check);
+            fieldStack.push(check);
         }else{
         System.out.println("de tegel past niet");
         }
 
-        
-        fillingFields.peek().printVeld();
+
+        fieldStack.peek().printVeld();
         System.out.println( );
 
 
 
-        Grid check2 = fillingFields.pop().SetTile(tileB,1,1);
+        Grid check2 = fieldStack.pop().SetTile(tileB,1,1);
         if (check2 != null) {
-            fillingFields.push(check2);
+            fieldStack.push(check2);
         }else{
             System.out.println("de tegel past niet");
         }
 
-        fillingFields.peek().printVeld();
+        fieldStack.peek().printVeld();
         System.out.println( );
 
 
-        Grid check3 = fillingFields.pop().SetTile(tileL,1,12);
+        Grid check3 = fieldStack.pop().SetTile(tileL,1,12);
         if (check3 !=null){
-                fillingFields.push(check3);
+                fieldStack.push(check3);
         }else{
             System.out.println("de tegel past niet");
         }
 
-        fillingFields.peek().printVeld();
+        fieldStack.peek().printVeld();
         System.out.println( );
 
 
@@ -74,7 +74,20 @@ public class Main {
         Options rowOptions = new Options();
         rowOptions.run();
 
+        Options.tiles
 
+
+        for (int x=0; x<veld.breedte; x++) {
+            for (int y = 0; y < veld.lengte; y++) {
+                if (fieldStack.pop()[y][x] = 0) {
+                    Grid newGrid = fieldStack.pop().SetTile(TileX, x, y)
+                    if (newGrid != null) {
+                        fieldStack.push(newGrid);
+                        usedTiles.add(TileX)
+                    }
+                }
+            }
+        }
 
 
 
