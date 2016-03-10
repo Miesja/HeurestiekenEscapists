@@ -10,7 +10,7 @@ public class Grid {
     int breedte;
     String[][] field;
 
-    // Constructor om het veld met lengte l en breedte b, gevuld met "0", te maken.
+    // Constructor om het veld met lengte l en breedte b, gevuld met " 0 ", te maken.
 
     public Grid(int l, int b) {
         lengte = l;
