@@ -17,15 +17,15 @@ public class Grid {
         breedte = b;
         field = new String[breedte][lengte];
 
-        if (Main.fieldStack.empty()){
             for (int i = 0; i < breedte; i++) {
                 for (int j = 0; j < lengte; j++) {
                     field[i][j] = " 0 ";
-                    Main.fieldStack.push(this);
                 }
             }
-        }
+
+
     }
+
     // het copiëren van een grid door een grid te maken adhv een andere grid.
     public Grid(Grid grid) {
         lengte = grid.lengte;
@@ -100,13 +100,13 @@ public class Grid {
         }
     }
 
-    public  void addTile(Tile tile, Grid veld){
+    public Grid addTile(Tile tile, Grid veld){
         for (int x=0; x<veld.breedte; x++) {
             for (int y = 0; y < veld.lengte; y++) {
                 if (veld.field[x][y].equals(" 0 ")) {
                     Grid newGrid = veld.SetTile(tile, x, y);
                     if (newGrid != null) {
-                        fieldStack.push(newGrid);
+                        return newGrid;
                         usedTiles.add(tile);
                         return;
                     }
