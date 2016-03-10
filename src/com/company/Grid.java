@@ -15,11 +15,11 @@ public class Grid {
     public Grid(int l, int b) {
         lengte = l;
         breedte = b;
-        field = new String[lengte][breedte];
+        field = new String[breedte][lengte];
 
         if (Main.fieldStack.empty()){
-            for (int i = 0; i < lengte; i++) {
-                for (int j = 0; j < breedte; j++) {
+            for (int i = 0; i < breedte; i++) {
+                for (int j = 0; j < lengte; j++) {
                     field[i][j] = " 0 ";
                     Main.fieldStack.push(this);
                 }
@@ -30,9 +30,9 @@ public class Grid {
     public Grid(Grid grid) {
         lengte = grid.lengte;
         breedte = grid.breedte;
-        field = new String [lengte][breedte];
-        for (int i=0; i<lengte; i++){
-            for(int j=0; j<breedte; j++){
+        field = new String [breedte][lengte];
+        for (int i=0; i<breedte; i++){
+            for(int j=0; j<lengte; j++){
                field[i][j] = grid.field[i][j];
 
             }
@@ -46,7 +46,7 @@ public class Grid {
             Grid copy = new Grid(this);
             for (int x = XPoint - 1; x < (XPoint - 1 + tegel.width); x++) {
                 for (int y = YPoint - 1; y < YPoint - 1 + tegel.length; y++) {
-                        copy.field[y][x] = tegel.name;
+                        copy.field[x][y] = tegel.name;
                 }
             }
             return copy;
@@ -58,9 +58,9 @@ public class Grid {
 
     // het printen van het veld.
     public void printVeld() {
-        for( int i = 0; i < lengte; i++ ) {
+        for( int i = 0; i < breedte; i++ ) {
             String Row = "";
-            for( int j = 0; j < breedte; j++) {
+            for( int j = 0; j < lengte; j++) {
                 String A = field[ i ][ j ];
                 Row += A;
             }
@@ -74,7 +74,7 @@ public class Grid {
         int klopt = 0;
         for (int x = XPoint-1; x < (XPoint-1 + tegel.width); x++) {
             for (int y = YPoint - 1; y < YPoint - 1 + tegel.length; y++) {
-                String s = field[y][x];
+                String s = field[x][y];
                 if (s.equals(" 0 ")) {
                     klopt++;
                 }

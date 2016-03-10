@@ -110,7 +110,7 @@ public class Main {
         Grid vorigVeld = fieldStack.peek();
         for (int x=0; x<vorigVeld.breedte; x++) {
             for (int y = 0; y < vorigVeld.lengte; y++) {
-                if (fieldStack.pop().field[y][x].equals(" 0 ")) {
+                if (fieldStack.pop().field[x][y].equals(" 0 ")) {
                     Grid newGrid = fieldStack.pop().SetTile(tile, x, y);
                     if (newGrid != null) {
                         fieldStack.push(newGrid);
