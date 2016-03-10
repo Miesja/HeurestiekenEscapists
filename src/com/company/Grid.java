@@ -44,8 +44,8 @@ public class Grid {
     public Grid SetTile(Tile tegel, int XPoint, int YPoint) {
         if (controleerPlaats(tegel, XPoint, YPoint)) {
             Grid copy = new Grid(this);
-            for (int x = XPoint - 1; x < (XPoint - 1 + tegel.width); x++) {
-                for (int y = YPoint - 1; y < YPoint - 1 + tegel.length; y++) {
+            for (int x = XPoint; x < (XPoint + tegel.width); x++) {
+                for (int y = YPoint; y < YPoint + tegel.length; y++) {
                         copy.field[x][y] = tegel.name;
                 }
             }
@@ -72,8 +72,8 @@ public class Grid {
     public boolean controleerPlaats(Tile tegel, int XPoint, int YPoint){
         boolean vrij;
         int klopt = 0;
-        for (int x = XPoint-1; x < (XPoint-1 + tegel.width); x++) {
-            for (int y = YPoint - 1; y < YPoint - 1 + tegel.length; y++) {
+        for (int x = XPoint; x < (XPoint + tegel.width); x++) {
+            for (int y = YPoint; y < YPoint + tegel.length; y++) {
                 String s = field[x][y];
                 if (s.equals(" 0 ")) {
                     klopt++;
