@@ -72,15 +72,19 @@ public class Grid {
     public boolean controleerPlaats(Tile tegel, int XPoint, int YPoint){
         boolean vrij;
         int klopt = 0;
-        for (int x = XPoint; x < (XPoint + tegel.width); x++) {
-            for (int y = YPoint; y < (YPoint + tegel.length); y++) {
-                String s = field[x][y];
-                if (s.equals(" 0 ")) {
-                    klopt++;
+        if ((XPoint + tegel.width) < this.breedte && (YPoint+tegel.width)< this.lengte){
+            for (int x = XPoint; x < (XPoint + tegel.width); x++) {
+                for (int y = YPoint; y < (YPoint + tegel.length); y++) {
+                    String s = field[x][y];
+                    if (s.equals(" 0 ")) {
+                        klopt++;
+                    }
                 }
             }
         }
-        //Controleert of alle plaatsen leeg zijn
+
+
+            //Controleert of alle plaatsen leeg zijn
         if(klopt==(tegel.width*tegel.length)){
             vrij = true;
         }
