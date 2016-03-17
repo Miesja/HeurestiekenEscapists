@@ -13,7 +13,7 @@ public class TileCollection {
     }
 
     //Haalt een tile uit de collectie zodat deze niet nogmaals gebruikt kan worden in een Grid
-    public void remove(Tile tile){
+    public void removeTile(Tile tile){
         tiles.remove(tile);
     }
 }
