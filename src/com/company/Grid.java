@@ -96,6 +96,26 @@ public class Grid {
         return vrij;
     }
 
+    //Controleerd of het grid helemaal gevuld is, zo ja, dan wordt true gereturned
+    public boolean checkIfGridIsFull(){
+        boolean full;
+        int filled = 0;
+        for (int c = 0; c < breedte; c++) {
+            for (int y = lengte; y < lengte; y++) {
+                String s = field[c][y];
+                if (!s.equals(" 0 ")) {
+                    filled++;
+                }
+            }
+        }
+        if(filled==(lengte*breedte)){
+            full = true
+        }
+        else {
+            full = false;
+        }
+        return full;
+    }
 
 
     //Plaatst tiles
