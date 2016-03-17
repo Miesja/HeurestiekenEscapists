@@ -43,11 +43,7 @@ public class Main {
 
         while (!fieldStack.isEmpty()) {
             Grid currentField = fieldStack.pop();
-            if(currentField.checkIfGridIsFull()){
-                break;
-            }
             for (int i = 0; i < currentField.collection.tiles.size(); i++) {
-
                 Tile tile = currentField.collection.giveTile(i);
                 Grid newField = currentField.addTile(tile);
                 newField.collection.removeTile(tile);
