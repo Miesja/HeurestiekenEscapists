@@ -117,7 +117,6 @@ public class Grid {
                     if (newGrid != null) {
                         return newGrid;
                     }
-
                 }
             }
         }
