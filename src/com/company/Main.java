@@ -45,11 +45,11 @@ public class Main {
             Grid currentField = fieldStack.pop();
             for(int i=0; i<currentField.collection.tiles.size(); i++){
                 Tile tile = currentField.collection.giveTile(i);
-                    Grid newField = currentField.addTile(tile);
-                    newField.collection.removeTile(tile);
-                    if (newField != null) {
-                        fieldStack.push(newField);
-                    }
+                Grid newField = currentField.addTile(tile);
+                newField.collection.removeTile(tile);
+                if (newField != null) {
+                    fieldStack.push(newField);
+                }
 
             }
         }

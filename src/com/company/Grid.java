@@ -31,7 +31,9 @@ public class Grid {
         lengte = grid.lengte;
         breedte = grid.breedte;
         field = new String [breedte][lengte];
-        collection = grid.collection;
+        for(int i=0; i<grid.collection.tiles.size(); i++){
+            collection.tiles.add(grid.collection.giveTile());
+        }
         for (int i=0; i<breedte; i++){
             for(int j=0; j<lengte; j++){
                field[i][j] = grid.field[i][j];
