@@ -1,5 +1,6 @@
 package com.company;
 
+
 public class Grid {
 
     //instance variables.
@@ -93,7 +94,7 @@ public class Grid {
 
     public void createField(TileCollection collection) {
         for (Tile tile : collection.tiles) {
-            addTile(tile, this);
+            addTile(tile);
         }
 
     }

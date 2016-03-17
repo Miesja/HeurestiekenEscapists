@@ -49,7 +49,7 @@ public class Main {
         }
 
         for (Tile tile : collection.tiles) {
-            fieldStack.push(veld.addTile(tile, veld));
+            fieldStack.push(veld.addTile(tile));
         }
 
         // for testing purposes, has to be deleted later
