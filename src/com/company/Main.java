@@ -15,7 +15,7 @@ public class Main {
         // maakt het begin Grid (field) en de tegels (tile) van het probleem
         // adhv de waarde die in een txt.file staan (resources/problem"")
         try {
-            Scanner sc = new Scanner(new FileReader("resources/problemB"));
+            Scanner sc = new Scanner(new FileReader("resources/problemA"));
             int breedte = sc.nextInt();
             int lengte = sc.nextInt();
             field = new Grid(lengte, breedte);
@@ -40,16 +40,18 @@ public class Main {
 
 
         //Deze functie probeerd alle tiles toe te voegen aan het grid
-        for (Tile tile : collection.tiles) {
+
+        //while(checkIfGridIsFull) {
             Grid currentField = fieldStack.pop();
-            Grid newField = currentField.addTile(tile);
-            if (newField != null) {
-                fieldStack.push(newField);
+            for (Tile tile : collection.tiles) {
+                Grid newField = currentField.addTile(tile);
+                if (newField != null) {
+                    fieldStack.push(newField);
+                } else {
+                    fieldStack.push(currentField);
+                }
             }
-            else{
-                fieldStack.push(currentField);
-            }
-        }
+        //}
 
         fieldStack.peek().printVeld();
 
