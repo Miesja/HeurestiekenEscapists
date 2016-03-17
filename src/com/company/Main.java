@@ -18,11 +18,16 @@ public class Main {
             int breedte = sc.nextInt();
             int lengte = sc.nextInt();
             field = new Grid(lengte, breedte);
+            field.printVeld();
+            System.out.println("");
             while (sc.hasNext()) {
                 int width = sc.nextInt();
                 int length = sc.nextInt();
                 String name = " " + sc.next() + " ";
                 Tile tile = new Tile(width, length, name);
+                System.out.println(tile.length + tile.name + tile.width);
+                field.SetTile(tile,0,0);
+                field.printVeld();
                 field.collection.tiles.add(tile);
             }
         } catch (Exception e) {
