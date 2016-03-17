@@ -109,7 +109,7 @@ public class Grid {
             }
         }
         if(filled==(lengte*breedte)){
-            full = true
+            full = true;
         }
         else {
             full = false;
