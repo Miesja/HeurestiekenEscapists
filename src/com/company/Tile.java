@@ -3,8 +3,9 @@ package com.company;
 Created by Mies on 18/02/16.
 */
 
-public class Tile {
+import java.util.ArrayList;
 
+public class Tile {
 
     int width;
     int length;
@@ -15,8 +16,6 @@ public class Tile {
         this.width = width;
         this.length = length;
         this.name = name;
-        Options.tiles.add(this);
-
     }
 }
 

@@ -1,18 +1,15 @@
 package com.company;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Stack;
+import java.io.FileReader;
+import java.util.*;
 
 public class Main {
 
 
-
-
-
     public static void main(String[] args) {
+        TileCollection collection = new TileCollection();
+
         Stack<Grid> fieldStack  = new Stack();
-        ArrayList<Tile> usedTiles = new ArrayList<>();
         Grid veld;
 
         // het maken van een veld van 17x17, gevuld met "0".
@@ -24,7 +21,7 @@ public class Main {
 
 
         // de tegels voor het eerste veld.
-        Tile tileA = new Tile(7,7," a ");
+     /*   Tile tileA = new Tile(7,7," a ");
         Tile tileB = new Tile(7,7," b ");
         Tile tileC = new Tile(7,7," c ");
         Tile tileD = new Tile(5,5," d ");
@@ -35,7 +32,31 @@ public class Main {
         Tile tileI = new Tile(3,3," i ");
         Tile tileJ = new Tile(3,3," j ");
         Tile tileK = new Tile(3,3," k ");
-        Tile tileL = new Tile(2,2," l ");
+        Tile tileL = new Tile(2,2," l ");*/
+
+        try {
+            Scanner sc = new Scanner(new FileReader("resources/problemA"));
+            while (sc.hasNext()) {
+                int width = sc.nextInt();
+                int length = sc.nextInt();
+                String name = " " + sc.next() + " ";
+                Tile tile = new Tile(width, length, name);
+                collection.tiles.add(tile);
+            }
+        }
+        catch(Exception e){
+            System.out.println("FILE NOT FOUND!");
+        }
+
+        for (Tile tile : collection.tiles) {
+            fieldStack.push(veld.addTile(tile));
+        }
+
+        // for testing purposes, has to be deleted later
+        while(!fieldStack.isEmpty()){
+            fieldStack.pop().printVeld();
+            System.out.println();
+        }
 
 /*
         // zet een Tile neer op het veld en voegt het nieuwe veld toe aan een stack "fieldStack"

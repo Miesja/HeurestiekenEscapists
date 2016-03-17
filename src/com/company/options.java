@@ -3,14 +3,13 @@ package com.company;
 import java.util.*;
 public class Options {
 
-    static ArrayList<Tile> tiles = new ArrayList<>();
-    static int fieldSize = 17;
+    int fieldSize = 17;
     ArrayList<ArrayList<Tile>> options = new ArrayList<>();
     Queue<ArrayList<Tile>> queue = new LinkedList<>();
     ArrayList<ArrayList<Tile>> archive = new ArrayList<>();
 
-    public void run() {
-        makeOptions();
+    public void run(TileCollection collection) {
+        makeOptions(collection);
         for(int i=0; i<options.size(); i++){
             System.out.print("[");
             for(int j=0; j<options.get(i).size(); j++){
@@ -19,9 +18,9 @@ public class Options {
             System.out.print("], ");
         }
     }
-    
-    private void makeOptions(){
-        makeStartQueue(tiles);
+
+    private void makeOptions(TileCollection collection){
+        makeStartQueue(collection.tiles);
         while(true){
             ArrayList parent = queue.poll();
             if(parent==null){
@@ -32,7 +31,7 @@ public class Options {
                 options.add(parent);
             }
             else if(checkSum(parent)<fieldSize){
-                ArrayList<Tile> possChildren = new ArrayList<>(tiles);
+                ArrayList<Tile> possChildren = new ArrayList<>(collection.tiles);
                 makeChildren(parent, possChildren);
             }
         }
