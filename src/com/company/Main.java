@@ -18,7 +18,7 @@ public class Main {
             Scanner sc = new Scanner(new FileReader("resources/problemA"));
             int breedte = sc.nextInt();
             int lengte = sc.nextInt();
-            field = new Grid(breedte, lengte);
+            field = new Grid(lengte, breedte);
             while (sc.hasNext()) {
                 int width = sc.nextInt();
                 int length = sc.nextInt();
