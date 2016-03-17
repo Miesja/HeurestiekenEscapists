@@ -39,7 +39,7 @@ public class Main {
 
         //Deze functie probeerd alle tiles toe te voegen aan het grid
 
-        while (!fieldStack.isEmpty() && !) {
+        while (!fieldStack.isEmpty() && !field.checkIfGridIsFull()) {
             Grid currentField = fieldStack.pop();
             for (Tile tile : currentField.collection.tiles) {
                     Grid newField = currentField.addTile(tile);
