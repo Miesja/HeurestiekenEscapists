@@ -38,8 +38,6 @@ public class Main {
         field.printVeld();
         System.out.println( );
 
-        int tileCount = 0;
-
 
         //Deze functie probeerd alle tiles toe te voegen aan het grid
         for (Tile tile : collection.tiles) {
@@ -47,8 +45,6 @@ public class Main {
             Grid newField = currentField.addTile(tile);
             if (newField != null) {
                 fieldStack.push(newField);
-                tileCount= tileCount+1;
-                System.out.println(tileCount);
             }
             else{
                 fieldStack.push(currentField);
