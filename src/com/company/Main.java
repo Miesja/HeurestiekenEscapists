@@ -7,7 +7,6 @@ public class Main {
 
 
     public static void main(String[] args) {
-        TileCollection collection = new TileCollection();
 
         Stack<Grid> fieldStack = new Stack();
         Grid field;
@@ -42,10 +41,10 @@ public class Main {
 
         while (!fieldStack.isEmpty() && !field.checkIfGridIsFull()) {
             Grid currentField = fieldStack.pop();
-            for (Tile tile : collection.tiles) {
+            for (Tile tile : currentField.collection.tiles) {
                 if (currentField.collection!=null && !currentField.collection.tiles.contains(tile)) {
                     Grid newField = currentField.addTile(tile);
-                    newField.collection.tiles.add(tile);
+                    newField.collection.tiles.remove(tile);
                     if (newField != null) {
                         fieldStack.push(newField);
                     }
