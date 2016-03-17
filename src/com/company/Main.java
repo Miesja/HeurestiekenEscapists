@@ -24,7 +24,6 @@ public class Main {
                 String name = " " + sc.next() + " ";
                 Tile tile = new Tile(width, length, name);
                 field.collection.tiles.add(tile);
-
             }
         } catch (Exception e) {
             System.out.println("ERROR!");
@@ -32,9 +31,11 @@ public class Main {
 
         }
 
+
         fieldStack.push(field);
         field.printVeld();
         System.out.println();
+
 
 
         //Deze functie probeerd alle tiles toe te voegen aan het grid
