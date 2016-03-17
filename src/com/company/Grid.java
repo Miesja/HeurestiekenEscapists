@@ -94,8 +94,8 @@ public class Grid {
         return vrij;
     }
 
-    public void createField(Grid veld) {
-        for (Tile tile : Options.tiles) {
+    public void createField(Grid veld, TileCollection collection) {
+        for (Tile tile : collection.tiles) {
             addTile(tile, veld);
         }
     }
@@ -107,12 +107,11 @@ public class Grid {
                     Grid newGrid = veld.SetTile(tile, x, y);
                     if (newGrid != null) {
                         return newGrid;
-                        usedTiles.add(tile);
-                        return;
                     }
 
                 }
             }
         }
+        return null;
     }
 }
