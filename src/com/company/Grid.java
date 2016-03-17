@@ -9,6 +9,7 @@ public class Grid {
     int lengte;
     int breedte;
     String[][] field;
+    TileCollection collection;
 
     //Constructor om het veld met lengte l en breedte b, gevuld met " 0 ", te maken.
 

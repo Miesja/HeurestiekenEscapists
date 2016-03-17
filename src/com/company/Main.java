@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         TileCollection collection = new TileCollection();
 
-        Stack<Grid> fieldStack  = new Stack();
+        Stack<Grid> fieldStack = new Stack();
         Grid field;
 
         // maakt het begin Grid (field) en de tegels (tile) van het probleem
@@ -27,41 +27,33 @@ public class Main {
                 collection.tiles.add(tile);
 
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println("FILE NOT FOUND!");
-            field = new Grid(3,3);
+            field = new Grid(3, 3);
 
         }
 
         fieldStack.push(field);
         field.printVeld();
-        System.out.println( );
+        System.out.println();
 
 
         //Deze functie probeerd alle tiles toe te voegen aan het grid
 
-        //while(checkIfGridIsFull) {
+        while (!field.checkIfGridIsFull()) {
             Grid currentField = fieldStack.pop();
             for (Tile tile : collection.tiles) {
-               // if(!currentField.collection.contains(tile)) {
+                if (!currentField.collection.tiles.contains(tile)) {
                     Grid newField = currentField.addTile(tile);
+                    newField.collection.tiles.add(tile);
                     if (newField != null) {
                         fieldStack.push(newField);
-                    } else {
-                        fieldStack.push(currentField);
                     }
-                //}
+                }
             }
-        //}
+        }
 
-        fieldStack.peek().printVeld();
-
-
-
-
-
-
+            fieldStack.peek().printVeld();
 
 
     }
@@ -78,7 +70,4 @@ public class Main {
     ze liggen krom van het lachen*/
 
 
-
-
-
-}
+    }
