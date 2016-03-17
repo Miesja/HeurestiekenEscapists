@@ -40,10 +40,10 @@ public class Main {
 
         //Deze functie probeerd alle tiles toe te voegen aan het grid
 
-        while (!field.checkIfGridIsFull()) {
+        while (!fieldStack.isEmpty() && !field.checkIfGridIsFull()) {
             Grid currentField = fieldStack.pop();
             for (Tile tile : collection.tiles) {
-                if (!currentField.collection.tiles.contains(tile)) {
+                if (currentField.collection!=null && !currentField.collection.tiles.contains(tile)) {
                     Grid newField = currentField.addTile(tile);
                     newField.collection.tiles.add(tile);
                     if (newField != null) {
@@ -53,7 +53,9 @@ public class Main {
             }
         }
 
+        if(!fieldStack.isEmpty()) {
             fieldStack.peek().printVeld();
+        }
 
 
     }
