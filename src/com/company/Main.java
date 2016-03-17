@@ -47,15 +47,17 @@ public class Main {
                 break;
             }
             for (int i = 0; i < currentField.collection.tiles.size(); i++) {
+
                 Tile tile = currentField.collection.giveTile(i);
                 Grid newField = currentField.addTile(tile);
                 newField.collection.removeTile(tile);
                 if (newField != null) {
                     fieldStack.push(newField);
                 }
+                fieldStack.peek().printVeld();
+                System.out.println();
             }
-            fieldStack.peek().printVeld();
-            System.out.println();
+
         }
 
         if(!fieldStack.isEmpty()) {
