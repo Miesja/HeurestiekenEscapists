@@ -48,15 +48,9 @@ public class Main {
             System.out.println("FILE NOT FOUND!");
         }
 
-        for (Tile tile : collection.tiles) {
-            fieldStack.push(veld.addTile(tile));
-        }
-
-        // for testing purposes, has to be deleted later
-        while(!fieldStack.isEmpty()){
-            fieldStack.pop().printVeld();
-            System.out.println();
-        }
+        Grid finished = veld.createField(collection, fieldStack);
+        System.out.println("finished: ");
+        finished.printVeld();
 
 /*
         // zet een Tile neer op het veld en voegt het nieuwe veld toe aan een stack "fieldStack"

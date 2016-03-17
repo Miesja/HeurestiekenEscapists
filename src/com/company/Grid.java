@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.*;
+
 
 public class Grid {
 
@@ -92,12 +94,20 @@ public class Grid {
         return vrij;
     }
 
-    public void createField(TileCollection collection) {
-        for (Tile tile : collection.tiles) {
-            addTile(tile);
-        }
-
+    public Grid createField(TileCollection collection, Stack<Grid> fieldStack) {
+            for (Tile tile : collection.tiles) {
+                Grid currentField = fieldStack.pop();
+                Grid newField = currentField.addTile(tile);
+                if (newField != null) {
+                    fieldStack.push(newField);
+                }
+                else{
+                    fieldStack.push(currentField);
+                }
+            }
+        return fieldStack.peek();
     }
+
 
     public Grid addTile(Tile tile){
         for (int x=0; x<this.breedte; x++) {
