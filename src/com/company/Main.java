@@ -24,7 +24,7 @@ public class Main {
                 int length = sc.nextInt();
                 String name = " " + sc.next() + " ";
                 Tile tile = new Tile(width, length, name);
-                collection.tiles.add(tile);
+                field.collection.tiles.add(tile);
 
             }
         } catch (Exception e) {
