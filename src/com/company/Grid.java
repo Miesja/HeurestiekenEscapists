@@ -78,6 +78,7 @@ public class Grid {
         if ((XPoint + tegel.width) < this.breedte && (YPoint+tegel.width)< this.lengte){
             for (int x = XPoint; x < (XPoint + tegel.width); x++) {
                 for (int y = YPoint; y < (YPoint + tegel.length); y++) {
+                    System.out.println(tegel.name);
                     String s = field[x][y];
                     if (s.equals(" 0 ")) {
                         klopt++;
