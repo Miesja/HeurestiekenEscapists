@@ -1,8 +1,5 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Stack;
-
 /**
  * Created by Bas on 25-2-2016.
  */
@@ -12,8 +9,6 @@ public class Grid {
     int lengte;
     int breedte;
     String[][] field;
-    ArrayList<Tile> usedTiles = new ArrayList<>();
-
 
     // Constructor om het veld met lengte l en breedte b, gevuld met " 0 ", te maken.
 
@@ -21,15 +16,18 @@ public class Grid {
         lengte = l;
         breedte = b;
         field = new String[breedte][lengte];
+
             for (int i = 0; i < breedte; i++) {
                 for (int j = 0; j < lengte; j++) {
                     field[i][j] = " 0 ";
                 }
             }
+
+
     }
+
     // het copiëren van een grid door een grid te maken adhv een andere grid.
     public Grid(Grid grid) {
-        usedTiles = new ArrayList<>(grid.usedTiles);
         lengte = grid.lengte;
         breedte = grid.breedte;
         field = new String [breedte][lengte];
@@ -46,7 +44,6 @@ public class Grid {
     public Grid SetTile(Tile tegel, int XPoint, int YPoint) {
         if (controleerPlaats(tegel, XPoint, YPoint)) {
             Grid copy = new Grid(this);
-            copy.usedTiles.add(tegel);
             for (int x = XPoint; x < (XPoint + tegel.width); x++) {
                 for (int y = YPoint; y < YPoint + tegel.length; y++) {
                         copy.field[x][y] = tegel.name;
@@ -75,15 +72,19 @@ public class Grid {
     public boolean controleerPlaats(Tile tegel, int XPoint, int YPoint){
         boolean vrij;
         int klopt = 0;
-        for (int x = XPoint; x < (XPoint + tegel.width); x++) {
-            for (int y = YPoint; y < (YPoint + tegel.length); y++) {
-                String s = field[x][y];
-                if (s.equals(" 0 ")) {
-                    klopt++;
+        if ((XPoint + tegel.width) < this.breedte && (YPoint+tegel.width)< this.lengte){
+            for (int x = XPoint; x < (XPoint + tegel.width); x++) {
+                for (int y = YPoint; y < (YPoint + tegel.length); y++) {
+                    String s = field[x][y];
+                    if (s.equals(" 0 ")) {
+                        klopt++;
+                    }
                 }
             }
         }
-        //Controleert of alle plaatsen leeg zijn
+
+
+            //Controleert of alle plaatsen leeg zijn
         if(klopt==(tegel.width*tegel.length)){
             vrij = true;
         }
@@ -93,21 +94,25 @@ public class Grid {
         return vrij;
     }
 
+    public void createField(Grid veld) {
+        for (Tile tile : Options.tiles) {
+            addTile(tile, veld);
+        }
+    }
 
-    public Grid addTile(Tile tile){
-        for (int x=0; x<this.breedte; x++) {
-            for (int y = 0; y < this.lengte; y++) {
-                if (this.field[x][y].equals(" 0 ")) {
-                    Grid newGrid = this.SetTile(tile, x, y);
+    public Grid addTile(Tile tile, Grid veld){
+        for (int x=0; x<veld.breedte; x++) {
+            for (int y = 0; y < veld.lengte; y++) {
+                if (veld.field[x][y].equals(" 0 ")) {
+                    Grid newGrid = veld.SetTile(tile, x, y);
                     if (newGrid != null) {
-                        //fieldStack.push(newGrid);
-                        usedTiles.add(tile);
                         return newGrid;
+                        usedTiles.add(tile);
+                        return;
                     }
 
                 }
             }
         }
-        return null;
     }
 }
