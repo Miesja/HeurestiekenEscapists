@@ -17,6 +17,7 @@ public class Grid {
         lengte = l;
         breedte = b;
         field = new String[breedte][lengte];
+        collection = null;
             for (int i = 0; i < breedte; i++) {
                 for (int j = 0; j < lengte; j++) {
                     field[i][j] = " 0 ";
