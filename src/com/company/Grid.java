@@ -17,7 +17,6 @@ public class Grid {
         lengte = l;
         breedte = b;
         field = new String[breedte][lengte];
-
             for (int i = 0; i < breedte; i++) {
                 for (int j = 0; j < lengte; j++) {
                     field[i][j] = " 0 ";
@@ -32,6 +31,7 @@ public class Grid {
         lengte = grid.lengte;
         breedte = grid.breedte;
         field = new String [breedte][lengte];
+        collection = grid.collection;
         for (int i=0; i<breedte; i++){
             for(int j=0; j<lengte; j++){
                field[i][j] = grid.field[i][j];
