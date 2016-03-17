@@ -27,7 +27,7 @@ public class Main {
 
             }
         } catch (Exception e) {
-            System.out.println("FILE NOT FOUND!");
+            System.out.println("ERROR!");
             field = new Grid(3, 3);
 
         }
