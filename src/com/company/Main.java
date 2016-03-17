@@ -15,7 +15,7 @@ public class Main {
         // maakt het begin Grid (field) en de tegels (tile) van het probleem
         // adhv de waarde die in een txt.file staan (resources/problem"")
         try {
-            Scanner sc = new Scanner(new FileReader("resources/problemA"));
+            Scanner sc = new Scanner(new FileReader("resources/problemB"));
             int breedte = sc.nextInt();
             int lengte = sc.nextInt();
             field = new Grid(breedte, lengte);
@@ -50,6 +50,9 @@ public class Main {
                 fieldStack.push(currentField);
             }
         }
+
+        fieldStack.peek().printVeld();
+
 
 
 
