@@ -1,8 +1,5 @@
 package com.company;
 
-/**
- * Created by Bas on 25-2-2016.
- */
 public class Grid {
 
     //instance variables.
@@ -94,17 +91,18 @@ public class Grid {
         return vrij;
     }
 
-    public void createField(Grid veld, TileCollection collection) {
+    public void createField(TileCollection collection) {
         for (Tile tile : collection.tiles) {
-            addTile(tile, veld);
+            addTile(tile, this);
         }
+
     }
 
-    public Grid addTile(Tile tile, Grid veld){
-        for (int x=0; x<veld.breedte; x++) {
-            for (int y = 0; y < veld.lengte; y++) {
-                if (veld.field[x][y].equals(" 0 ")) {
-                    Grid newGrid = veld.SetTile(tile, x, y);
+    public Grid addTile(Tile tile){
+        for (int x=0; x<this.breedte; x++) {
+            for (int y = 0; y < this.lengte; y++) {
+                if (this.field[x][y].equals(" 0 ")) {
+                    Grid newGrid = this.SetTile(tile, x, y);
                     if (newGrid != null) {
                         return newGrid;
                     }

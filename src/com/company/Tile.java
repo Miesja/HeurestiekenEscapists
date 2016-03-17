@@ -1,7 +1,4 @@
 package com.company;
-/*
-Created by Mies on 18/02/16.
-*/
 
 import java.util.ArrayList;
 
