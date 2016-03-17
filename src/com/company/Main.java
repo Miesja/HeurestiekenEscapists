@@ -30,15 +30,18 @@ public class Main {
         }
         catch(Exception e){
             System.out.println("FILE NOT FOUND!");
+            field = new Grid(3,3);
+
         }
 
-        //fieldStack.push(field);
+        fieldStack.push(field);
         field.printVeld();
         System.out.println( );
 
 
         //Deze functie probeerd alle tiles toe te voegen aan het grid
         for (Tile tile : collection.tiles) {
+
             Grid currentField = fieldStack.pop();
             Grid newField = currentField.addTile(tile);
             if (newField != null) {

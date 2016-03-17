@@ -41,6 +41,9 @@ public class Grid {
 
 
     //Het neerzetten van een tegel (type:Tile) in het veld. op coordinaat xPoint en yPoint
+    //controleert de plaats waar de tegel neergezet moet worden
+    //en kopieert de laatse tile in de fieldStack om de tile eraan toetevoegen
+    //de grid met de tile erop wordt toegevoegd aan de fieldStack
     public Grid SetTile(Tile tegel, int XPoint, int YPoint) {
         if (controleerPlaats(tegel, XPoint, YPoint)) {
             Grid copy = new Grid(this);
