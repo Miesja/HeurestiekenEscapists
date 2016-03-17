@@ -41,7 +41,6 @@ public class Main {
 
         //Deze functie probeerd alle tiles toe te voegen aan het grid
         for (Tile tile : collection.tiles) {
-
             Grid currentField = fieldStack.pop();
             Grid newField = currentField.addTile(tile);
             if (newField != null) {
