@@ -44,12 +44,14 @@ public class Main {
         //while(checkIfGridIsFull) {
             Grid currentField = fieldStack.pop();
             for (Tile tile : collection.tiles) {
-                Grid newField = currentField.addTile(tile);
-                if (newField != null) {
-                    fieldStack.push(newField);
-                } else {
-                    fieldStack.push(currentField);
-                }
+               // if(!currentField.collection.contains(tile)) {
+                    Grid newField = currentField.addTile(tile);
+                    if (newField != null) {
+                        fieldStack.push(newField);
+                    } else {
+                        fieldStack.push(currentField);
+                    }
+                //}
             }
         //}
 
