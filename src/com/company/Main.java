@@ -43,9 +43,9 @@ public class Main {
         while (!fieldStack.isEmpty() && !field.checkIfGridIsFull()) {
             Grid currentField = fieldStack.pop();
             for (Tile tile : collection.tiles) {
-                if (currentField.collection!=null && !currentField.collection.tiles.contains(tile)) {
+                if (currentField.collection!=null && currentField.collection.tiles.contains(tile)); {
                     Grid newField = currentField.addTile(tile);
-                    newField.collection.tiles.add(tile);
+                    newField.collection.tiles.remove(tile);
                     if (newField != null) {
                         fieldStack.push(newField);
                     }
