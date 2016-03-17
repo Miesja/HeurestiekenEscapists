@@ -46,7 +46,7 @@ public class Main {
             for(int i=0; i<currentField.collection.tiles.size(); i++){
                 Tile tile = currentField.collection.giveTile(i);
                     Grid newField = currentField.addTile(tile);
-                    newField.collection.tiles.remove(tile);
+                    newField.collection.removeTile(tile);
                     if (newField != null) {
                         fieldStack.push(newField);
                     }
