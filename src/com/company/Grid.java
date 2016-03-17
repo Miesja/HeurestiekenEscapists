@@ -5,12 +5,12 @@ import java.util.*;
 
 public class Grid {
 
-    //instance variables.
+    //Instance variables.
     int lengte;
     int breedte;
     String[][] field;
 
-    // Constructor om het veld met lengte l en breedte b, gevuld met " 0 ", te maken.
+    //Constructor om het veld met lengte l en breedte b, gevuld met " 0 ", te maken.
 
     public Grid(int l, int b) {
         lengte = l;
@@ -26,7 +26,7 @@ public class Grid {
 
     }
 
-    // het copiëren van een grid door een grid te maken adhv een andere grid.
+    //Het copiëren van een grid door een grid te maken adhv een andere grid.
     public Grid(Grid grid) {
         lengte = grid.lengte;
         breedte = grid.breedte;
@@ -40,7 +40,7 @@ public class Grid {
     }
 
 
-    // het neerzetten van een tegel (type:Tile) in het veld. op coordinaat xPoint en yPoint
+    //Het neerzetten van een tegel (type:Tile) in het veld. op coordinaat xPoint en yPoint
     public Grid SetTile(Tile tegel, int XPoint, int YPoint) {
         if (controleerPlaats(tegel, XPoint, YPoint)) {
             Grid copy = new Grid(this);
@@ -56,7 +56,7 @@ public class Grid {
 
 
 
-    // het printen van het veld.
+    //Het printen van het veld.
     public void printVeld() {
         for( int i = 0; i < breedte; i++ ) {
             String Row = "";
@@ -68,7 +68,7 @@ public class Grid {
         }
     }
 
-    // controleert of er geen tegel ligt waar de nieuwe tegel geplaatst wilt worden
+    //Controleert of er geen tegel ligt waar de nieuwe tegel geplaatst wilt worden
     public boolean controleerPlaats(Tile tegel, int XPoint, int YPoint){
         boolean vrij;
         int klopt = 0;
@@ -83,8 +83,7 @@ public class Grid {
             }
         }
 
-
-            //Controleert of alle plaatsen leeg zijn
+        //Controleert of alle plaatsen leeg zijn
         if(klopt==(tegel.width*tegel.length)){
             vrij = true;
         }
@@ -94,6 +93,7 @@ public class Grid {
         return vrij;
     }
 
+    //Deze functie probeerd alle tiles toe te voegen aan het grid
     public Grid createField(TileCollection collection, Stack<Grid> fieldStack) {
             for (Tile tile : collection.tiles) {
                 Grid currentField = fieldStack.pop();
@@ -109,6 +109,7 @@ public class Grid {
     }
 
 
+    //Plaatst tiles
     public Grid addTile(Tile tile){
         for (int x=0; x<this.breedte; x++) {
             for (int y = 0; y < this.lengte; y++) {
