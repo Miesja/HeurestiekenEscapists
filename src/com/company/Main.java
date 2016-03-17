@@ -10,28 +10,31 @@ public class Main {
         TileCollection collection = new TileCollection();
 
         Stack<Grid> fieldStack  = new Stack();
-        Grid veld;
+        Grid field;
 
-        // het maken van een veld van 17x17, gevuld met "0".
-        veld = new Grid(17,17);
-        fieldStack.push(veld);
-
-        veld.printVeld();
-        System.out.println( );
-
+        // maakt het begin Grid (field) en de tegels (tile) van het probleem
+        // adhv de waarde die in een txt.file staan (resources/problem"")
         try {
             Scanner sc = new Scanner(new FileReader("resources/problemA"));
+            int breedte = sc.nextInt();
+            int lengte = sc.nextInt();
+            field = new Grid(breedte, lengte);
             while (sc.hasNext()) {
                 int width = sc.nextInt();
                 int length = sc.nextInt();
                 String name = " " + sc.next() + " ";
                 Tile tile = new Tile(width, length, name);
                 collection.tiles.add(tile);
+
             }
         }
         catch(Exception e){
             System.out.println("FILE NOT FOUND!");
         }
+
+        //fieldStack.push(field);
+        field.printVeld();
+        System.out.println( );
 
 
         //Deze functie probeerd alle tiles toe te voegen aan het grid
