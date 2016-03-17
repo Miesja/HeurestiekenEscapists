@@ -33,27 +33,18 @@ public class Main {
             System.out.println("FILE NOT FOUND!");
         }
 
-        Grid finished = veld.createField(collection, fieldStack);
-        System.out.println("finished: ");
-        finished.printVeld();
-
-        
 
         //Deze functie probeerd alle tiles toe te voegen aan het grid
-        public Grid createField(TileCollection collection, Stack<Grid> fieldStack) {
-            for (Tile tile : collection.tiles) {
-                Grid currentField = fieldStack.pop();
-                Grid newField = currentField.addTile(tile);
-                if (newField != null) {
-                    fieldStack.push(newField);
-                }
-                else{
-                    fieldStack.push(currentField);
-                }
+        for (Tile tile : collection.tiles) {
+            Grid currentField = fieldStack.pop();
+            Grid newField = currentField.addTile(tile);
+            if (newField != null) {
+                fieldStack.push(newField);
             }
-            return fieldStack.peek();
+            else{
+                fieldStack.push(currentField);
+            }
         }
-        fieldStack.add()
 
 
 
