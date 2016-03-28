@@ -52,7 +52,7 @@ public class Grid {
 
     public ArrayList<Grid> createChildren(){
         ArrayList<Grid> children = new ArrayList<>();
-        for(Tile tile: collection.tiles){
+        for(Tile tile : collection.tiles){
             Grid newGrid = addTile(tile);
             if(newGrid!=null){
                 children.add(newGrid);
