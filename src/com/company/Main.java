@@ -29,19 +29,32 @@ public class Main {
             }
         } catch (Exception e) {
             System.out.println("ERROR!");
-            field = new Grid(3, 3);
+            field = null;
 
         }
-
-        fieldStack.push(field);
-        field.printVeld();
-        System.out.println();
+        if(field!=null) {
+            fieldStack.push(field);
+        }
+        fieldStack.peek().printVeld();
+        while(!fieldStack.empty()) {
+            if(fieldStack.peek().solution){
+                fieldStack.peek().printVeld();
+                break;
+            }
+            ArrayList<Grid> children = fieldStack.pop().createChildren();
+            for(Grid child: children){
+                fieldStack.push(child);
+            }
+        }
+        if(fieldStack.empty()){
+            System.out.println("no solution found");
+        }
 
 
 
         //Deze functie probeerd alle tiles toe te voegen aan het grid
 
-        while (!fieldStack.isEmpty()) {
+        /*while (!fieldStack.isEmpty()) {
             Grid currentField = fieldStack.pop();
             for (int i = 0; i < currentField.collection.tiles.size(); i++) {
                 Tile tile = currentField.collection.giveTile(i);
@@ -59,6 +72,7 @@ public class Main {
         if(!fieldStack.isEmpty()) {
             fieldStack.peek().printVeld();
         }
+        */
 
 
     }
