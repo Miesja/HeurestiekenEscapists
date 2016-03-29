@@ -2,7 +2,6 @@ package com.company;
 
 import java.util.*;
 
-
 public class Grid {
 
     //Instance variables.
@@ -42,7 +41,6 @@ public class Grid {
         }
     }
 
-
     //Het neerzetten van een tegel (type:Tile) in het veld. op coordinaat xPoint en yPoint
     //controleert de plaats waar de tegel neergezet moet worden
     //en kopieert de laatse tile in de fieldStack om de tile eraan toetevoegen
@@ -59,7 +57,6 @@ public class Grid {
         }
         return null;
     }
-
 
     //Het printen van het veld.
     public void printVeld() {

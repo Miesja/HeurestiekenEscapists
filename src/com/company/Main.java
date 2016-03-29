@@ -6,7 +6,6 @@ import java.util.*;
 
 public class Main {
 
-
     public static void main(String[] args) {
 
         Stack<Grid> fieldStack = new Stack();
@@ -38,8 +37,6 @@ public class Main {
         }
         fieldStack.peek().printVeld();
 
-
-
         //Deze functie probeerd alle tiles toe te voegen aan het grid
 
         while (!fieldStack.isEmpty()) {
@@ -65,21 +62,11 @@ public class Main {
         if(!fieldStack.isEmpty()) {
             fieldStack.peek().printVeld();
         }
-
-
-
     }
-
-
-
-
-
-
 
     /*Waarom zijn bananen krom?
     Als ze recht zijn vallen ze om
     pom pom pom
     ze liggen krom van het lachen*/
-
-
-    }
+    
+}
