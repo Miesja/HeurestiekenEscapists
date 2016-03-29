@@ -48,7 +48,7 @@ public class Grid {
     //en kopieert de laatse tile in de fieldStack om de tile eraan toetevoegen
     //de grid met de tile erop wordt toegevoegd aan de fieldStack
     public Grid SetTile(Tile tegel, int XPoint, int YPoint) {
-        if (controleerPlaats(tegel, XPoint, YPoint)) {
+        if (checkIfUnoccupied(tegel, XPoint, YPoint)) {
             Grid copy = new Grid(this);
             for (int x = XPoint; x < (XPoint + tegel.width); x++) {
                 for (int y = YPoint; y < YPoint + tegel.length; y++) {
@@ -74,7 +74,7 @@ public class Grid {
     }
 
     //Controleert of er geen tegel ligt waar de nieuwe tegel geplaatst wilt worden
-    public boolean controleerPlaats(Tile tile, int XPoint, int YPoint){
+    public boolean checkIfUnoccupied(Tile tile, int XPoint, int YPoint){
         boolean unoccupied;
         unoccupied = false;
         int empty = 0;
