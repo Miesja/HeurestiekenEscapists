@@ -74,32 +74,30 @@ public class Grid {
     }
 
     //Controleert of er geen tegel ligt waar de nieuwe tegel geplaatst wilt worden
-    public boolean controleerPlaats(Tile tegel, int XPoint, int YPoint){
-        boolean vrij;
-        int klopt = 0;
-        if ((XPoint + tegel.width) <= this.breedte && (YPoint+tegel.length)<= this.lengte){
-            for (int x = XPoint; x < (XPoint + tegel.width); x++) {
-                for (int y = YPoint; y < (YPoint + tegel.length); y++) {
+    public boolean controleerPlaats(Tile tile, int XPoint, int YPoint){
+        boolean unoccupied;
+        unoccupied = false;
+        int empty = 0;
+        if ((XPoint + tile.width) <= this.breedte && (YPoint+tile.length)<= this.lengte){
+            for (int x = XPoint; x < (XPoint + tile.width); x++) {
+                for (int y = YPoint; y < (YPoint + tile.length); y++) {
                     String s = field[x][y];
                     if (s.equals(" 0 ")) {
-                        klopt++;
+                        empty++;
                     }
                 }
             }
         }
 
         //Controleert of alle plaatsen leeg zijn
-        if(klopt==(tegel.width*tegel.length)){
-            vrij = true;
+        if(empty==(tile.width*tile.length)){
+            unoccupied = true;
         }
-        else {
-            vrij = false;
-        }
-        return vrij;
+        return unoccupied;
     }
 
     //Controleerd of het grid helemaal gevuld is, zo ja, dan wordt true gereturned
-    public boolean checkIfGridIsFull(){
+    public boolean isFull(){
         boolean full;
         int filled = 0;
         for (int c = 0; c < breedte; c++) {
