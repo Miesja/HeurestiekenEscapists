@@ -6,7 +6,6 @@ import java.util.*;
 public class Grid {
 
     //Instance variables.
-    boolean solution;
     int lengte;
     int breedte;
     String[][] field;
@@ -15,7 +14,6 @@ public class Grid {
     //Constructor om het veld met lengte l en breedte b, gevuld met " 0 ", te maken.
 
     public Grid(int l, int b) {
-        solution = false;
         lengte = l;
         breedte = b;
         field = new String[breedte][lengte];
@@ -42,23 +40,6 @@ public class Grid {
 
             }
         }
-        if(collection.tiles.isEmpty()){
-            solution = true;
-        }
-        else{
-            solution = false;
-        }
-    }
-
-    public ArrayList<Grid> createChildren(){
-        ArrayList<Grid> children = new ArrayList<>();
-        for(Tile tile : collection.tiles){
-            Grid newGrid = addTile(tile);
-            if(newGrid!=null){
-                children.add(newGrid);
-            }
-        }
-        return children;
     }
 
 
@@ -96,7 +77,7 @@ public class Grid {
     public boolean controleerPlaats(Tile tegel, int XPoint, int YPoint){
         boolean vrij;
         int klopt = 0;
-        if ((XPoint + tegel.width) < this.breedte && (YPoint+tegel.length)< this.lengte){
+        if ((XPoint + tegel.width) <= this.breedte && (YPoint+tegel.length)<= this.lengte){
             for (int x = XPoint; x < (XPoint + tegel.width); x++) {
                 for (int y = YPoint; y < (YPoint + tegel.length); y++) {
                     String s = field[x][y];

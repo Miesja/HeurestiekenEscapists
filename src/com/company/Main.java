@@ -1,6 +1,7 @@
 package com.company;
 
 import java.io.FileReader;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Main {
@@ -14,7 +15,7 @@ public class Main {
         // maakt het begin Grid (field) en de tegels (tile) van het probleem
         // adhv de waarde die in een txt.file staan (resources/problem"")
         try {
-            Scanner sc = new Scanner(new FileReader("resources/testProblem"));
+            Scanner sc = new Scanner(new FileReader("resources/problemA"));
             int breedte = sc.nextInt();
             int lengte = sc.nextInt();
             field = new Grid(lengte, breedte);
@@ -36,43 +37,35 @@ public class Main {
             fieldStack.push(field);
         }
         fieldStack.peek().printVeld();
-        while(!fieldStack.empty()) {
-            if(fieldStack.peek().solution){
-                fieldStack.peek().printVeld();
-                break;
-            }
-            ArrayList<Grid> children = fieldStack.pop().createChildren();
-            for(Grid child: children){
-                fieldStack.push(child);
-            }
-        }
-        if(fieldStack.empty()){
-            System.out.println("no solution found");
-        }
 
 
 
         //Deze functie probeerd alle tiles toe te voegen aan het grid
 
-        /*while (!fieldStack.isEmpty()) {
+        while (!fieldStack.isEmpty()) {
             Grid currentField = fieldStack.pop();
             for (int i = 0; i < currentField.collection.tiles.size(); i++) {
                 Tile tile = currentField.collection.giveTile(i);
                 Grid newField = currentField.addTile(tile);
-                newField.collection.removeTile(tile);
-                if (newField != null) {
+                if(newField!=null) {
+                    newField.collection.removeTile(tile);
                     fieldStack.push(newField);
+                    if(fieldStack.peek().collection.tiles.isEmpty()){
+                        System.out.println();
+                        fieldStack.peek().printVeld();
+                        while(!fieldStack.isEmpty()){
+                            fieldStack.pop();
+                        }
+                    }
                 }
-                fieldStack.peek().printVeld();
-                System.out.println();
-            }
 
+            }
         }
 
         if(!fieldStack.isEmpty()) {
             fieldStack.peek().printVeld();
         }
-        */
+
 
 
     }
