@@ -1,10 +1,10 @@
 package com.company;
 
 import java.io.FileReader;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Main {
-
 
     public static void main(String[] args) {
 
@@ -29,15 +29,13 @@ public class Main {
             }
         } catch (Exception e) {
             System.out.println("ERROR!");
-            field = new Grid(3, 3);
+            field = null;
 
         }
-
-        fieldStack.push(field);
-        field.printVeld();
-        System.out.println();
-
-
+        if(field!=null) {
+            fieldStack.push(field);
+        }
+        fieldStack.peek().printVeld();
 
         //Deze functie probeerd alle tiles toe te voegen aan het grid
 
@@ -46,33 +44,29 @@ public class Main {
             for (int i = 0; i < currentField.collection.tiles.size(); i++) {
                 Tile tile = currentField.collection.giveTile(i);
                 Grid newField = currentField.addTile(tile);
-                newField.collection.removeTile(tile);
-                if (newField != null) {
+                if(newField!=null) {
+                    newField.collection.removeTile(tile);
                     fieldStack.push(newField);
+                    if(fieldStack.peek().collection.tiles.isEmpty()){
+                        System.out.println();
+                        fieldStack.peek().printVeld();
+                        while(!fieldStack.isEmpty()){
+                            fieldStack.pop();
+                        }
+                    }
                 }
-                fieldStack.peek().printVeld();
-                System.out.println();
-            }
 
+            }
         }
 
         if(!fieldStack.isEmpty()) {
             fieldStack.peek().printVeld();
         }
-
-
     }
-
-
-
-
-
-
 
     /*Waarom zijn bananen krom?
     Als ze recht zijn vallen ze om
     pom pom pom
     ze liggen krom van het lachen*/
-
-
-    }
+    
+}
