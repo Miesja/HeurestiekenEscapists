@@ -3,23 +3,16 @@ package com.company;
 import java.util.*;
 public class Options {
 
-    int fieldSize = 17;
+    int fieldSize;
     ArrayList<ArrayList<Tile>> options = new ArrayList<>();
     Queue<ArrayList<Tile>> queue = new LinkedList<>();
     ArrayList<ArrayList<Tile>> archive = new ArrayList<>();
 
-    public void run(TileCollection collection) {
-        makeOptions(collection);
-        for(int i=0; i<options.size(); i++){
-            System.out.print("[");
-            for(int j=0; j<options.get(i).size(); j++){
-                System.out.print(options.get(i).get(j).width + ", ");
-            }
-            System.out.print("], ");
-        }
+    public Options(Grid grid) {
+        fieldSize = grid.breedte;
     }
 
-    private void makeOptions(TileCollection collection){
+    public void makeOptions(TileCollection collection){
         makeStartQueue(collection.tiles);
         while(true){
             ArrayList parent = queue.poll();

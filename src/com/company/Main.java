@@ -14,7 +14,7 @@ public class Main {
         // maakt het begin Grid (field) en de tegels (tile) van het probleem
         // adhv de waarde die in een txt.file staan (resources/problem"")
         try {
-            Scanner sc = new Scanner(new FileReader("resources/problemA"));
+            Scanner sc = new Scanner(new FileReader("resources/problemB"));
             int breedte = sc.nextInt();
             int lengte = sc.nextInt();
             field = new Grid(lengte, breedte);
@@ -37,14 +37,26 @@ public class Main {
         }
         fieldStack.peek().printVeld();
 
+        Options opties = new Options(field);
+        opties.makeOptions(field.collection);
+        for(int i=0; i<opties.options.size(); i++){
+            System.out.print("[");
+            for(int j=0; j<opties.options.get(i).size(); j++){
+                System.out.print(opties.options.get(i).get(j).width + ", ");
+            }
+            System.out.print("], ");
+        }
+
         //Deze functie probeerd alle tiles toe te voegen aan het grid
 
-        while (!fieldStack.isEmpty()) {
+        /*while (!fieldStack.isEmpty()) {
             Grid currentField = fieldStack.pop();
             for (int i = 0; i < currentField.collection.tiles.size(); i++) {
                 Tile tile = currentField.collection.giveTile(i);
                 Grid newField = currentField.addTile(tile);
                 if(newField!=null) {
+                    System.out.println();
+                    newField.printVeld();
                     newField.collection.removeTile(tile);
                     fieldStack.push(newField);
                     if(fieldStack.peek().collection.tiles.isEmpty()){
@@ -61,7 +73,7 @@ public class Main {
 
         if(!fieldStack.isEmpty()) {
             fieldStack.peek().printVeld();
-        }
+        }*/
     }
 
     /*Waarom zijn bananen krom?
