@@ -105,13 +105,10 @@ public class Grid {
                 }
             }
         }
-        if(filled==(lengte*breedte)){
-            full = true;
+        if(filled==(lengte*breedte)) {
+            return true;
         }
-        else {
-            full = false;
-        }
-        return full;
+        return false;
     }
 
 
