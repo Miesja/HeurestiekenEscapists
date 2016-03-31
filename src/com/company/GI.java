@@ -21,4 +21,4 @@ public class GI {
         Dimension d= new Dimension(width*10, length*10);
         Rectangle tile= new Rectangle(p, d);
     }
-} 
+}
