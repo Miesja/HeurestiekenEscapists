@@ -68,5 +68,5 @@ public class Main {
     Als ze recht zijn vallen ze om
     pom pom pom
     ze liggen krom van het lachen*/
-    
+
 }

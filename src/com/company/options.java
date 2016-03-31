@@ -54,7 +54,6 @@ public class Options {
         return result;
     }
 
-
     private void makeChildren(ArrayList parent, ArrayList childrenOptions){
         for(int i=0; i<parent.size(); i++){
             childrenOptions.remove(parent.get(i));
