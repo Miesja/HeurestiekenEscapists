@@ -37,7 +37,15 @@ public class Main {
         }
         fieldStack.peek().printVeld();
 
-        Options opties = new Options(field.collection, field);
+        Options opties = new Options(field);
+        opties.makeOptions(field.collection);
+        for(int i=0; i<opties.options.size(); i++){
+            System.out.print("[");
+            for(int j=0; j<opties.options.get(i).size(); j++){
+                System.out.print(opties.options.get(i).get(j).width + ", ");
+            }
+            System.out.print("], ");
+        }
 
         //Deze functie probeerd alle tiles toe te voegen aan het grid
 
