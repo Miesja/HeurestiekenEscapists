@@ -49,12 +49,12 @@ public class Main {
         }
 
 
-        //  public void Grid(Grid field, Options opties) {
-
-        //  Grid startOptionField = new Grid() ;
+    }
+/*
+        // combi-options toegevoegd aan de stack. (nog een null pointer exeptions)
        for (int j=0; j< opties.options.size(); j++) {
-           for (int i = 0; i < opties.options.get(2).size(); i++) {
-               field = field.addTile(opties.options.get(2).get(i));
+           for (int i = 0; i < opties.options.get(j).size(); i++) {
+               field = field.addTile(opties.options.get(j).get(i));
                if (field != null) {
                    fieldStack.push(field);
                }
@@ -62,10 +62,10 @@ public class Main {
            }
        }
        field.printVeld();
-
+*/
 
         //Deze functie probeerd alle tiles toe te voegen aan het grid
-
+/*
         while (!fieldStack.isEmpty()) {
             Grid currentField = fieldStack.pop();
             for (int i = 0; i < currentField.collection.tiles.size(); i++) {
@@ -73,12 +73,12 @@ public class Main {
                 Grid newField = currentField.addTile(tile);
                 if (newField != null) {
                     System.out.println();
-                    //newField.printVeld();
+                    newField.printVeld();
                     newField.collection.removeTile(tile);
                     fieldStack.push(newField);
                     if (fieldStack.peek().collection.tiles.isEmpty()) {
                         System.out.println();
-                        //fieldStack.peek().printVeld();
+                        fieldStack.peek().printVeld();
                         while (!fieldStack.isEmpty()) {
                             fieldStack.pop();
                         }

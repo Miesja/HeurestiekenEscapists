@@ -22,6 +22,19 @@ public class Options {
             archive.add(parent);
             if(checkSum(parent)==fieldSize){
                 options.add(parent);
+             // proberen om de dubbele combi opties eruit te halen om de initiele fieldstack te verkleinen.
+             /*   for(int i=0; i<options.size(); i++){
+                    if(parent.size() == options.get(i).size()) {
+                        for (int j=0; j<parent.size(); j++){
+                            if(options.get(i).contains(parent.get(j))){
+                                options.add(parent);
+                            }
+                        }
+                    }else{
+                        options.add(parent);
+                    }
+                }
+             */
             }
             else if(checkSum(parent)<fieldSize){
                 ArrayList<Tile> possChildren = new ArrayList<>(collection.tiles);
