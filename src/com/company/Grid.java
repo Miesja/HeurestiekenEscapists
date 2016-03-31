@@ -72,8 +72,6 @@ public class Grid {
 
     //Controleert of er geen tegel ligt waar de nieuwe tegel geplaatst wilt worden
     public boolean checkIfUnoccupied(Tile tile, int XPoint, int YPoint){
-        boolean unoccupied;
-        unoccupied = false;
         int empty = 0;
         if ((XPoint + tile.width) <= this.breedte && (YPoint+tile.length)<= this.lengte){
             for (int x = XPoint; x < (XPoint + tile.width); x++) {
@@ -88,14 +86,13 @@ public class Grid {
 
         //Controleert of alle plaatsen leeg zijn
         if(empty==(tile.width*tile.length)){
-            unoccupied = true;
+            return true;
         }
-        return unoccupied;
+        return false;
     }
 
     //Controleerd of het grid helemaal gevuld is, zo ja, dan wordt true gereturned
-    public boolean isFull(){
-        boolean full;
+    public boolean isFull() {
         int filled = 0;
         for (int c = 0; c < breedte; c++) {
             for (int y = lengte; y < lengte; y++) {
