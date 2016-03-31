@@ -83,7 +83,6 @@ public class Grid {
                 }
             }
         }
-
         //Controleert of alle plaatsen leeg zijn
         if(empty==(tile.width*tile.length)){
             return true;
@@ -116,6 +115,7 @@ public class Grid {
                 if (this.field[x][y].equals(" 0 ")) {
                     Grid newGrid = this.SetTile(tile, x, y);
                     if (newGrid != null) {
+                        newGrid.collection.removeTile(tile);
                         return newGrid;
                     }
                 }

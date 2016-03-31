@@ -10,11 +10,12 @@ public class Main {
 
         Stack<Grid> fieldStack = new Stack();
         Grid field;
+        Grid startOptionsField;
 
         // maakt het begin Grid (field) en de tegels (tile) van het probleem
         // adhv de waarde die in een txt.file staan (resources/problem"")
         try {
-            Scanner sc = new Scanner(new FileReader("resources/problemB"));
+            Scanner sc = new Scanner(new FileReader("resources/problemA"));
             int breedte = sc.nextInt();
             int lengte = sc.nextInt();
             field = new Grid(lengte, breedte);
@@ -32,37 +33,53 @@ public class Main {
             field = null;
 
         }
-        if(field!=null) {
+        if (field != null) {
             fieldStack.push(field);
         }
         fieldStack.peek().printVeld();
 
         Options opties = new Options(field);
         opties.makeOptions(field.collection);
-        for(int i=0; i<opties.options.size(); i++){
+        for (int i = 0; i < opties.options.size(); i++) {
             System.out.print("[");
-            for(int j=0; j<opties.options.get(i).size(); j++){
+            for (int j = 0; j < opties.options.get(i).size(); j++) {
                 System.out.print(opties.options.get(i).get(j).width + ", ");
             }
             System.out.print("], ");
         }
 
+
+        //  public void Grid(Grid field, Options opties) {
+
+        //  Grid startOptionField = new Grid() ;
+       for (int j=0; j< opties.options.size(); j++) {
+           for (int i = 0; i < opties.options.get(2).size(); i++) {
+               field = field.addTile(opties.options.get(2).get(i));
+               if (field != null) {
+                   fieldStack.push(field);
+               }
+
+           }
+       }
+       field.printVeld();
+
+
         //Deze functie probeerd alle tiles toe te voegen aan het grid
 
-        /*while (!fieldStack.isEmpty()) {
+        while (!fieldStack.isEmpty()) {
             Grid currentField = fieldStack.pop();
             for (int i = 0; i < currentField.collection.tiles.size(); i++) {
                 Tile tile = currentField.collection.giveTile(i);
                 Grid newField = currentField.addTile(tile);
-                if(newField!=null) {
+                if (newField != null) {
                     System.out.println();
-                    newField.printVeld();
+                    //newField.printVeld();
                     newField.collection.removeTile(tile);
                     fieldStack.push(newField);
-                    if(fieldStack.peek().collection.tiles.isEmpty()){
+                    if (fieldStack.peek().collection.tiles.isEmpty()) {
                         System.out.println();
-                        fieldStack.peek().printVeld();
-                        while(!fieldStack.isEmpty()){
+                        //fieldStack.peek().printVeld();
+                        while (!fieldStack.isEmpty()) {
                             fieldStack.pop();
                         }
                     }
@@ -71,9 +88,9 @@ public class Main {
             }
         }
 
-        if(!fieldStack.isEmpty()) {
+        if (!fieldStack.isEmpty()) {
             fieldStack.peek().printVeld();
-        }*/
+        }
     }
 
     /*Waarom zijn bananen krom?
