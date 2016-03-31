@@ -8,7 +8,7 @@ public class Options {
     Queue<ArrayList<Tile>> queue = new LinkedList<>();
     ArrayList<ArrayList<Tile>> archive = new ArrayList<>();
 
-    public void Options(TileCollection collection, Grid grid) {
+    public Options(TileCollection collection, Grid grid) {
         fieldSize = grid.breedte;
         makeOptions(collection);
         for(int i=0; i<options.size(); i++){
