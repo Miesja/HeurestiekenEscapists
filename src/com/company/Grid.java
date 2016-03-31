@@ -92,7 +92,7 @@ public class Grid {
     }
 
     //Controleerd of het grid helemaal gevuld is, zo ja, dan wordt true gereturned
-    public boolean isFull()
+    public boolean isFull() {
         int filled = 0;
         for (int c = 0; c < breedte; c++) {
             for (int y = lengte; y < lengte; y++) {
