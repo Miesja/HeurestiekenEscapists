@@ -8,19 +8,11 @@ public class Options {
     Queue<ArrayList<Tile>> queue = new LinkedList<>();
     ArrayList<ArrayList<Tile>> archive = new ArrayList<>();
 
-    public Options(TileCollection collection, Grid grid) {
+    public Options(Grid grid) {
         fieldSize = grid.breedte;
-        makeOptions(collection);
-        for(int i=0; i<options.size(); i++){
-            System.out.print("[");
-            for(int j=0; j<options.get(i).size(); j++){
-                System.out.print(options.get(i).get(j).width + ", ");
-            }
-            System.out.print("], ");
-        }
     }
 
-    private void makeOptions(TileCollection collection){
+    public void makeOptions(TileCollection collection){
         makeStartQueue(collection.tiles);
         while(true){
             ArrayList parent = queue.poll();
