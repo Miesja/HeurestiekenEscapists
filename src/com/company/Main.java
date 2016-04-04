@@ -12,6 +12,7 @@ public class Main {
         Grid field;
         Grid startOptionsField;
 
+
         // maakt het begin Grid (field) en de tegels (tile) van het probleem
         // adhv de waarde die in een txt.file staan (resources/problem"")
         try {
@@ -50,19 +51,17 @@ public class Main {
 
 
         // combi-options toegevoegd aan de stack.
-       /*for (int j=0; j< opties.options.size(); j++) {
+       for (int j=0; j< opties.options.size(); j++) {
            Grid usefield = new Grid(field);
            for (Tile tile : opties.options.get(j)) {
                usefield = usefield.addTile(tile);
            }
-           System.out.println();
-           usefield.printVeld();
+
            if (field != null) {
                fieldStack.push(field);
            }
        }
-       System.out.println();
-       fieldStack.peek().printVeld();*/
+
 
 
         //Deze functie probeerd alle tiles toe te voegen aan het grid
