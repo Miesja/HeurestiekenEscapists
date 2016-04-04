@@ -49,20 +49,21 @@ public class Main {
         }
 
 
-    }
-/*
-        // combi-options toegevoegd aan de stack. (nog een null pointer exeptions)
+        // combi-options toegevoegd aan de stack.
        for (int j=0; j< opties.options.size(); j++) {
-           for (int i = 0; i < opties.options.get(j).size(); i++) {
-               field = field.addTile(opties.options.get(j).get(i));
-               if (field != null) {
-                   fieldStack.push(field);
-               }
-
+           Grid usefield = new Grid(field);
+           for (Tile tile : opties.options.get(j)) {
+               usefield = usefield.addTile(tile);
+           }
+           System.out.println();
+           usefield.printVeld();
+           if (field != null) {
+               fieldStack.push(field);
            }
        }
-       field.printVeld();
-*/
+       System.out.println();
+       fieldStack.peek().printVeld();
+
 
         //Deze functie probeerd alle tiles toe te voegen aan het grid
 /*
@@ -90,7 +91,7 @@ public class Main {
 
         if (!fieldStack.isEmpty()) {
             fieldStack.peek().printVeld();
-        }
+        }*/
     }
 
     /*Waarom zijn bananen krom?
