@@ -40,17 +40,17 @@ public class Main {
 
         Options opties = new Options(field);
         opties.makeOptions(field.collection);
-        for (int i = 0; i < opties.options.size(); i++) {
+        /*for (int i = 0; i < opties.options.size(); i++) {
             System.out.print("[");
             for (int j = 0; j < opties.options.get(i).size(); j++) {
-                System.out.print(opties.options.get(i).get(j).width + ", ");
+                System.out.print(opties.options.get(i).get(j).name + ", ");
             }
             System.out.print("], ");
-        }
+        }*/
 
 
         // combi-options toegevoegd aan de stack.
-       for (int j=0; j< opties.options.size(); j++) {
+       /*for (int j=0; j< opties.options.size(); j++) {
            Grid usefield = new Grid(field);
            for (Tile tile : opties.options.get(j)) {
                usefield = usefield.addTile(tile);
@@ -62,7 +62,7 @@ public class Main {
            }
        }
        System.out.println();
-       fieldStack.peek().printVeld();
+       fieldStack.peek().printVeld();*/
 
 
         //Deze functie probeerd alle tiles toe te voegen aan het grid
