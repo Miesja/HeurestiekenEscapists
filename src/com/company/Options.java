@@ -8,7 +8,26 @@ public class Options {
     Queue<ArrayList<Tile>> queue = new LinkedList<>();
     ArrayList<ArrayList<Tile>> archive = new ArrayList<>();
 
-    public Options(Grid grid) {
+    public Options(int size, TileCollection collection){
+        fieldSize = size;
+        makeStartQueue(collection.tiles);
+        while(true){
+            ArrayList parent = queue.poll();
+            if(parent==null){
+                break;
+            }
+            archive.add(parent);
+            if(checkSum(parent)==fieldSize){
+                options.add(parent);
+            }
+            else if(checkSum(parent)<fieldSize){
+                ArrayList<Tile> possChildren = new ArrayList<>(collection.tiles);
+                makeChildren(parent, possChildren);
+            }
+        }
+    }
+
+    /*public Options(Grid grid) {
         fieldSize = grid.breedte;
     }
 
@@ -35,13 +54,13 @@ public class Options {
                     }
                 }
              */
-            }
+            /*}
             else if(checkSum(parent)<fieldSize){
                 ArrayList<Tile> possChildren = new ArrayList<>(collection.tiles);
                 makeChildren(parent, possChildren);
             }
         }
-    }
+    }*/
 
     private void makeStartQueue(ArrayList list){
         for(int i=0; i<list.size(); i++){

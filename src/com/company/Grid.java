@@ -41,7 +41,27 @@ public class Grid {
         }
     }
 
-    //Het neerzetten van een tegel (type:Tile) in het veld. op coordinaat xPoint en yPoint
+    // kijkt hoeveel lege plekken in een rij
+    public int emptyRowSize() {
+        for (int x = 0; x < this.breedte; x++) {
+            for (int y = 0; y < this.lengte; y++) {
+                if(this.field[x][y].equals(" 0 ")) {
+                    int newY = y;
+                    while (newY < this.breedte && this.field[x][newY].equals(" 0 ")) {
+                        newY++;
+
+                    }
+                    int count = newY - y;
+                    return count;
+                }
+            }
+        }
+        return 0;
+    }
+
+
+
+                    //Het neerzetten van een tegel (type:Tile) in het veld. op coordinaat xPoint en yPoint
     //controleert de plaats waar de tegel neergezet moet worden
     //en kopieert de laatse tile in de fieldStack om de tile eraan toetevoegen
     //de grid met de tile erop wordt toegevoegd aan de fieldStack

@@ -37,10 +37,10 @@ public class Main {
         if (field != null) {
             fieldStack.push(field);
         }
-        fieldStack.peek().printVeld();
 
-        Options opties = new Options(field);
-        opties.makeOptions(field.collection);
+
+        Options opties = new Options(field.breedte, field.collection);
+
         /*for (int i = 0; i < opties.options.size(); i++) {
             System.out.print("[");
             for (int j = 0; j < opties.options.get(i).size(); j++) {
@@ -50,17 +50,48 @@ public class Main {
         }*/
 
 
-        // combi-options toegevoegd aan de stack.
-       for (int j=0; j< opties.options.size(); j++) {
-           Grid usefield = new Grid(field);
-           for (Tile tile : opties.options.get(j)) {
-               usefield = usefield.addTile(tile);
-           }
 
-           if (field != null) {
-               fieldStack.push(field);
-           }
-       }
+
+        // combi-options toegevoegd aan de stack.
+        for (int j=0; j< opties.options.size(); j++) {
+            Grid usefield = new Grid(field);
+            for (Tile tile : opties.options.get(j)) {
+                usefield = usefield.addTile(tile);
+            }
+            if (usefield != null) {
+                fieldStack.push(usefield);
+            }
+        }
+
+
+        // DIT IS NIEUW!!! ZOEKT EEN OPLOSSING MBV OPTIONS
+        int space = field.breedte;
+        while(!fieldStack.isEmpty()){
+            Grid currentfield = fieldStack.pop();
+            if(currentfield!=null) {
+                space = currentfield.emptyRowSize();
+                if(space==0){
+                    break;
+                }
+                Options fillspace = new Options(space, currentfield.collection);
+                if(fillspace.options.isEmpty()){
+                    fieldStack.pop();
+                }
+                for (int j = 0; j < fillspace.options.size(); j++) {
+                    Grid newField = new Grid(currentfield);
+                    for (Tile tile : fillspace.options.get(j)) {
+                        newField = newField.addTile(tile);
+                    }
+                    if(newField!=null){
+                        fieldStack.push(newField);
+                    }
+                }
+            }
+        }
+
+        fieldStack.peek().printVeld();
+        System.out.println(space);
+
 
 
 
