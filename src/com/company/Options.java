@@ -1,6 +1,5 @@
 package com.company;
 
-import java.lang.reflect.Array;
 import java.util.*;
 public class Options {
 
@@ -9,52 +8,59 @@ public class Options {
     Queue<ArrayList<Tile>> queue = new LinkedList<>();
     ArrayList<ArrayList<Tile>> archive = new ArrayList<>();
 
-    public Options(Grid grid) {
-        fieldSize = grid.breedte;
-    }
-
-    public void makeOptions(TileCollection collection) {
+    public Options(int size, TileCollection collection){
+        fieldSize = size;
         makeStartQueue(collection.tiles);
-        while (true) {
+        while(true){
             ArrayList parent = queue.poll();
-            if (parent == null) {
+            if(parent==null){
                 break;
             }
             archive.add(parent);
-            if (checkSum(parent) == fieldSize) {
-              //  if(checkDouble(parent)) {
-                    options.add(parent);
-               // }
-
+            if(checkSum(parent)==fieldSize){
+                options.add(parent);
             }
-            if (checkSum(parent) < fieldSize) {
+            else if(checkSum(parent)<fieldSize){
                 ArrayList<Tile> possChildren = new ArrayList<>(collection.tiles);
                 makeChildren(parent, possChildren);
-
             }
         }
     }
 
-    private boolean checkDouble(ArrayList parent) {
-        for (int i = 0; i < options.size(); i++) {
-            if (options.get(i).containsAll(parent)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return false;
+    /*public Options(Grid grid) {
+        fieldSize = grid.breedte;
     }
 
-/*/
+    public void makeOptions(TileCollection collection){
+        makeStartQueue(collection.tiles);
+        while(true){
+            ArrayList parent = queue.poll();
+            if(parent==null){
+                break;
+            }
+            archive.add(parent);
+            if(checkSum(parent)==fieldSize){
+                options.add(parent);
+             // proberen om de dubbele combi opties eruit te halen om de initiele fieldstack te verkleinen.
+             /*   for(int i=0; i<options.size(); i++){
+                    if(parent.size() == options.get(i).size()) {
+                        for (int j=0; j<parent.size(); j++){
+                            if(options.get(i).contains(parent.get(j))){
+                                options.add(parent);
+                            }
+                        }
+                    }else{
+                        options.add(parent);
+                    }
+                }
+             */
+            /*}
+            else if(checkSum(parent)<fieldSize){
+                ArrayList<Tile> possChildren = new ArrayList<>(collection.tiles);
+                makeChildren(parent, possChildren);
+            }
         }
-        if (options.get(options.size()).containsAll(parent)) {
-            return false;
-        }else{
-            return true;
-        }
-**/
-
+    }*/
 
     private void makeStartQueue(ArrayList list){
         for(int i=0; i<list.size(); i++){
