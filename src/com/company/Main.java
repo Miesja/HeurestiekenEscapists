@@ -11,18 +11,39 @@ public class Main {
         Stack<Grid> fieldStack = new Stack();
         Grid field;
         Grid startOptionsField;
+        String [][] testGrid;
+/*
+        testGrid = new String[8][3];
+      //  field = new String[lengte][breedte];
+        for (int x = 0; x < 8; x++) {
+            for (int y = 0; y < 3; y++) {
+                testGrid[x][y] = " 0 ";
+            }
+        }
+
+        for( int y = 0; y < 3; y++ ) {
+            String Row = "";
+            for( int x = 0;x < 8; x++) {
+                String A = testGrid[ x ][ y ];
+                Row += A;
+            }
+            System.out.println( Row );
+        }
+        System.out.println("");
+
+*/
 
 
         // maakt het begin Grid (field) en de tegels (tile) van het probleem
         // adhv de waarde die in een txt.file staan (resources/problem"")
         try {
-            Scanner sc = new Scanner(new FileReader("resources/problemB" +
+            Scanner sc = new Scanner(new FileReader("resources/testProblem" +
                     ""));
             int breedte = sc.nextInt();
             int lengte = sc.nextInt();
-            field = new Grid(lengte, breedte);
-            //field.printVeld();
-            //System.out.println("");
+            field = new Grid(breedte, lengte);
+            field.printVeld();
+            System.out.println("");
             while (sc.hasNext()) {
                 int width = sc.nextInt();
                 int length = sc.nextInt();
@@ -39,11 +60,12 @@ public class Main {
             fieldStack.push(field);
         }
         fieldStack.peek().printVeld();
+        System.out.println("");
 
         int startSize;
         startSize = fieldStack.size();
         System.out.print("intitial stackSize: " + startSize);
-        System.out.print("");
+        System.out.println("");
 
         Options opties = new Options(field);
         opties.makeOptions(field.collection);
@@ -73,10 +95,12 @@ public class Main {
 
         int size;
         size = fieldStack.size();
-        System.out.print("");
-        fieldStack.peek().printVeld();
+        System.out.println("");
 
-        System.out.print(" number of combinations: " + (size - 1));
+        System.out.print("number of combinations: " + (size - 1));
+        System.out.println("");
+        System.out.println("");
+        fieldStack.peek().printVeld();
 
 /*
         //Deze functie probeerd alle tiles toe te voegen aan het grid

@@ -12,7 +12,7 @@ public class Grid {
 
     //Constructor om het veld met lengte l en breedte b, gevuld met " 0 ", te maken.
 
-    public Grid(int l, int b) {
+    public Grid(int b, int l) {
         lengte = l;
         breedte = b;
         field = new String[breedte][lengte];
@@ -33,9 +33,9 @@ public class Grid {
         for(int i=0; i<grid.collection.tiles.size(); i++){
             collection.tiles.add(grid.collection.giveTile(i));
         }
-        for (int i=0; i<breedte; i++){
-            for(int j=0; j<lengte; j++){
-               field[i][j] = grid.field[i][j];
+        for (int x=0; x<breedte; x++){
+            for(int y=0; y<lengte; y++){
+               field[x][y] = grid.field[x][y];
 
             }
         }
@@ -60,10 +60,10 @@ public class Grid {
 
     //Het printen van het veld.
     public void printVeld() {
-        for( int i = 0; i < breedte; i++ ) {
+        for( int y = 0; y < lengte; y++ ) {
             String Row = "";
-            for( int j = 0; j < lengte; j++) {
-                String A = field[ i ][ j ];
+            for( int x = 0; x < breedte; x++) {
+                String A = field[ x ][ y ];
                 Row += A;
             }
             System.out.println( Row );
@@ -93,9 +93,9 @@ public class Grid {
     //Controleerd of het grid helemaal gevuld is, zo ja, dan wordt true gereturned
     public boolean isFull() {
         int filled = 0;
-        for (int c = 0; c < breedte; c++) {
+        for (int x = 0; x < breedte; x++) {
             for (int y = lengte; y < lengte; y++) {
-                String s = field[c][y];
+                String s = field[x][y];
                 if (!s.equals(" 0 ")) {
                     filled++;
                 }
