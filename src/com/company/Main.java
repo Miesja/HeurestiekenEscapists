@@ -16,7 +16,8 @@ public class Main {
         // maakt het begin Grid (field) en de tegels (tile) van het probleem
         // adhv de waarde die in een txt.file staan (resources/problem"")
         try {
-            Scanner sc = new Scanner(new FileReader("resources/problemA"));
+            Scanner sc = new Scanner(new FileReader("resources/problemB" +
+                    ""));
             int breedte = sc.nextInt();
             int lengte = sc.nextInt();
             field = new Grid(lengte, breedte);
@@ -39,33 +40,47 @@ public class Main {
         }
         fieldStack.peek().printVeld();
 
+        int startSize;
+        startSize = fieldStack.size();
+        System.out.print("intitial stackSize: " + startSize);
+        System.out.print("");
+
         Options opties = new Options(field);
         opties.makeOptions(field.collection);
-        /*for (int i = 0; i < opties.options.size(); i++) {
+
+        // het uitprinten van de combinaties
+        for (int i = 0; i < opties.options.size(); i++) {
             System.out.print("[");
             for (int j = 0; j < opties.options.get(i).size(); j++) {
                 System.out.print(opties.options.get(i).get(j).name + ", ");
             }
             System.out.print("], ");
-        }*/
+            System.out.print(" ");
+         }
 
 
         // combi-options toegevoegd aan de stack.
-       for (int j=0; j< opties.options.size(); j++) {
-           Grid usefield = new Grid(field);
-           for (Tile tile : opties.options.get(j)) {
-               usefield = usefield.addTile(tile);
-           }
+        for (int j = 0; j < opties.options.size(); j++) {
+            Grid usefield = new Grid(field);
+            for (Tile tile : opties.options.get(j)) {
+                usefield = usefield.addTile(tile);
+            }
 
-           if (field != null) {
-               fieldStack.push(field);
-           }
-       }
+            if (usefield != null) {
+                fieldStack.push(usefield);
+            }
+        }
 
+        int size;
+        size = fieldStack.size();
+        System.out.print("");
+        fieldStack.peek().printVeld();
 
+        System.out.print(" number of combinations: " + (size - 1));
 
-        //Deze functie probeerd alle tiles toe te voegen aan het grid
 /*
+        //Deze functie probeerd alle tiles toe te voegen aan het grid
+
         while (!fieldStack.isEmpty()) {
             Grid currentField = fieldStack.pop();
             for (int i = 0; i < currentField.collection.tiles.size(); i++) {
@@ -78,7 +93,7 @@ public class Main {
                     fieldStack.push(newField);
                     if (fieldStack.peek().collection.tiles.isEmpty()) {
                         System.out.println();
-                        fieldStack.peek().printVeld();
+                       // fieldStack.peek().printVeld();
                         while (!fieldStack.isEmpty()) {
                             fieldStack.pop();
                         }
@@ -90,7 +105,11 @@ public class Main {
 
         if (!fieldStack.isEmpty()) {
             fieldStack.peek().printVeld();
-        }*/
+        }
+
+*/
+
+
     }
 
     /*Waarom zijn bananen krom?
