@@ -38,6 +38,25 @@ public class Grid {
         }
     }
 
+    // kijkt hoeveel lege plekken in een rij
+    public int emptyRowSize() {
+        for (int y = 0; y < this.lengte; y++) {
+            for (int x=0; x<this.breedte; x++) {
+                if (this.field[x][y].equals(" 0 ")) {
+                    int newX = x;
+                    while (newX < this.breedte && this.field[newX][y].equals(" 0 ")) {
+                        newX++;
+
+                    }
+                    int count = newX - x;
+                    return count;
+                }
+            }
+        }
+        return 0;
+    }
+
+
     //Het printen van het veld.
     public void printVeld(){
         for(int y = 0; y < lengte; y++) {

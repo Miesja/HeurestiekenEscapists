@@ -62,13 +62,13 @@ public class Main {
 
         Options opties = new Options(field.breedte, field.collection);
 
-        for (int i = 0; i < opties.options.size(); i++) {
+        /*for (int i = 0; i < opties.options.size(); i++) {
             System.out.print("[");
             for (int j = 0; j < opties.options.get(i).size(); j++) {
                 System.out.print(opties.options.get(i).get(j).name + ", ");
             }
             System.out.print("], ");
-        }
+        }*/
 
 
         // combi-options toegevoegd aan de stack.
@@ -82,24 +82,26 @@ public class Main {
             }
         }
 
-        System.out.println("");
+
+        /*System.out.println("");
         int nCombinatie;
         nCombinatie = fieldStack.size() - 1;
         System.out.print("Het aantal combinaties is: " + nCombinatie);
         System.out.println("");
         System.out.println("");
-        fieldStack.peek().printVeld();
+        fieldStack.peek().printVeld();*/
 
 
 
-/*
-        // DIT IS NIEUW!!! ZOEKT EEN OPLOSSING MBV OPTIONS
+
+        // find a solution with the help of options
         int space = field.breedte;
         while(!fieldStack.isEmpty()){
             Grid currentfield = fieldStack.pop();
             if(currentfield!=null) {
                 space = currentfield.emptyRowSize();
                 if(space==0){
+                    fieldStack.push(currentfield);
                     break;
                 }
                 Options fillspace = new Options(space, currentfield.collection);
@@ -121,7 +123,6 @@ public class Main {
         fieldStack.peek().printVeld();
         System.out.println(space);
 
-*/
 
 
         //Deze functie probeerd alle tiles toe te voegen aan het grid
