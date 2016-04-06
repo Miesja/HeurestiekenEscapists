@@ -11,18 +11,15 @@ public class Grid {
     TileCollection collection = new TileCollection();
 
     //Constructor om het veld met lengte l en breedte b, gevuld met " 0 ", te maken.
-
     public Grid(int b, int l) {
         lengte = l;
         breedte = b;
         field = new String[breedte][lengte];
+        for (int y = 0; y < lengte; y++) {
             for (int x = 0; x < breedte; x++) {
-                for (int y = 0; y < lengte; y++) {
-                    field[x][y] = " 0 ";
-                }
+                field[x][y] = " 0 ";
             }
-
-
+        }
     }
 
     //Het copiëren van een grid door een grid te maken adhv een andere grid.
@@ -33,7 +30,7 @@ public class Grid {
         for(int i=0; i<grid.collection.tiles.size(); i++){
             collection.tiles.add(grid.collection.giveTile(i));
         }
-        for (int x=0; x<breedte; x++){
+        for(int x=0; x<breedte; x++){
             for(int y=0; y<lengte; y++){
                field[x][y] = grid.field[x][y];
 
@@ -41,27 +38,34 @@ public class Grid {
         }
     }
 
-    // kijkt hoeveel lege plekken in een rij
-    public int emptyRowSize() {
-        for (int x = 0; x < this.breedte; x++) {
-            for (int y = 0; y < this.lengte; y++) {
-                if(this.field[x][y].equals(" 0 ")) {
-                    int newY = y;
-                    while (newY < this.breedte && this.field[x][newY].equals(" 0 ")) {
-                        newY++;
+    //Het printen van het veld.
+    public void printVeld(){
+        for(int y = 0; y < lengte; y++) {
+            for(int x = 0; x < breedte; x++ ) {
+                System.out.print(this.field[x][y]);
+            }
+            System.out.println("");
+        }
 
+    }
+
+    //Plaatst tiles
+    public Grid addTile(Tile tile){
+        for (int y = 0; y < this.lengte; y++) {
+            for (int x=0; x<this.breedte; x++) {
+                if (this.field[x][y].equals(" 0 ")) {
+                    Grid newGrid = this.SetTile(tile, x, y);
+                    if (newGrid != null) {
+                        newGrid.collection.removeTile(tile);
+                        return newGrid;
                     }
-                    int count = newY - y;
-                    return count;
                 }
             }
         }
-        return 0;
+        return null;
     }
 
-
-
-                    //Het neerzetten van een tegel (type:Tile) in het veld. op coordinaat xPoint en yPoint
+    //Het neerzetten van een tegel (type:Tile) in het veld. op coordinaat xPoint en yPoint
     //controleert de plaats waar de tegel neergezet moet worden
     //en kopieert de laatse tile in de fieldStack om de tile eraan toetevoegen
     //de grid met de tile erop wordt toegevoegd aan de fieldStack
@@ -76,18 +80,6 @@ public class Grid {
             return copy;
         }
         return null;
-    }
-
-    //Het printen van het veld.
-    public void printVeld() {
-        for( int y = 0; y < lengte; y++ ) {
-            String Row = "";
-            for( int x = 0; x < breedte; x++) {
-                String A = field[ x ][ y ];
-                Row += A;
-            }
-            System.out.println( Row );
-        }
     }
 
     //Controleert of er geen tegel ligt waar de nieuwe tegel geplaatst wilt worden
@@ -128,19 +120,4 @@ public class Grid {
     }
 
 
-    //Plaatst tiles
-    public Grid addTile(Tile tile){
-        for (int x=0; x<this.breedte; x++) {
-            for (int y = 0; y < this.lengte; y++) {
-                if (this.field[x][y].equals(" 0 ")) {
-                    Grid newGrid = this.SetTile(tile, x, y);
-                    if (newGrid != null) {
-                        newGrid.collection.removeTile(tile);
-                        return newGrid;
-                    }
-                }
-            }
-        }
-        return null;
-    }
 }
