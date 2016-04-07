@@ -59,43 +59,30 @@ public class Grid {
     }
     //Plaatst tiles
     public Grid addTile(Tile tile){
-        // zoekt het veld (beginnend in de x-richting bovenaan, naar de eerste "vrije" x,y coordinaat
+        // zoekt het veld (naar de eerste "vrije" x,y coordinaat. en geeft deze door)
         for (int y = 0; y <this.lengte; y++) {
             for (int x=0; x<this.breedte; x++) {
                 if (this.field[x][y].equals(" 0 ")) {
                    //de oude "setTile"
                     if (spaceUnoccupied(tile, x, y)) {
                         Grid newGrid = new Grid(this);
-                        System.out.println("0 - leeg veld");
-                        newGrid.printVeld();
-                        //newGrid.Xcoordinaat = newGrid.Xcoordinaat+tile.width;
                         //vult de plek waar de tegel komt met de "tile.name"
                         for (int i = x; i < (x + tile.width); i++) {
                             for (int j = y; j < (y + tile.length); j++) {
                                 newGrid.field[i][j] = tile.name;
                             }
                         }
-                        System.out.println("1 - gevuld veld"); 
-                        newGrid.printVeld();
-                       // if(newGrid!= null) {
-                            newGrid.collection.removeTile(tile);
-                            System.out.println("2 - tile geremoved van grid");
-                            newGrid.printVeld();
-                            return newGrid;
-                        //}
+                        newGrid.collection.removeTile(tile);
+                        return newGrid;
                     }
-                    System.out.println("eerste NULL point 1");
-                    //return null;
                     // er is geen ruimte voor de tile (if spaceUnoccupied)
                 }
-                System.out.println("tweede NULL point 2");
-                return null;
-                    // het veld is vol
+                //NIET RETURN NULL, de for-loop is nog bezig.
+
             }
-            System.out.println("derde NULL point 3");
-            return null;
+            //NIET RETURN NULL, de for-loop is nog bezig.
         }
-        System.out.println("vierde NULL point 4");
+
         return null;
     }
 
