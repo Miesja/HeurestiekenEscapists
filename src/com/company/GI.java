@@ -4,14 +4,17 @@ package com.company;
  * Created by Bas on 31-3-2016.
  */
 
+import javax.swing.*;
 import java.awt.*;
-import java.awt.Graphics;
 
 //Deze klasse verzorgt de Grafische Weergave (GI) van het probleem
 //Het grid wordt hier ipv gevuld met letters, daadwerkelijk gevuld met tegels
-public class GI {
 
-    public void makeCanvas(){
+public class GI{
+
+
+
+    /*public void makeCanvas(){
         new Canvas();
     }
 
@@ -20,5 +23,5 @@ public class GI {
         Point p = new Point(x*10, y*10);
         Dimension d= new Dimension(width*10, length*10);
         Rectangle tile= new Rectangle(p, d);
-    }
+    } */
 }
