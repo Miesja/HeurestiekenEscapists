@@ -97,7 +97,6 @@ public class Grid {
                         newGrid.collection.removeTile(tile);
                         newGrid.Xcoordinaat = newGrid.Xcoordinaat+tile.width;
                         return newGrid;
-
                     }
                 }
             }
@@ -105,10 +104,8 @@ public class Grid {
         return null;
     }
 
-    //Het neerzetten van een tegel (type:Tile) in het veld. op coordinaat xPoint en yPoint
+    //Het neerzetten van een tegel (tile.name) in het veld. vanaf coordinaat xPoint en yPoint
     //controleert de plaats waar de tegel neergezet moet worden
-    //en kopieert de laatse tile in de fieldStack om de tile eraan toetevoegen
-    //de grid met de tile erop wordt toegevoegd aan de fieldStack
     public Grid SetTile(Tile tegel, int XPoint, int YPoint) {
         if (spaceUnoccupied(tegel, XPoint, YPoint)) {
             Grid copy = new Grid(this);
@@ -128,8 +125,7 @@ public class Grid {
         if ((XPoint + tile.width) <= this.breedte && (YPoint+tile.length)<= this.lengte){
             for (int x = XPoint; x < (XPoint + tile.width); x++) {
                 for (int y = YPoint; y < (YPoint + tile.length); y++) {
-                    String s = field[x][y];
-                    if (s.equals(" 0 ")) {
+                    if(field[x][y].equals(" 0 ")){
                         empty++;
                     }
                 }

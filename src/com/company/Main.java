@@ -19,7 +19,7 @@ public class Main {
             // maakt het begin Grid (field) en de tegels (tile) van het probleem
             // adhv de waarde die in een txt.file staan (resources/problem"")
             try {
-                Scanner sc = new Scanner(new FileReader("resources/problemA"));
+                Scanner sc = new Scanner(new FileReader("resources/problemC"));
                 int breedte = sc.nextInt();
                 int lengte = sc.nextInt();
                 field = new Grid(breedte, lengte);
@@ -44,18 +44,18 @@ public class Main {
             //maakt de combi opties en slaat deze op in een 2D Array <Opties<opties<combi van tiles>>>
             Options opties = new Options(field.breedte, field.collection);
 
-        // print de gemaakte combi-opties uit.
-            /*for (int i = 0; i < opties.options.size(); i++) {
+            // print de gemaakte combi-opties uit.
+    /*        for (int i = 0; i < opties.options.size(); i++) {
                 System.out.print("[");
                 for (int j = 0; j < opties.options.get(i).size(); j++) {
                     System.out.print(opties.options.get(i).get(j).name + ", ");
                 }
                 System.out.print("], ");
-            }*/
-
+            }
+    */
 
             // testen met de nieuwe addTile functie (alles-in-1 versie)
-     /*     printGrid = new Grid(field);
+    /*      printGrid = new Grid(field);
             printGrid = printGrid.addTile(field.collection.tiles.get(10));
 
             System.out.println("printen van printGrid vanuit MAIN (returned from de addTile)");
@@ -80,7 +80,7 @@ public class Main {
                 }
             }
 
-/*            // telt het aantal combinaties en print de bovenste combi-Grid in de stack
+            // telt het aantal combinaties en print de bovenste combi-Grid in de stack
             int nCombinatie;
             nCombinatie = fieldStack.size() - 1;
             System.out.println("");
@@ -88,9 +88,9 @@ public class Main {
             System.out.println("");
             System.out.println("");
             fieldStack.peek().printVeld();
-*/
 
-            // zoekt naar een oplossing mbv combi-opties depth-first search
+
+  /*          // zoekt naar een oplossing mbv combi-opties depth-first search
             int space = field.breedte;
             while (!fieldStack.isEmpty()) {
                 Grid currentfield = fieldStack.pop();
