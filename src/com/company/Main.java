@@ -10,6 +10,7 @@ public class Main {
 
         Stack<Grid> fieldStack = new Stack();
         Grid field;
+        Grid printGrid;
         Grid startOptionsField;
         String[][] testGrid;
 
@@ -17,7 +18,7 @@ public class Main {
         // maakt het begin Grid (field) en de tegels (tile) van het probleem
         // adhv de waarde die in een txt.file staan (resources/problem"")
         try {
-            Scanner sc = new Scanner(new FileReader("resources/problemC"));
+            Scanner sc = new Scanner(new FileReader("resources/problemA"));
             int breedte = sc.nextInt();
             int lengte = sc.nextInt();
             field = new Grid(breedte, lengte);
@@ -38,29 +39,18 @@ public class Main {
         if (field != null) {
             fieldStack.push(field);
         }
-/*
-        Grid tryGrid;
-        tryGrid = field;
-        Grid copy;
-        tryGrid.printVeld();
-        System.out.println("");
-        int tileCollection;
-        tileCollection = field.collection.tiles.size();
-        System.out.print("the number of tiles is: " + tileCollection);
-        System.out.println("");
-
-        copy = tryGrid.addTile(field.collection.tiles.get(2));
-        copy.printVeld();
-        System.out.println("");
-        Grid two;
-        two=copy.addTile(field.collection.tiles.get(3));
-        two.printVeld();
-
-*/
-
-
 
         Options opties = new Options(field.breedte, field.collection);
+        printGrid = new Grid(field);
+        printGrid = printGrid.addTile(field.collection.tiles.get(10));
+
+        System.out.println("printen van printGrid (returned from de addTile)");
+        printGrid.printVeld();
+        printGrid = printGrid.addTile(field.collection.tiles.get(4));
+        System.out.println("printen van printGrid (2e return uit de addTile)");
+        printGrid.printVeld();
+
+
 
         /*for (int i = 0; i < opties.options.size(); i++) {
             System.out.print("[");
@@ -70,6 +60,8 @@ public class Main {
             System.out.print("], ");
         }*/
 
+
+/*
         long startTime = System.nanoTime();
         // combi-options toegevoegd aan de stack.
         for (int j = 0; j < opties.options.size(); j++) {
@@ -80,7 +72,7 @@ public class Main {
             if (usefield != null) {
                 fieldStack.push(usefield);
             }
-        }
+        } */
 
 
         /*System.out.println("");
@@ -92,7 +84,7 @@ public class Main {
         fieldStack.peek().printVeld();*/
 
 
-
+/*
 
         // find a solution with the help of options
         int space = field.breedte;
@@ -119,6 +111,7 @@ public class Main {
                 }
             }
         }
+        /*
         long endTime = System.nanoTime();
         fieldStack.peek().printVeld();
         long total = endTime-startTime;
@@ -127,7 +120,7 @@ public class Main {
     //    System.out.println(runTimeSec);
 
 
-
+/*
         //Deze functie probeerd alle tiles toe te voegen aan het grid
 
     /*    while (!fieldStack.isEmpty()) {

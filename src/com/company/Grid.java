@@ -6,6 +6,7 @@ public class Grid {
 
     //Instance variables.
     int lengte;
+    int Xcoordinaat;
     int breedte;
     String[][] field;
     TileCollection collection = new TileCollection();
@@ -20,6 +21,7 @@ public class Grid {
                 field[x][y] = " 0 ";
             }
         }
+
     }
 
     //Het copiëren van een grid door een grid te maken adhv een andere grid.
@@ -55,8 +57,49 @@ public class Grid {
         }
         return 0;
     }
+    //Plaatst tiles
+    public Grid addTile(Tile tile){
+        // zoekt het veld (beginnend in de x-richting bovenaan, naar de eerste "vrije" x,y coordinaat
+        for (int y = 0; y <this.lengte; y++) {
+            for (int x=0; x<this.breedte; x++) {
+                if (this.field[x][y].equals(" 0 ")) {
+                   //de oude "setTile"
+                    if (spaceUnoccupied(tile, x, y)) {
+                        Grid newGrid = new Grid(this);
+                        System.out.println("0 - leeg veld");
+                        newGrid.printVeld();
+                        //newGrid.Xcoordinaat = newGrid.Xcoordinaat+tile.width;
+                        //vult de plek waar de tegel komt met de "tile.name"
+                        for (int i = x; i < (x + tile.width); i++) {
+                            for (int j = y; j < (y + tile.length); j++) {
+                                newGrid.field[i][j] = tile.name;
+                            }
+                        }
+                        System.out.println("1 - gevuld veld");
+                        newGrid.printVeld();
+                       // if(newGrid!= null) {
+                            newGrid.collection.removeTile(tile);
+                            System.out.println("2 - tile geremoved van grid");
+                            newGrid.printVeld();
+                            return newGrid;
+                        //}
+                    }
+                    System.out.println("eerste NULL point 1");
+                    //return null;
+                    // er is geen ruimte voor de tile (if spaceUnoccupied)
+                }
+                System.out.println("tweede NULL point 2");
+                return null;
+                    // het veld is vol
+            }
+            System.out.println("derde NULL point 3");
+            return null;
+        }
+        System.out.println("vierde NULL point 4");
+        return null;
+    }
 
-
+/*
     //Plaatst tiles
     public Grid addTile(Tile tile){
         for (int y = 0; y <this.lengte; y++) {
@@ -65,7 +108,9 @@ public class Grid {
                     Grid newGrid = this.SetTile(tile, x, y);
                     if (newGrid != null) {
                         newGrid.collection.removeTile(tile);
+                        newGrid.Xcoordinaat = newGrid.Xcoordinaat+tile.width;
                         return newGrid;
+
                     }
                 }
             }
@@ -89,7 +134,7 @@ public class Grid {
         }
         return null;
     }
-
+*/
     //Controleert of er geen tegel ligt waar de nieuwe tegel geplaatst wilt worden
     public boolean spaceUnoccupied(Tile tile, int XPoint, int YPoint){
         int empty = 0;
@@ -109,6 +154,9 @@ public class Grid {
         }
         return false;
     }
+
+
+
 
     //Controleerd of het grid helemaal gevuld is, zo ja, dan wordt true gereturned
     public boolean isFull() {
