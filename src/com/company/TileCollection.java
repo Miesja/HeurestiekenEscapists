@@ -24,5 +24,6 @@ public class TileCollection {
         x = tile.width;
         tile.width = tile.length;
         tile.length = x;
+        return tile;
     }
 }
