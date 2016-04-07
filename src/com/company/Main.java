@@ -17,7 +17,7 @@ public class Main {
         // maakt het begin Grid (field) en de tegels (tile) van het probleem
         // adhv de waarde die in een txt.file staan (resources/problem"")
         try {
-            Scanner sc = new Scanner(new FileReader("resources/problemA"));
+            Scanner sc = new Scanner(new FileReader("resources/problemC"));
             int breedte = sc.nextInt();
             int lengte = sc.nextInt();
             field = new Grid(breedte, lengte);
@@ -123,6 +123,8 @@ public class Main {
         fieldStack.peek().printVeld();
         long total = endTime-startTime;
         System.out.println(total);
+    //    int runTimeSec = (total)/(1*10^9);
+    //    System.out.println(runTimeSec);
 
 
 

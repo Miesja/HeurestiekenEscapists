@@ -70,7 +70,7 @@ public class Grid {
 
     //Plaatst tiles
     public Grid addTile(Tile tile){
-        for (int y = 0; y < this.lengte; y++) {
+        for (int y = 0; y <this.lengte; y++) {
             for (int x=0; x<this.breedte; x++) {
                 if (this.field[x][y].equals(" 0 ")) {
                     Grid newGrid = this.SetTile(tile, x, y);
@@ -89,7 +89,7 @@ public class Grid {
     //en kopieert de laatse tile in de fieldStack om de tile eraan toetevoegen
     //de grid met de tile erop wordt toegevoegd aan de fieldStack
     public Grid SetTile(Tile tegel, int XPoint, int YPoint) {
-        if (checkIfUnoccupied(tegel, XPoint, YPoint)) {
+        if (spaceUnoccupied(tegel, XPoint, YPoint)) {
             Grid copy = new Grid(this);
             for (int x = XPoint; x < (XPoint + tegel.width); x++) {
                 for (int y = YPoint; y < YPoint + tegel.length; y++) {
@@ -102,7 +102,7 @@ public class Grid {
     }
 
     //Controleert of er geen tegel ligt waar de nieuwe tegel geplaatst wilt worden
-    public boolean checkIfUnoccupied(Tile tile, int XPoint, int YPoint){
+    public boolean spaceUnoccupied(Tile tile, int XPoint, int YPoint){
         int empty = 0;
         if ((XPoint + tile.width) <= this.breedte && (YPoint+tile.length)<= this.lengte){
             for (int x = XPoint; x < (XPoint + tile.width); x++) {
