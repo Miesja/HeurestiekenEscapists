@@ -19,7 +19,7 @@ public class Main {
             // maakt het begin Grid (field) en de tegels (tile) van het probleem
             // adhv de waarde die in een txt.file staan (resources/problem"")
             try {
-                Scanner sc = new Scanner(new FileReader("resources/problemC"));
+                Scanner sc = new Scanner(new FileReader("resources/problemA"));
                 int breedte = sc.nextInt();
                 int lengte = sc.nextInt();
                 field = new Grid(breedte, lengte);
@@ -41,10 +41,26 @@ public class Main {
                 fieldStack.push(field);
             }
 
+            //klok kijken: begint voor het maken van de combi's
+            long combiTime = System.nanoTime();
+
             //maakt de combi opties en slaat deze op in een 2D Array <Opties<opties<combi van tiles>>>
             Options opties = new Options(field.breedte, field.collection);
 
-            // print de gemaakte combi-opties uit.
+
+            // telt het aantal combinaties
+            int nCombinatie;
+            nCombinatie = opties.options.size() ;
+            System.out.print("Het aantal combinaties is: " + nCombinatie);
+            System.out.println("");
+
+            //Klok kijken: meet hoelang het maken van de combinaties duurt
+            long endCombi = System.nanoTime();
+            long combiRunTime = endCombi - combiTime;
+            System.out.println("Maken van de combinaties - Runtime :" + combiRunTime + " nano seconden");
+
+
+        // print de gemaakte combi-opties uit.
     /*        for (int i = 0; i < opties.options.size(); i++) {
                 System.out.print("[");
                 for (int j = 0; j < opties.options.get(i).size(); j++) {
@@ -66,10 +82,10 @@ public class Main {
     */
 
 
-            //klok kijken (begint wanneer je begint met zoeken naar oplossingen
+            //klok kijken: begint voor je de combi's toevoegd aan de stack (voor de depth-first)
             long startTime = System.nanoTime();
 
-            // combi-options toegevoegd aan de stack.
+     /*       // combi-options toegevoegd aan de stack.
             for (int j = 0; j < opties.options.size(); j++) {
                 Grid usefield = new Grid(field);
                 for (Tile tile : opties.options.get(j)) {
@@ -79,16 +95,7 @@ public class Main {
                     fieldStack.push(usefield);
                 }
             }
-
-            // telt het aantal combinaties en print de bovenste combi-Grid in de stack
-            int nCombinatie;
-            nCombinatie = fieldStack.size() - 1;
-            System.out.println("");
-            System.out.print("Het aantal combinaties is: " + nCombinatie);
-            System.out.println("");
-            System.out.println("");
-            fieldStack.peek().printVeld();
-
+    */
 
   /*          // zoekt naar een oplossing mbv combi-opties depth-first search
             int space = field.breedte;
@@ -117,12 +124,14 @@ public class Main {
             }
 
             // klok kijken: geeft de nanoseconden die het zoeken naar de oplossing heeft geduurd.
+            // print de Totale statistiek en de gevonden oplossing.
             long endTime = System.nanoTime();
+            long total = endTime - startTime;
+            System.out.println("Oplossing gevonden in totale RunTime: " + total + " nano seconden");
+            System.out.println("");
             System.out.println("de oplossing van het tegelzetten!");
             fieldStack.peek().printVeld();
-            System.out.println("");
-            long total = endTime - startTime;
-            System.out.println("de RunTime: " + total + "nano seconden");
+
             //    int runTimeSec = (total)/(1*10^9);
             //    System.out.println(runTimeSec);
 
