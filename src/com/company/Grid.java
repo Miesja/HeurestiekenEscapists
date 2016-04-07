@@ -75,7 +75,7 @@ public class Grid {
                                 newGrid.field[i][j] = tile.name;
                             }
                         }
-                        System.out.println("1 - gevuld veld");
+                        System.out.println("1 - gevuld veld"); 
                         newGrid.printVeld();
                        // if(newGrid!= null) {
                             newGrid.collection.removeTile(tile);
