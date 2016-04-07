@@ -57,17 +57,6 @@ public class Grid {
     }
 
 
-    //Het printen van het veld.
-    public void printVeld(){
-        for(int y = 0; y < lengte; y++) {
-            for(int x = 0; x < breedte; x++ ) {
-                System.out.print(this.field[x][y]);
-            }
-            System.out.println("");
-        }
-
-    }
-
     //Plaatst tiles
     public Grid addTile(Tile tile){
         for (int y = 0; y <this.lengte; y++) {
@@ -136,6 +125,17 @@ public class Grid {
             return true;
         }
         return false;
+    }
+
+    //Het printen van het veld.
+    public void printVeld(){
+        for(int y = 0; y < lengte; y++) {
+            for(int x = 0; x < breedte; x++ ) {
+                System.out.print(this.field[x][y]);
+            }
+            System.out.println("");
+        }
+
     }
 
 
