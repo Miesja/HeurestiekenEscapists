@@ -13,6 +13,7 @@ public class Main {
             Grid printGrid;
             Grid startOptionsField;
             String[][] testGrid;
+            Stack<Grid> solutions = new Stack();
 
 
             // maakt het begin Grid (field) en de tegels (tile) van het probleem
@@ -34,7 +35,6 @@ public class Main {
             } catch (Exception e) {
                 System.out.println("ERROR!");
                 field = null;
-
             }
             if (field != null) {
                 fieldStack.push(field);
@@ -46,7 +46,6 @@ public class Main {
             //maakt de combi opties en slaat deze op in een 2D Array <Opties<opties<combi van tiles>>>
             Options opties = new Options(field.breedte, field.collection);
 
-
             // telt het aantal combinaties
             int nCombinatie;
             nCombinatie = opties.options.size() ;
@@ -56,7 +55,7 @@ public class Main {
             //Klok kijken: meet hoelang het maken van de combinaties duurt
             long endCombi = System.nanoTime();
             long combiRunTime = endCombi - combiTime;
-            System.out.println("Maken van de combinaties - Runtime :" + combiRunTime + " nano seconden");
+            System.out.println("Maken van de tile combinaties - Runtime :" + combiRunTime + " nano seconden");
 
 
         // print de gemaakte combi-opties uit.
@@ -84,7 +83,7 @@ public class Main {
             //klok kijken: begint voor je de combi's toevoegd aan de stack (voor de depth-first)
             long startTime = System.nanoTime();
 
-     /*       // combi-options toegevoegd aan de stack.
+            // combi-options toegevoegd aan de stack.
             for (int j = 0; j < opties.options.size(); j++) {
                 Grid usefield = new Grid(field);
                 for (Tile tile : opties.options.get(j)) {
@@ -94,9 +93,9 @@ public class Main {
                     fieldStack.push(usefield);
                 }
             }
-    */
 
-  /*          // zoekt naar een oplossing mbv combi-opties depth-first search
+
+            // zoekt naar een oplossing mbv combi-opties depth-first search
             int space = field.breedte;
             while (!fieldStack.isEmpty()) {
                 Grid currentfield = fieldStack.pop();
@@ -126,10 +125,15 @@ public class Main {
             // print de Totale statistiek en de gevonden oplossing.
             long endTime = System.nanoTime();
             long total = endTime - startTime;
-            System.out.println("Oplossing gevonden in totale RunTime: " + total + " nano seconden");
+            long solutionTime = total + combiRunTime;
+            System.out.println("vullen van het veld met tiles - RunTime: " + total + " nano seconden");
+            System.out.println("Oplossing gevonden in totale  - RunTime: " + solutionTime +" nano seconden");
             System.out.println("");
             System.out.println("de oplossing van het tegelzetten!");
             fieldStack.peek().printVeld();
+
+            solutions.push(fieldStack.pop());
+
 
             //    int runTimeSec = (total)/(1*10^9);
             //    System.out.println(runTimeSec);
