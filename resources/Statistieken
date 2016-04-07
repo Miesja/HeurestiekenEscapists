@@ -1,8 +1,9 @@
 
 Problem A
 aantal combinaties in stack: 29436
-RunTime:
+RunTime: 1194819129 nanoseconden/1.2 seconden (vanaf options toevoegen tot oplossing gevonden)
 
 
 Problem B
 aantal combinaties in stack: 52974
+RunTime: 5882607482 nanoseconden/5.9 seconden(vanaf options toevoegen tot oplossing gevonden)

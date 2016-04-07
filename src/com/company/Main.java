@@ -17,7 +17,7 @@ public class Main {
         // maakt het begin Grid (field) en de tegels (tile) van het probleem
         // adhv de waarde die in een txt.file staan (resources/problem"")
         try {
-            Scanner sc = new Scanner(new FileReader("resources/problemB"));
+            Scanner sc = new Scanner(new FileReader("resources/problemA"));
             int breedte = sc.nextInt();
             int lengte = sc.nextInt();
             field = new Grid(breedte, lengte);
@@ -70,7 +70,7 @@ public class Main {
             System.out.print("], ");
         }*/
 
-
+        long startTime = System.nanoTime();
         // combi-options toegevoegd aan de stack.
         for (int j = 0; j < opties.options.size(); j++) {
             Grid usefield = new Grid(field);
@@ -119,27 +119,24 @@ public class Main {
                 }
             }
         }
-
+        long endTime = System.nanoTime();
         fieldStack.peek().printVeld();
-        System.out.println(space);
+        long total = endTime-startTime;
+        System.out.println(total);
 
 
 
         //Deze functie probeerd alle tiles toe te voegen aan het grid
-/*
-        while (!fieldStack.isEmpty()) {
+
+    /*    while (!fieldStack.isEmpty()) {
             Grid currentField = fieldStack.pop();
             for (int i = 0; i < currentField.collection.tiles.size(); i++) {
                 Tile tile = currentField.collection.giveTile(i);
                 Grid newField = currentField.addTile(tile);
                 if (newField != null) {
-                    System.out.println();
-                    newField.printVeld();
                     newField.collection.removeTile(tile);
                     fieldStack.push(newField);
                     if (fieldStack.peek().collection.tiles.isEmpty()) {
-                        System.out.println();
-                        fieldStack.peek().printVeld();
                         while (!fieldStack.isEmpty()) {
                             fieldStack.pop();
                         }
@@ -151,10 +148,10 @@ public class Main {
 
         if (!fieldStack.isEmpty()) {
             fieldStack.peek().printVeld();
-        }*/
+        }
 
 
-
+*/
 
     /*Waarom zijn bananen krom?
     Als ze recht zijn vallen ze om
