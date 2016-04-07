@@ -16,4 +16,13 @@ public class TileCollection {
     public void removeTile(Tile tile){
         tiles.remove(tile);
     }
+
+    //deze functie draait een tegel op zijn zij, dit gebeurd door lengte en breedte om te draaien
+    public Tile rotateTile(int index){
+        int x;
+        Tile tile = tiles.get(index);
+        x = tile.width;
+        tile.width = tile.length;
+        tile.length = x;
+    }
 }

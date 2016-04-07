@@ -13,14 +13,6 @@ public class Tile {
         this.length = length;
         this.name = name;
     }
-
-    //deze functie draait de tegel op zijn zij, dit gebeurd door lengte en breedte om te draaien
-    public void rotateTile(){
-        int x;
-        x = width;
-        width = length;
-        length = x;
-    }
 }
 
 
