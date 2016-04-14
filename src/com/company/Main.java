@@ -75,17 +75,6 @@ public class Main {
             }
     */
 
-            // testen met de nieuwe addTile functie (alles-in-1 versie)
-    /*      printGrid = new Grid(field);
-            printGrid = printGrid.addTile(field.collection.tiles.get(10));
-
-            System.out.println("printen van printGrid vanuit MAIN (returned from de addTile)");
-            printGrid.printVeld();
-            printGrid = printGrid.addTile(field.collection.tiles.get(4));
-            System.out.println("printen van printGrid vanuit MAIN (2e return uit de addTile)");
-            printGrid.printVeld();
-    */
-
 
             //klok kijken: begint voor je de combi's toevoegd aan de stack (voor de depth-first)
             long startTime = System.nanoTime();
