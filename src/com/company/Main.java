@@ -7,6 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+
       //  while(true) {
             Stack<Grid> fieldStack = new Stack();
             Grid field;
@@ -19,7 +20,7 @@ public class Main {
             // maakt het begin Grid (field) en de tegels (tile) van het probleem
             // adhv de waarde die in een txt.file staan (resources/problem"")
             try {
-                Scanner sc = new Scanner(new FileReader("resources/problemA"));
+                Scanner sc = new Scanner(new FileReader("resources/problemC"));
                 int breedte = sc.nextInt();
                 int lengte = sc.nextInt();
                 field = new Grid(breedte, lengte);
@@ -44,7 +45,13 @@ public class Main {
             long combiTime = System.nanoTime();
 
             //maakt de combi opties en slaat deze op in een 2D Array <Opties<opties<combi van tiles>>>
-            Options opties = new Options(field.breedte, field.collection);
+            Tile biggestTile = new Tile(0,0, "x");
+            for(Tile tile : field.collection.tiles){
+            if(tile.width>biggestTile.width){
+                biggestTile = tile;
+            }
+            }
+            Options opties = new Options(field.breedte, field.collection, biggestTile);
 
             // telt het aantal combinaties
             int nCombinatie;
