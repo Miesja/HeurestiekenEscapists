@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-      //  while(true) {
+        while(true) {
             Stack<Grid> fieldStack = new Stack();
             Grid field;
             Grid printGrid;
@@ -24,7 +24,7 @@ public class Main {
                 int breedte = sc.nextInt();
                 int lengte = sc.nextInt();
                 field = new Grid(breedte, lengte);
-                field.printVeld();
+                //field.printVeld();
                 System.out.println("");
                 while (sc.hasNext()) {
                     int width = sc.nextInt();
@@ -181,6 +181,6 @@ public class Main {
         }
 
 
-   // }
+    }
 }
 

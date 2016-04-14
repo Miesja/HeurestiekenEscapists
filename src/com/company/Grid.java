@@ -74,6 +74,8 @@ public class Grid {
                         }
                         newGrid.collection.removeTile(tile);
                         return newGrid;
+                    }else{
+                        return null; // meteen de for-loop uit, er is toch geen plaats. (SCHEELT 20% aan RUNTIME!)
                     }
                     // er is geen ruimte voor de tile (if spaceUnoccupied)
                 }

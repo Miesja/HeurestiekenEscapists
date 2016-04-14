@@ -1,19 +1,28 @@
 
-Problem A
+>>Problem A
+StateSpace: 14! = 87,178,291,200
 Het aantal combinaties is: 29436
 Maken van de combinaties - RunTime :170326746 nano seconden
-
 Totale RunTime: 1194819129 nanoseconden/1.2 seconden (vanaf options toevoegen tot oplossing gevonden)
 
+BigTileFirst
+Het aantal combinaites (BigTileFirst): 160
+Totale RunTime: 15307872 nanoseconden/0.015307872 seconden
 
-Problem B
+
+>>Problem B
+StateSpace: 15! = 1,307,674,368,00
 Het aantal combinaties is: 52974
 Maken van de combinaties - Runtime :1320096386 nano seconden
-
 RunTime: 5882607482 nanoseconden/5.9 seconden(vanaf options toevoegen tot oplossing gevonden)
 
+BigTileFirst
+Het aantal combinaites (BigTileFirst): 748
+Totale RunTime: 44036523 nanoseconden/0.044036523 seconden
 
-Problem C
+
+>>Problem C
+StateSpace: 20! = 2,4329*10^18
 bij het runnen van de combi-maker OPTIONS (en niet de depth-first search)
 Exception in thread "main" java.lang.OutOfMemoryError: GC overhead limit exceeded
 	at java.util.Arrays.copyOf(Arrays.java:3181)
@@ -29,4 +38,9 @@ Exception in thread "main" java.lang.OutOfMemoryError: GC overhead limit exceede
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:497)
 	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144)
+
+
+BigTileFirst
+Het aantal combinaites (BigTileFirst): 74180
+Totale RunTime: 33019619043 nanoseconden/33.019619043 seconden
 
