@@ -7,8 +7,9 @@ public class Main {
 
     public static void main(String[] args) {
 
+        GI graphSolution = new GI();
 
-        while(true) {
+       // while(true) {
             Stack<Grid> fieldStack = new Stack();
             Grid field;
             Grid printGrid;
@@ -20,7 +21,7 @@ public class Main {
             // maakt het begin Grid (field) en de tegels (tile) van het probleem
             // adhv de waarde die in een txt.file staan (resources/problem"")
             try {
-                Scanner sc = new Scanner(new FileReader("resources/problemC"));
+                Scanner sc = new Scanner(new FileReader("resources/problemA"));
                 int breedte = sc.nextInt();
                 int lengte = sc.nextInt();
                 field = new Grid(breedte, lengte);
@@ -29,6 +30,7 @@ public class Main {
                 while (sc.hasNext()) {
                     int width = sc.nextInt();
                     int length = sc.nextInt();
+                    graphSolution.setSize(width, length);
                     String name = " " + sc.next() + " ";
                     Tile tile = new Tile(width, length, name);
                     field.collection.tiles.add(tile);
@@ -128,6 +130,8 @@ public class Main {
             System.out.println("de oplossing van het tegelzetten!");
             fieldStack.peek().printVeld();
 
+
+
             solutions.push(fieldStack.pop());
 
 
@@ -170,6 +174,6 @@ public class Main {
         }
 
 
-    }
+    //}
 }
 
