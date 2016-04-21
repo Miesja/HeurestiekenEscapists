@@ -20,11 +20,11 @@ public class Main {
             // maakt het begin Grid (field) en de tegels (tile) van het probleem
             // adhv de waarde die in een txt.file staan (resources/problem"")
             try {
-                Scanner sc = new Scanner(new FileReader("resources/problemG"));
+                Scanner sc = new Scanner(new FileReader("resources/problem19b"));
                 int breedte = sc.nextInt();
                 int lengte = sc.nextInt();
                 field = new Grid(breedte, lengte);
-                //field.printVeld();
+                field.printVeld();
                 System.out.println("");
                 while (sc.hasNext()) {
                     int width = sc.nextInt();
@@ -108,7 +108,9 @@ public class Main {
                     for (int j = 0; j < fillspace.options.size(); j++) {
                         Grid newField = new Grid(currentfield);
                         for (Tile tile : fillspace.options.get(j)) {
+                           // System.out.println("aantal opties " + fillspace.options.size());
                             newField = newField.addTile(tile);
+
                         }
                         if (newField != null) {
                             fieldStack.push(newField);
@@ -119,16 +121,25 @@ public class Main {
 
             // klok kijken: geeft de nanoseconden die het zoeken naar de oplossing heeft geduurd.
             // print de Totale statistiek en de gevonden oplossing.
-            long endTime = System.nanoTime();
-            long total = endTime - startTime;
-            long solutionTime = total + combiRunTime;
-            System.out.println("vullen van het veld met tiles - RunTime: " + total + " nano seconden");
-            System.out.println("Oplossing gevonden in totale  - RunTime: " + solutionTime +" nano seconden");
-            System.out.println("");
-            System.out.println("de oplossing van het tegelzetten!");
-            fieldStack.peek().printVeld();
 
-            solutions.push(fieldStack.pop());
+            if (fieldStack.isEmpty()){
+                System.out.println("er is geen oplossing");
+
+            }else{
+                long endTime = System.nanoTime();
+                long total = endTime - startTime;
+                long solutionTime = total + combiRunTime;
+                System.out.println("vullen van het veld met tiles - RunTime: " + total + " nano seconden");
+                System.out.println("Oplossing gevonden in totale  - RunTime: " + solutionTime +" nano seconden");
+                System.out.println("");
+                System.out.println("de oplossing van het tegelzetten!");
+                fieldStack.peek().printVeld();
+                solutions.push(fieldStack.pop());
+            }
+
+
+
+
 
 
             //    int runTimeSec = (total)/(1*10^9);
