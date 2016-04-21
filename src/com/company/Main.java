@@ -9,7 +9,7 @@ public class Main {
 
         GI graphSolution = new GI();
 
-       // while(true) {
+        //while(true) {
             Stack<Grid> fieldStack = new Stack();
             Grid field;
             Grid printGrid;
@@ -130,8 +130,6 @@ public class Main {
             System.out.println("de oplossing van het tegelzetten!");
             fieldStack.peek().printVeld();
 
-
-
             solutions.push(fieldStack.pop());
 
 
@@ -171,9 +169,9 @@ public class Main {
         Als ze recht zijn vallen ze om
         pom pom pom
         ze liggen krom van het lachen*/
-        }
+       // }
 
 
-    //}
+    }
 }
 
