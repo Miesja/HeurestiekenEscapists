@@ -109,6 +109,7 @@ public class Main {
                     for (int j = 0; j < fillspace.options.size(); j++) {
                         Grid newField = new Grid(currentfield);
                         for (Tile tile : fillspace.options.get(j)) {
+                           // System.out.println("aantal opties " + fillspace.options.size());
                             newField = newField.addTile(tile);
                         }
                         if (newField != null) {
@@ -120,14 +121,21 @@ public class Main {
 
             // klok kijken: geeft de nanoseconden die het zoeken naar de oplossing heeft geduurd.
             // print de Totale statistiek en de gevonden oplossing.
-            long endTime = System.nanoTime();
-            long total = endTime - startTime;
-            long solutionTime = total + combiRunTime;
-            System.out.println("vullen van het veld met tiles - RunTime: " + total + " nano seconden");
-            System.out.println("Oplossing gevonden in totale  - RunTime: " + solutionTime +" nano seconden");
-            System.out.println("");
-            System.out.println("de oplossing van het tegelzetten!");
-            fieldStack.peek().printVeld();
+
+            if (fieldStack.isEmpty()){
+                System.out.println("er is geen oplossing");
+
+            }else{
+                long endTime = System.nanoTime();
+                long total = endTime - startTime;
+                long solutionTime = total + combiRunTime;
+                System.out.println("vullen van het veld met tiles - RunTime: " + total + " nano seconden");
+                System.out.println("Oplossing gevonden in totale  - RunTime: " + solutionTime +" nano seconden");
+                System.out.println("");
+                System.out.println("de oplossing van het tegelzetten!");
+                fieldStack.peek().printVeld();
+                solutions.push(fieldStack.pop());
+            }
 
 
             graphSolution.field = fieldStack.peek().field;

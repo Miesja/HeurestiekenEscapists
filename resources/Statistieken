@@ -44,3 +44,120 @@ BigTileFirst
 Het aantal combinaites (BigTileFirst): 74180
 Totale RunTime: 33019619043 nanoseconden/33.019619043 seconden
 
+
+
+VU EXTRA TEGELSETS (6x)
+>>>Problem1 (VU tegelset 1)
+geen oplossing gevonden
+
+>>>Problem2 (VU tegelset 2)
+geen oplossing gevonden
+
+>>>Problem3 (VU tegelset 3)
+geen oplossing gevonden
+
+>>>Problem4 (VU tegelset 4)
+exception
+newField = newField.addTile(tile);
+
+>>>Problem5 (VU tegelset 5)
+Exception in thread "main" java.lang.OutOfMemoryError: GC overhead limit exceeded
+	at com.company.Options.makeChildren(Options.java:80)
+	at com.company.Options.<init>(Options.java:33)
+	at com.company.Main.main(Main.java:54)
+
+>>>Problem6 (VU tegelset 6)
+exception
+newField = newField.addTile(tile);
+
+NOG MEER EXTRA TEGELSETS van DOCENT
+
+>>>problem7a
+exception
+newField = newField.addTile(tile);
+
+>>>problem7b
+geen oplossing
+
+>>>problem8a
+geen oplossing
+
+>>>problem8b
+geen oplossing
+
+>>>problem9a
+geen oplossing
+
+>>>problem9b
+geen oplossing
+
+>>>problem9c
+geen oplossing
+
+>>>problem9d
+geen oplossing
+
+>>>problem10a
+geen oplossing
+
+>>>problem10b
+geen oplossing
+
+>>>problem10c
+geen oplossing
+
+>>>problem11
+geen oplossing
+
+>>>problem12a
+geen oplossing
+
+>>>problem12b
+geen oplossing
+
+>>>problem13a
+geen oplossing
+
+>>>problem13b
+geen oplossing
+
+>>>problem14
+geen oplossing
+
+>>>problem15a
+geen oplossing
+
+>>>problem15b
+geen oplossing
+
+>>>problem15c
+geen oplossing
+
+>>>problem16
+geen oplossing
+
+>>>problem17
+geen oplossing
+
+>>>problem18
+geen oplossing
+
+>>>problem19a
+exception
+newField = newField.addTile(tile);
+
+>>>problem19b
+
+
+>>>problem20
+geen oplossing
+
+
+
+
+
+
+
+
+
+
