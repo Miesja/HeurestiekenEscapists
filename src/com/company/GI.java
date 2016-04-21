@@ -76,7 +76,7 @@ package com.company;
                             g2d.fillRect(x, y, tileSize, tileSize);
                         }
                         if (GI.field[i][j].equals(" m ")) {
-                            g2d.setColor(new Color(10, 200, 200));
+                            g2d.setColor(new Color(0, 200, 250));
                             g2d.fillRect(x, y, tileSize, tileSize);
                         }
                         if (GI.field[i][j].equals(" n ")) {
@@ -91,6 +91,23 @@ package com.company;
                             g2d.setColor(new Color(200, 110, 40));
                             g2d.fillRect(x, y, tileSize, tileSize);
                         }
+                        if (GI.field[i][j].equals(" q ")) {
+                            g2d.setColor(new Color(30, 40, 100));
+                            g2d.fillRect(x, y, tileSize, tileSize);
+                        }
+                        if (GI.field[i][j].equals(" r ")) {
+                            g2d.setColor(new Color(10, 200, 10));
+                            g2d.fillRect(x, y, tileSize, tileSize);
+                        }
+                        if (GI.field[i][j].equals(" s ")) {
+                            g2d.setColor(new Color(170, 90, 150));
+                            g2d.fillRect(x, y, tileSize, tileSize);
+                        }
+                        if (GI.field[i][j].equals(" t ")) {
+                            g2d.setColor(new Color(250, 5, 80));
+                            g2d.fillRect(x, y, tileSize, tileSize);
+                        }
+
 
 
                     }
