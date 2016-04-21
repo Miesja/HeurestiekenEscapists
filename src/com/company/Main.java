@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        while(true) {
+        //while(true) {
             Stack<Grid> fieldStack = new Stack();
             Grid field;
             Grid printGrid;
@@ -20,7 +20,7 @@ public class Main {
             // maakt het begin Grid (field) en de tegels (tile) van het probleem
             // adhv de waarde die in een txt.file staan (resources/problem"")
             try {
-                Scanner sc = new Scanner(new FileReader("resources/problemC"));
+                Scanner sc = new Scanner(new FileReader("resources/problemG"));
                 int breedte = sc.nextInt();
                 int lengte = sc.nextInt();
                 field = new Grid(breedte, lengte);
@@ -167,7 +167,7 @@ public class Main {
         Als ze recht zijn vallen ze om
         pom pom pom
         ze liggen krom van het lachen*/
-        }
+       // }
 
 
     }
