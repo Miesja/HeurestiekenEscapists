@@ -57,7 +57,8 @@ geen oplossing gevonden
 geen oplossing gevonden
 
 >>>Problem4 (VU tegelset 4)
-exception
+Exception in thread "main" java.lang.NullPointerException
+	at com.company.Main.main(Main.java:112)
 newField = newField.addTile(tile);
 
 >>>Problem5 (VU tegelset 5)

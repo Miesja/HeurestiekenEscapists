@@ -83,6 +83,14 @@ package com.company;
                             g2d.setColor(new Color(100, 10, 200));
                             g2d.fillRect(x, y, tileSize, tileSize);
                         }
+                        if (GI.field[i][j].equals(" o ")) {
+                            g2d.setColor(new Color(200, 60, 160));
+                            g2d.fillRect(x, y, tileSize, tileSize);
+                        }
+                        if (GI.field[i][j].equals(" p ")) {
+                            g2d.setColor(new Color(200, 110, 40));
+                            g2d.fillRect(x, y, tileSize, tileSize);
+                        }
 
 
                     }

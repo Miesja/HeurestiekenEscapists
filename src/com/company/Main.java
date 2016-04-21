@@ -111,6 +111,7 @@ public class Main {
                         for (Tile tile : fillspace.options.get(j)) {
                            // System.out.println("aantal opties " + fillspace.options.size());
                             newField = newField.addTile(tile);
+
                         }
                         if (newField != null) {
                             fieldStack.push(newField);
