@@ -30,7 +30,6 @@ public class Main {
                 while (sc.hasNext()) {
                     int width = sc.nextInt();
                     int length = sc.nextInt();
-                    graphSolution.setSize(width, length);
                     String name = " " + sc.next() + " ";
                     Tile tile = new Tile(width, length, name);
                     field.collection.tiles.add(tile);
@@ -129,6 +128,10 @@ public class Main {
             System.out.println("");
             System.out.println("de oplossing van het tegelzetten!");
             fieldStack.peek().printVeld();
+
+
+            graphSolution.field = fieldStack.peek().field;
+            graphSolution.go();
 
             solutions.push(fieldStack.pop());
 
