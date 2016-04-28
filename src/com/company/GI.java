@@ -175,7 +175,7 @@ package com.company;
 
             DrawPanel dpnl = new DrawPanel();
             add(dpnl);
-            setSize(400, 400);
+            setSize(1000, 1000);
 
             setTitle("Solution");
             setLocationRelativeTo(null);
