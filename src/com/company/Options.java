@@ -75,14 +75,32 @@ public class Options {
     }
 
     // create children (adding another tile)
-    private void makeChildren(ArrayList parent, ArrayList childrenOptions){
+    private void makeChildren(ArrayList<Tile> parent, ArrayList<Tile> childrenOptions){
+
+
+        // ARCHIVE: gebruikt voor het maken zonder permutaties
+        /*int x = 0;
+        while(x<childrenOptions.size() && childrenOptions.get(x)!=parent.get(0)){
+            childrenOptions.remove(x);
+            x++;
+        }*/
+
         // remove the tiles that are already in parent from childrenOptions
-        for(int i=0; i<parent.size(); i++){
-            childrenOptions.remove(parent.get(i));
+        for(Tile tile : parent){
+            int index = childrenOptions.indexOf(tile);
+            if(tile.turned){
+                childrenOptions.remove(index);
+                childrenOptions.remove(index-1);
+            }
+            else{
+                childrenOptions.remove(index+1);
+                childrenOptions.remove(index);
+            }
         }
+
         for(int i=0; i<childrenOptions.size(); i++){
             ArrayList<Tile> child = new ArrayList<>(parent);
-            child.add((Tile) childrenOptions.get(i));
+            child.add(childrenOptions.get(i));
             queue.add(child);
         }
     }

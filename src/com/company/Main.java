@@ -5,7 +5,10 @@ import java.util.*;
 
 public class Main {
 
+
     public static void main(String[] args) {
+
+        boolean draaibaar = true;
 
         GI graphSolution = new GI();
 
@@ -21,7 +24,7 @@ public class Main {
             // maakt het begin Grid (field) en de tegels (tile) van het probleem
             // adhv de waarde die in een txt.file staan (resources/problem"")
             try {
-                Scanner sc = new Scanner(new FileReader("resources/problemB"));
+                Scanner sc = new Scanner(new FileReader("resources/problemA"));
                 int breedte = sc.nextInt();
                 int lengte = sc.nextInt();
                 field = new Grid(breedte, lengte);
@@ -31,8 +34,12 @@ public class Main {
                     int width = sc.nextInt();
                     int length = sc.nextInt();
                     String name = " " + sc.next() + " ";
-                    Tile tile = new Tile(width, length, name);
-                    field.collection.tiles.add(tile);
+                    Tile tile1 = new Tile(width, length, name, false);
+                    field.collection.tiles.add(tile1);
+                    if(draaibaar) {
+                        Tile tile2 = new Tile(length, width, name, true);
+                        field.collection.tiles.add(tile2);
+                    }
                 }
             } catch (Exception e) {
                 System.out.println("ERROR!");
@@ -42,17 +49,27 @@ public class Main {
                 fieldStack.push(field);
             }
 
+            for(Tile tile : field.collection.tiles){
+                System.out.println(tile.name + " " + tile.turned);
+            }
+
             //klok kijken: begint voor het maken van de combi's
             long combiTime = System.nanoTime();
 
             //maakt de combi opties en slaat deze op in een 2D Array <Opties<opties<combi van tiles>>>
-            Tile biggestTile = new Tile(0,0, "x");
+            Tile biggestTile = new Tile(0,0, "x", false);
             for(Tile tile : field.collection.tiles){
-            if(tile.width>biggestTile.width){
-                biggestTile = tile;
-            }
+                if(tile.width>biggestTile.width){
+                    biggestTile = tile;
+                }
             }
             Options opties = new Options(field.breedte, field.collection, biggestTile);
+            for(int i=0; i<20; i++){
+                for(Tile tile : opties.options.get(i)){
+                    System.out.print(tile.name);
+                }
+                System.out.println();
+            }
 
             // telt het aantal combinaties
             int nCombinatie;
