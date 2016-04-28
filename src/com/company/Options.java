@@ -8,20 +8,20 @@ public class Options {
     Queue<ArrayList<Tile>> queue = new LinkedList<>();
     //ArrayList<ArrayList<Tile>> archive = new ArrayList<>();
 
+
     // The options for the first row should have the biggest tile on the first spot
     public Options(int size, TileCollection collection, Tile biggestTile){
-        System.out.println(biggestTile.name);
         fieldSize = size;
         ArrayList<Tile> first = new ArrayList<>();
         first.add(biggestTile);
         queue.add(first);
         while(true){
             ArrayList parent = queue.poll();
-            if(parent==null){
+            if(parent==null){ //queue is empty
                 break;
             }
             // archive.add(parent);
-            if(checkSum(parent)==fieldSize && parent.contains(biggestTile)){
+            if(checkSum(parent)==fieldSize && parent.contains(biggestTile)){ // possible option
                 options.add(parent);
             }
             /*else if(!parent.contains(biggestTile) && checkSum(parent) + biggestTile.width <= fieldSize){
@@ -35,6 +35,7 @@ public class Options {
         }
     }
 
+    // Options for the rest of the rows
     public Options(int size, TileCollection collection){
         fieldSize = size;
         makeStartQueue(collection.tiles);
@@ -54,7 +55,7 @@ public class Options {
         }
     }
 
-
+    // make the first arraylists, with one tile each
     private void makeStartQueue(ArrayList list){
         for(int i=0; i<list.size(); i++){
             ArrayList<Tile> element = new ArrayList<>();
@@ -63,6 +64,7 @@ public class Options {
         }
     }
 
+    // return the sum of the tilewidths
     private int checkSum(ArrayList sum){
         int result = 0;
         for(int i=0; i<sum.size(); i++){
@@ -72,7 +74,9 @@ public class Options {
         return result;
     }
 
+    // create children (adding another tile)
     private void makeChildren(ArrayList parent, ArrayList childrenOptions){
+        // remove the tiles that are already in parent from childrenOptions
         for(int i=0; i<parent.size(); i++){
             childrenOptions.remove(parent.get(i));
         }
