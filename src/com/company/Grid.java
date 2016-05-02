@@ -72,7 +72,15 @@ public class Grid {
                                 newGrid.field[i][j] = tile.name;
                             }
                         }
-                        newGrid.collection.removeTile(tile);
+                        int index = newGrid.collection.tiles.indexOf(tile);
+                        if(tile.turned){
+                            newGrid.collection.tiles.remove(index);
+                            newGrid.collection.tiles.remove(index-1);
+                        }
+                        else{
+                            newGrid.collection.tiles.remove(index+1);
+                            newGrid.collection.tiles.remove(index);
+                        }
                         return newGrid;
                     }else{
                         return null; // meteen de for-loop uit, er is toch geen plaats. (SCHEELT 20% aan RUNTIME!)

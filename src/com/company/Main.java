@@ -57,7 +57,7 @@ public class Main {
             long combiTime = System.nanoTime();
 
             //maakt de combi opties en slaat deze op in een 2D Array <Opties<opties<combi van tiles>>>
-            Tile biggestTile = new Tile(0,0, "x", false);
+            Tile biggestTile = new Tile(0,0, "xx", false);
             for(Tile tile : field.collection.tiles){
                 if(tile.width>biggestTile.width){
                     biggestTile = tile;
@@ -107,7 +107,6 @@ public class Main {
                     fieldStack.push(usefield);
                 }
             }
-
 
             // zoekt naar een oplossing mbv combi-opties depth-first search
             int space = field.breedte;
