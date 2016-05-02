@@ -5,6 +5,7 @@ import java.util.*;
 public class Grid {
 
     //Instance variables.
+    boolean draaibaar;
     int lengte;
     int Xcoordinaat;
     int breedte;
@@ -12,7 +13,8 @@ public class Grid {
     TileCollection collection = new TileCollection();
 
     //Constructor om het veld met lengte l en breedte b, gevuld met " 0 ", te maken.
-    public Grid(int b, int l) {
+    public Grid(int b, int l, boolean draai) {
+        draaibaar = draai;
         lengte = l;
         breedte = b;
         field = new String[breedte][lengte];
@@ -26,6 +28,7 @@ public class Grid {
 
     //Het copiëren van een grid door een grid te maken adhv een andere grid.
     public Grid(Grid grid) {
+        draaibaar = grid.draaibaar;
         lengte = grid.lengte;
         breedte = grid.breedte;
         field = new String [breedte][lengte];
@@ -73,17 +76,21 @@ public class Grid {
                             }
                         }
                         int index = newGrid.collection.tiles.indexOf(tile);
-                        if(tile.turned){
-                            newGrid.collection.tiles.remove(index);
-                            newGrid.collection.tiles.remove(index-1);
+                        if(draaibaar) {
+                            if (tile.turned) {
+                                newGrid.collection.tiles.remove(index);
+                                newGrid.collection.tiles.remove(index - 1);
+                            } else {
+                                newGrid.collection.tiles.remove(index + 1);
+                                newGrid.collection.tiles.remove(index);
+                            }
                         }
                         else{
-                            newGrid.collection.tiles.remove(index+1);
-                            newGrid.collection.tiles.remove(index);
+                            newGrid.collection.removeTile(tile);
                         }
                         return newGrid;
                     }else{
-                        return null; // meteen de for-loop uit, er is toch geen plaats. (SCHEELT 20% aan RUNTIME!)
+                       return null; // meteen de for-loop uit, er is toch geen plaats. (SCHEELT 20% aan RUNTIME!)
                     }
                     // er is geen ruimte voor de tile (if spaceUnoccupied)
                 }
@@ -92,7 +99,6 @@ public class Grid {
             }
             //NIET RETURN NULL, de for-loop is nog bezig.
         }
-
         return null;
     }
 

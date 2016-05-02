@@ -3,6 +3,7 @@ package com.company;
 import java.util.*;
 public class Options {
 
+    boolean draaibaar;
     int fieldSize;
     ArrayList<ArrayList<Tile>> options = new ArrayList<>();
     Queue<ArrayList<Tile>> queue = new LinkedList<>();
@@ -10,7 +11,8 @@ public class Options {
 
 
     // The options for the first row should have the biggest tile on the first spot
-    public Options(int size, TileCollection collection, Tile biggestTile){
+    public Options(int size, TileCollection collection, Tile biggestTile, boolean draai){
+        draaibaar = draai;
         fieldSize = size;
         ArrayList<Tile> first = new ArrayList<>();
         first.add(biggestTile);
@@ -36,7 +38,8 @@ public class Options {
     }
 
     // Options for the rest of the rows
-    public Options(int size, TileCollection collection){
+    public Options(int size, TileCollection collection, boolean draai){
+        draaibaar = draai;
         fieldSize = size;
         makeStartQueue(collection.tiles);
         while(true){
@@ -87,14 +90,19 @@ public class Options {
 
         // remove the tiles that are already in parent from childrenOptions
         for(Tile tile : parent){
+            if(draaibaar) {
             int index = childrenOptions.indexOf(tile);
-            if(tile.turned){
-                childrenOptions.remove(index);
-                childrenOptions.remove(index-1);
+
+                if (tile.turned) {
+                    childrenOptions.remove(index);
+                    childrenOptions.remove(index - 1);
+                } else {
+                    childrenOptions.remove(index + 1);
+                    childrenOptions.remove(index);
+                }
             }
             else{
-                childrenOptions.remove(index+1);
-                childrenOptions.remove(index);
+                childrenOptions.remove(tile);
             }
         }
 

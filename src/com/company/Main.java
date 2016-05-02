@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        boolean draaibaar = true;
+        boolean draaibaar = false;
 
         GI graphSolution = new GI();
 
@@ -24,10 +24,10 @@ public class Main {
             // maakt het begin Grid (field) en de tegels (tile) van het probleem
             // adhv de waarde die in een txt.file staan (resources/problem"")
             try {
-                Scanner sc = new Scanner(new FileReader("resources/problemA"));
+                Scanner sc = new Scanner(new FileReader("resources/problem4"));
                 int breedte = sc.nextInt();
                 int lengte = sc.nextInt();
-                field = new Grid(breedte, lengte);
+                field = new Grid(breedte, lengte, draaibaar);
                 //field.printVeld();
                 System.out.println("");
                 while (sc.hasNext()) {
@@ -63,7 +63,7 @@ public class Main {
                     biggestTile = tile;
                 }
             }
-            Options opties = new Options(field.breedte, field.collection, biggestTile);
+            Options opties = new Options(field.breedte, field.collection, biggestTile, draaibaar);
             for(int i=0; i<20; i++){
                 for(Tile tile : opties.options.get(i)){
                     System.out.print(tile.name);
@@ -118,16 +118,18 @@ public class Main {
                         fieldStack.push(currentfield);
                         break;
                     }
-                    Options fillspace = new Options(space, currentfield.collection);
+                    Options fillspace = new Options(space, currentfield.collection, draaibaar);
                     if (fillspace.options.isEmpty()) {
                         fieldStack.pop();
                     }
                     for (int j = 0; j < fillspace.options.size(); j++) {
                         Grid newField = new Grid(currentfield);
                         for (Tile tile : fillspace.options.get(j)) {
-                           // System.out.println("aantal opties " + fillspace.options.size());
-                            newField = newField.addTile(tile);
-
+                            //System.out.println("aantal opties " + fillspace.options.size());
+                            if(newField==null) {
+                                break;
+                            }
+                                newField = newField.addTile(tile);
                         }
                         if (newField != null) {
                             fieldStack.push(newField);
