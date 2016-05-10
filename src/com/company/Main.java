@@ -24,7 +24,7 @@ public class Main {
             // maakt het begin Grid (field) en de tegels (tile) van het probleem
             // adhv de waarde die in een txt.file staan (resources/problem"")
             try {
-                Scanner sc = new Scanner(new FileReader("resources/problem4"));
+                Scanner sc = new Scanner(new FileReader("resources/problemA"));
                 int breedte = sc.nextInt();
                 int lengte = sc.nextInt();
                 field = new Grid(breedte, lengte, draaibaar);
@@ -64,12 +64,7 @@ public class Main {
                 }
             }
             Options opties = new Options(field.breedte, field.collection, biggestTile, draaibaar);
-            for(int i=0; i<20; i++){
-                for(Tile tile : opties.options.get(i)){
-                    System.out.print(tile.name);
-                }
-                System.out.println();
-            }
+
 
             // telt het aantal combinaties
             int nCombinatie;
@@ -171,31 +166,6 @@ public class Main {
 
 
 
-            //Zoekt naar oplossing mbv tegel voor tegel depth-first search
-        /*    while (!fieldStack.isEmpty()) {
-                Grid currentField = fieldStack.pop();
-                for (int i = 0; i < currentField.collection.tiles.size(); i++) {
-                    Tile tile = currentField.collection.giveTile(i);
-                    Grid newField = currentField.addTile(tile);
-                    if (newField != null) {
-                        newField.collection.removeTile(tile);
-                        fieldStack.push(newField);
-                        if (fieldStack.peek().collection.tiles.isEmpty()) {
-                            while (!fieldStack.isEmpty()) {
-                                fieldStack.pop();
-                            }
-                        }
-                    }
-
-                }
-            }
-
-            if (!fieldStack.isEmpty()) {
-                fieldStack.peek().printVeld();
-            }
-
-
-    */
 
         /*Waarom zijn bananen krom?
         Als ze recht zijn vallen ze om
