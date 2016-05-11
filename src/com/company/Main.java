@@ -12,7 +12,7 @@ public class Main {
 
         GI graphSolution = new GI();
 
-        //while(true) {
+        while(true) {
             Stack<Grid> fieldStack = new Stack();
             Grid field;
             Grid printGrid;
@@ -36,7 +36,7 @@ public class Main {
                     String name = " " + sc.next() + " ";
                     Tile tile1 = new Tile(width, length, name, false);
                     field.collection.tiles.add(tile1);
-                    if(draaibaar) {
+                    if (draaibaar) {
                         Tile tile2 = new Tile(length, width, name, true);
                         field.collection.tiles.add(tile2);
                     }
@@ -49,17 +49,17 @@ public class Main {
                 fieldStack.push(field);
             }
 
-            for(Tile tile : field.collection.tiles){
-                System.out.println(tile.name + " " + tile.turned);
+            for (Tile tile : field.collection.tiles) {
+                //System.out.println(tile.name + " " + tile.turned);
             }
 
             //klok kijken: begint voor het maken van de combi's
             long combiTime = System.nanoTime();
 
             //maakt de combi opties en slaat deze op in een 2D Array <Opties<opties<combi van tiles>>>
-            Tile biggestTile = new Tile(0,0, "xx", false);
-            for(Tile tile : field.collection.tiles){
-                if(tile.width>biggestTile.width){
+            Tile biggestTile = new Tile(0, 0, "xx", false);
+            for (Tile tile : field.collection.tiles) {
+                if (tile.width > biggestTile.width) {
                     biggestTile = tile;
                 }
             }
@@ -68,7 +68,7 @@ public class Main {
 
             // telt het aantal combinaties
             int nCombinatie;
-            nCombinatie = opties.options.size() ;
+            nCombinatie = opties.options.size();
             System.out.print("Het aantal combinaties is: " + nCombinatie);
             System.out.println("");
 
@@ -78,7 +78,7 @@ public class Main {
             System.out.println("Maken van de tile combinaties - Runtime :" + combiRunTime + " nano seconden");
 
 
-        // print de gemaakte combi-opties uit.
+            // print de gemaakte combi-opties uit.
     /*        for (int i = 0; i < opties.options.size(); i++) {
                 System.out.print("[");
                 for (int j = 0; j < opties.options.get(i).size(); j++) {
@@ -121,10 +121,10 @@ public class Main {
                         Grid newField = new Grid(currentfield);
                         for (Tile tile : fillspace.options.get(j)) {
                             //System.out.println("aantal opties " + fillspace.options.size());
-                            if(newField==null) {
+                            if (newField == null) {
                                 break;
                             }
-                                newField = newField.addTile(tile);
+                            newField = newField.addTile(tile);
                         }
                         if (newField != null) {
                             fieldStack.push(newField);
@@ -136,18 +136,18 @@ public class Main {
             // klok kijken: geeft de nanoseconden die het zoeken naar de oplossing heeft geduurd.
             // print de Totale statistiek en de gevonden oplossing.
 
-            if (fieldStack.isEmpty()){
+            if (fieldStack.isEmpty()) {
                 System.out.println("er is geen oplossing");
 
-            }else{
+            } else {
                 long endTime = System.nanoTime();
                 long total = endTime - startTime;
                 long solutionTime = total + combiRunTime;
-                System.out.println("vullen van het veld met tiles - RunTime: " + total + " nano seconden");
-                System.out.println("Oplossing gevonden in totale  - RunTime: " + solutionTime +" nano seconden");
+                //System.out.println("vullen van het veld met tiles - RunTime: " + total + " nano seconden");
+                System.out.println("Oplossing gevonden in totale  - RunTime: " + solutionTime + " nano seconden");
                 System.out.println("");
                 System.out.println("de oplossing van het tegelzetten!");
-                fieldStack.peek().printVeld();
+                //fieldStack.peek().printVeld();
 
                 graphSolution.field = fieldStack.peek().field;
                 graphSolution.go();
@@ -156,8 +156,6 @@ public class Main {
 
 
             }
-
-
 
 
             //    int runTimeSec = (total)/(1*10^9);
@@ -171,9 +169,9 @@ public class Main {
         Als ze recht zijn vallen ze om
         pom pom pom
         ze liggen krom van het lachen*/
-       // }
+            // }
 
-
+        }
     }
 }
 
