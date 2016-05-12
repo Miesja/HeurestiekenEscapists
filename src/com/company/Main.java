@@ -152,18 +152,20 @@ public class Main {
                     long endTime = System.nanoTime();
                     total = endTime - startTime;
                     solutionTime = total + combiRunTime;
+                    System.out.println("vullen van het veld met tiles - RunTime: " + total + " nano seconden");
+                    System.out.println("Oplossing gevonden in totale  - RunTime: " + solutionTime +" nano seconden");
+                    System.out.println("");
+                    System.out.println("de oplossing van het tegelzetten!");
+                    fieldStack.peek().printVeld();
+
+                    graphSolution.field = fieldStack.peek().field;
+                    graphSolution.go();
                     solution = true;
+
                 }
             }
 
-                System.out.println("vullen van het veld met tiles - RunTime: " + total + " nano seconden");
-                System.out.println("Oplossing gevonden in totale  - RunTime: " + solutionTime +" nano seconden");
-                System.out.println("");
-                System.out.println("de oplossing van het tegelzetten!");
-                fieldStack.peek().printVeld();
 
-                graphSolution.field = fieldStack.peek().field;
-                graphSolution.go();
 
             }
 
