@@ -145,11 +145,11 @@ public class Main {
                         if(tile.width<biggestTile.width){
                             smallerTiles.add(tile);
                         }
-                        if(tile.width==biggestTile.width){
+                        /*if(tile.width==biggestTile.width){
                             if(tile.length!=biggestTile.length) {
                                 smallerTiles.add(tile);
                             }
-                        }
+                        }*/
                     }
                     // Er zijn geen kleinere tegels, dus: alles al geprobeerd
                     if(smallerTiles.isEmpty()){
