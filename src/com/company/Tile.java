@@ -16,6 +16,26 @@ public class Tile {
         this.name = name;
         this.turned = turned;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (!(obj instanceof Tile)){
+            return false;
+        }
+
+        Tile otherTile = (Tile)obj;
+        if( width==otherTile.width && length==otherTile.length){
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return width^3+length*8-width*2;
+    }
 }
 
 

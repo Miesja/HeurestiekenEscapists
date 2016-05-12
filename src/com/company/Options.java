@@ -5,7 +5,7 @@ public class Options {
 
     boolean draaibaar;
     int fieldSize;
-    ArrayList<ArrayList<Tile>> options = new ArrayList<>();
+    HashSet<ArrayList<Tile>> options = new HashSet<>();
     Queue<ArrayList<Tile>> queue = new LinkedList<>();
     //ArrayList<ArrayList<Tile>> archive = new ArrayList<>();
 

@@ -25,7 +25,7 @@ public class Main {
             // maakt het begin Grid (field) en de tegels (tile) van het probleem
             // adhv de waarde die in een txt.file staan (resources/problem"")
             try {
-                Scanner sc = new Scanner(new FileReader("resources/problem2"));
+                Scanner sc = new Scanner(new FileReader("resources/problemA"));
                 int breedte = sc.nextInt();
                 int lengte = sc.nextInt();
                 field = new Grid(breedte, lengte, draaibaar);
@@ -82,7 +82,7 @@ public class Main {
 
 
                 // print de gemaakte combi-opties uit.
-    /*        for (int i = 0; i < opties.options.size(); i++) {
+    /*        for (ArrayList<Tile) {
                 System.out.print("[");
                 for (int j = 0; j < opties.options.get(i).size(); j++) {
                     System.out.print(opties.options.get(i).get(j).name + ", ");
@@ -96,9 +96,9 @@ public class Main {
                 long startTime = System.nanoTime();
 
                 // combi-options toegevoegd aan de stack.
-                for (int j = 0; j < opties.options.size(); j++) {
+                for (ArrayList<Tile> option : opties.options ) {
                     Grid usefield = new Grid(field);
-                    for (Tile tile : opties.options.get(j)) {
+                    for (Tile tile : option) {
                         usefield = usefield.addTile(tile);
                     }
                     if (usefield != null) {
@@ -120,9 +120,9 @@ public class Main {
                         if (fillspace.options.isEmpty()) {
                             fieldStack.pop();
                         }
-                        for (int j = 0; j < fillspace.options.size(); j++) {
+                        for (ArrayList<Tile> spaceOption : fillspace.options) {
                             Grid newField = new Grid(currentfield);
-                            for (Tile tile : fillspace.options.get(j)) {
+                            for (Tile tile : spaceOption) {
                                 //System.out.println("aantal opties " + fillspace.options.size());
                                 if (newField == null) {
                                     break;
