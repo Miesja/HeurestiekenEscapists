@@ -128,6 +128,7 @@ public class Main2 {
             long solutionTime = total + combiRunTime;
             //System.out.println("vullen van het veld met tiles - RunTime: " + total + " nano seconden");
             System.out.println("Oplossing gevonden in totale  - RunTime: " + solutionTime + " nano seconden");
+            field.printVeld();
 
 
         }
