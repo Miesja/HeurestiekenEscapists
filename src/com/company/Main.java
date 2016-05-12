@@ -17,7 +17,7 @@ public class Main {
 
         boolean solution = false;
 
-        //while(true) {
+        //for(int c = 0; c<100; c++) {
             Stack<Grid> fieldStack = new Stack();
             Grid field;
 

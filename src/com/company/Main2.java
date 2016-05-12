@@ -8,11 +8,11 @@ public class Main2 {
 
 
 
-        boolean draaibaar = false;
+        boolean draaibaar =true;
 
         GI graphSolution = new GI();
 
-        while(true) {
+        for(int c = 0; c<100; c++) {
             Stack<Grid> fieldStack = new Stack();
             Grid field;
             Grid printGrid;
@@ -24,7 +24,7 @@ public class Main2 {
             // maakt het begin Grid (field) en de tegels (tile) van het probleem
             // adhv de waarde die in een txt.file staan (resources/problem"")
             try {
-                Scanner sc = new Scanner(new FileReader("resources/problemA"));
+                Scanner sc = new Scanner(new FileReader("resources/problemC"));
                 int breedte = sc.nextInt();
                 int lengte = sc.nextInt();
                 field = new Grid(breedte, lengte, draaibaar);
@@ -48,11 +48,11 @@ public class Main2 {
             if (field != null) {
                 fieldStack.push(field);
             }
-
+/*
             for (Tile tile : field.collection.tiles) {
                // System.out.println(tile.name + " " + tile.turned);
             }
-
+*/
             //klok kijken: begint voor het maken van de combi's
             long combiTime = System.nanoTime();
 
@@ -114,6 +114,7 @@ public class Main2 {
                         if (fieldStack.peek().collection.tiles.isEmpty()) {
                             graphSolution.field = fieldStack.peek().field;
                             graphSolution.go();
+                            System.out.println("solution Found!");
                             while (!fieldStack.isEmpty()) {
                                 fieldStack.pop();
                             }
@@ -128,7 +129,6 @@ public class Main2 {
             long solutionTime = total + combiRunTime;
             //System.out.println("vullen van het veld met tiles - RunTime: " + total + " nano seconden");
             System.out.println("Oplossing gevonden in totale  - RunTime: " + solutionTime + " nano seconden");
-            field.printVeld();
 
 
         }
