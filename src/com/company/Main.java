@@ -15,16 +15,12 @@ public class Main {
         //while(true) {
             Stack<Grid> fieldStack = new Stack();
             Grid field;
-            Grid printGrid;
-            Grid startOptionsField;
-            String[][] testGrid;
-            Stack<Grid> solutions = new Stack();
 
 
             // maakt het begin Grid (field) en de tegels (tile) van het probleem
             // adhv de waarde die in een txt.file staan (resources/problem"")
             try {
-                Scanner sc = new Scanner(new FileReader("resources/problemA"));
+                Scanner sc = new Scanner(new FileReader("resources/problem2"));
                 int breedte = sc.nextInt();
                 int lengte = sc.nextInt();
                 field = new Grid(breedte, lengte, draaibaar);
@@ -151,9 +147,6 @@ public class Main {
 
                 graphSolution.field = fieldStack.peek().field;
                 graphSolution.go();
-
-                solutions.push(fieldStack.pop());
-
 
             }
 
