@@ -55,7 +55,6 @@ public class Main {
             }
 
             //klok kijken: begint voor het maken van de combi's
-            long combiTime = System.nanoTime();
 
             //maakt de combi opties en slaat deze op in een 2D Array <Opties<opties<combi van tiles>>>
             Tile biggestTile = new Tile(0,0, "xx", false);
@@ -66,6 +65,8 @@ public class Main {
             }
 
             while(!solution) {
+                long combiTime = System.nanoTime();
+
                 Options opties = new Options(field.breedte, field.collection, biggestTile, draaibaar);
 
 
@@ -118,7 +119,7 @@ public class Main {
                         }
                         Options fillspace = new Options(space, currentfield.collection, draaibaar);
                         if (fillspace.options.isEmpty()) {
-                            fieldStack.pop();
+                            continue;
                         }
                         for (int j = 0; j < fillspace.options.size(); j++) {
                             Grid newField = new Grid(currentfield);
@@ -136,17 +137,29 @@ public class Main {
                     }
                 }
 
-                // klok kijken: geeft de nanoseconden die het zoeken naar de oplossing heeft geduurd.
-                // print de Totale statistiek en de gevonden oplossing.
-
+                // Zoek naar de een (of twee, drie etc) na grootste tegel:
+                // Eerst alle tegels die kleiner zijn dan de huidige eerste tegel
+                ArrayList<Tile> smallerTiles = new ArrayList<>();
                 if (fieldStack.isEmpty()) {
-                    Tile nextBiggest = new Tile(0,0, "xx", false);
-
-                    for(Tile tile : field.collection.tiles) {
-                        if(tile.width>nextBiggest.width && nextBiggest.width<biggestTile.width){
+                    for(Tile tile : field.collection.tiles){
+                        if(tile.width<biggestTile.width){
+                            smallerTiles.add(tile);
+                        }
+                    }
+                    // Er zijn geen kleinere tegels, dus: alles al geprobeerd
+                    if(smallerTiles.isEmpty()){
+                        System.out.println("geen oplossing");
+                        solution = true;
+                    }
+                    // Vind de grootste tegel van de kleinere tegels
+                    Tile nextBiggest = new Tile(0,0, "xxx", false);
+                    for (Tile tile : smallerTiles){
+                        if(tile.width>nextBiggest.width){
                             nextBiggest = tile;
                         }
                     }
+                    System.out.println(nextBiggest.name);
+                    biggestTile = nextBiggest;
                 }
                 else {
                     long endTime = System.nanoTime();
