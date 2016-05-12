@@ -88,9 +88,9 @@ public class Main2 {
             long startTime = System.nanoTime();
 
             // combi-options toegevoegd aan de stack.
-            for (int j = 0; j < opties.options.size(); j++) {
+            for (ArrayList<Tile> option : opties.options ) {
                 Grid usefield = new Grid(field);
-                for (Tile tile : opties.options.get(j)) {
+                for (Tile tile : option) {
                     usefield = usefield.addTile(tile);
                 }
                 if (usefield != null) {
@@ -103,6 +103,7 @@ public class Main2 {
 
 
             //Zoekt naar oplossing mbv tegel voor tegel depth-first search
+
             while (!fieldStack.isEmpty()) {
                 Grid currentField = fieldStack.pop();
                 for (int i = 0; i < currentField.collection.tiles.size(); i++) {
