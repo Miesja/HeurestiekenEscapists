@@ -25,7 +25,7 @@ public class Main {
             // maakt het begin Grid (field) en de tegels (tile) van het probleem
             // adhv de waarde die in een txt.file staan (resources/problem"")
             try {
-                Scanner sc = new Scanner(new FileReader("resources/problemA"));
+                Scanner sc = new Scanner(new FileReader("resources/problem2"));
                 int breedte = sc.nextInt();
                 int lengte = sc.nextInt();
                 field = new Grid(breedte, lengte, draaibaar);
@@ -144,6 +144,11 @@ public class Main {
                     for(Tile tile : field.collection.tiles){
                         if(tile.width<biggestTile.width){
                             smallerTiles.add(tile);
+                        }
+                        if(tile.width==biggestTile.width){
+                            if(tile.length!=biggestTile.length) {
+                                smallerTiles.add(tile);
+                            }
                         }
                     }
                     // Er zijn geen kleinere tegels, dus: alles al geprobeerd
