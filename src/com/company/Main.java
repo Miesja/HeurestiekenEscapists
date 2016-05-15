@@ -8,9 +8,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        boolean draaibaar = false;
+        boolean draaibaar = true;
         long total = 0;
         long solutionTime = 0;
+        ArrayList<Tile> Tiles = new ArrayList<>();
 
 
         GI graphSolution = new GI();
@@ -25,7 +26,7 @@ public class Main {
             // maakt het begin Grid (field) en de tegels (tile) van het probleem
             // adhv de waarde die in een txt.file staan (resources/problem"")
             try {
-                Scanner sc = new Scanner(new FileReader("resources/problem2"));
+                Scanner sc = new Scanner(new FileReader("resources/problem3"));
                 int breedte = sc.nextInt();
                 int lengte = sc.nextInt();
                 field = new Grid(breedte, lengte, draaibaar);
@@ -37,9 +38,11 @@ public class Main {
                     String name = " " + sc.next() + " ";
                     Tile tile1 = new Tile(width, length, name, false);
                     field.collection.tiles.add(tile1);
+                    Tiles.add(tile1);
                     if(draaibaar) {
                         Tile tile2 = new Tile(length, width, name, true);
                         field.collection.tiles.add(tile2);
+                        Tiles.add(tile1);
                     }
                 }
             } catch (Exception e) {
@@ -65,8 +68,8 @@ public class Main {
             }
 
             while(!solution) {
+                Tiles.remove(biggestTile);
                 long combiTime = System.nanoTime();
-
                 Options opties = new Options(field.breedte, field.collection, biggestTile, draaibaar);
 
 
@@ -138,33 +141,22 @@ public class Main {
                 }
 
                 // Zoek naar de een (of twee, drie etc) na grootste tegel:
-                // Eerst alle tegels die kleiner zijn dan de huidige eerste tegel
-                ArrayList<Tile> smallerTiles = new ArrayList<>();
                 if (fieldStack.isEmpty()) {
-                    for(Tile tile : field.collection.tiles){
-                        if(tile.width<biggestTile.width){
-                            smallerTiles.add(tile);
-                        }
-                        /*if(tile.width==biggestTile.width){
-                            if(tile.length!=biggestTile.length) {
-                                smallerTiles.add(tile);
+                    if(!Tiles.isEmpty()) {
+                        Tile nextBiggest = new Tile(0, 0, "xxx", false);
+                        for (Tile tile : Tiles) {
+                            System.out.println(tile.name);
+                            if (tile.width > nextBiggest.width) {
+                                nextBiggest = tile;
                             }
-                        }*/
+                        }
+                        System.out.println(nextBiggest.name);
+                        biggestTile = nextBiggest;
                     }
-                    // Er zijn geen kleinere tegels, dus: alles al geprobeerd
-                    if(smallerTiles.isEmpty()){
-                        System.out.println("geen oplossing");
+                    else{
+                        System.out.println("Geen oplossing gevonden");
                         solution = true;
                     }
-                    // Vind de grootste tegel van de kleinere tegels
-                    Tile nextBiggest = new Tile(0,0, "xxx", false);
-                    for (Tile tile : smallerTiles){
-                        if(tile.width>nextBiggest.width){
-                            nextBiggest = tile;
-                        }
-                    }
-                    System.out.println(nextBiggest.name);
-                    biggestTile = nextBiggest;
                 }
                 else {
                     long endTime = System.nanoTime();

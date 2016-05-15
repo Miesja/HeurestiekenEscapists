@@ -77,13 +77,15 @@ public class Grid {
                         }
                         int index = newGrid.collection.tiles.indexOf(tile);
                         if(draaibaar) {
-                            if (tile.turned) {
+                            newGrid.collection.tiles.remove(tile);
+                            newGrid.collection.tiles.remove(tile);
+                            /*if (tile.turned) {
                                 newGrid.collection.tiles.remove(index);
                                 newGrid.collection.tiles.remove(index - 1);
                             } else {
                                 newGrid.collection.tiles.remove(index + 1);
                                 newGrid.collection.tiles.remove(index);
-                            }
+                            }*/
                         }
                         else{
                             newGrid.collection.removeTile(tile);
