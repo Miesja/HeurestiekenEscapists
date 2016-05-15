@@ -8,19 +8,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-        for(int c=0; c<100; c++) {
+        boolean draaibaar = true;
+        long total = 0;
+        long solutionTime = 0;
+        ArrayList<Tile> Tiles = new ArrayList<>();
 
 
-            boolean draaibaar = false;
-            long total = 0;
-            long solutionTime = 0;
+        GI graphSolution = new GI();
 
+        boolean solution = false;
 
-            GI graphSolution = new GI();
-
-            boolean solution = false;
-
-
+        //for(int c = 0; c<100; c++) {
             Stack<Grid> fieldStack = new Stack();
             Grid field;
 
@@ -28,7 +26,7 @@ public class Main {
             // maakt het begin Grid (field) en de tegels (tile) van het probleem
             // adhv de waarde die in een txt.file staan (resources/problem"")
             try {
-                Scanner sc = new Scanner(new FileReader("resources/problemA"));
+                Scanner sc = new Scanner(new FileReader("resources/problem3"));
                 int breedte = sc.nextInt();
                 int lengte = sc.nextInt();
                 field = new Grid(breedte, lengte, draaibaar);
@@ -40,9 +38,11 @@ public class Main {
                     String name = " " + sc.next() + " ";
                     Tile tile1 = new Tile(width, length, name, false);
                     field.collection.tiles.add(tile1);
-                    if (draaibaar) {
+                    Tiles.add(tile1);
+                    if(draaibaar) {
                         Tile tile2 = new Tile(length, width, name, true);
                         field.collection.tiles.add(tile2);
+                        Tiles.add(tile1);
                     }
                 }
             } catch (Exception e) {
@@ -53,30 +53,25 @@ public class Main {
                 fieldStack.push(field);
             }
 
-    /*            // print de naam en boolean draaibaar van de Tiles
-                for(Tile tile : field.collection.tiles){
-                    System.out.println(tile.name + " " + tile.turned);
-                }
-    */
+            for(Tile tile : field.collection.tiles){
+                System.out.println(tile.name + " " + tile.turned);
+            }
+
             //klok kijken: begint voor het maken van de combi's
 
             //maakt de combi opties en slaat deze op in een 2D Array <Opties<opties<combi van tiles>>>
-            Tile biggestTile = new Tile(0, 0, "xx", false);
-            for (Tile tile : field.collection.tiles) {
-                if (tile.width > biggestTile.width) {
+            Tile biggestTile = new Tile(0,0, "xx", false);
+            for(Tile tile : field.collection.tiles){
+                if(tile.width>biggestTile.width){
                     biggestTile = tile;
                 }
             }
 
-            // zoekt naar de oplossing
-            while (!solution) {
+            while(!solution) {
+                Tiles.remove(biggestTile);
                 long combiTime = System.nanoTime();
-
                 Options opties = new Options(field.breedte, field.collection, biggestTile, draaibaar);
 
-                //tellen van de cyclus
-                System.out.print("cylus nr: "+c);
-                System.out.print("");
 
                 // telt het aantal combinaties
                 int nCombinatie;
@@ -91,20 +86,21 @@ public class Main {
 
 
                 // print de gemaakte combi-opties uit.
-        /*        for (ArrayList<Tile) {
-                    System.out.print("[");
-                    for (int j = 0; j < opties.options.get(i).size(); j++) {
-                        System.out.print(opties.options.get(i).get(j).name + ", ");
-                    }
-                    System.out.print("], ");
+    /*        for (ArrayList<Tile) {
+                System.out.print("[");
+                for (int j = 0; j < opties.options.get(i).size(); j++) {
+                    System.out.print(opties.options.get(i).get(j).name + ", ");
                 }
-        */
+                System.out.print("], ");
+            }
+    */
+
 
                 //klok kijken: begint voor je de combi's toevoegd aan de stack (voor de depth-first)
                 long startTime = System.nanoTime();
 
                 // combi-options toegevoegd aan de stack.
-                for (ArrayList<Tile> option : opties.options) {
+                for (ArrayList<Tile> option : opties.options ) {
                     Grid usefield = new Grid(field);
                     for (Tile tile : option) {
                         usefield = usefield.addTile(tile);
@@ -145,38 +141,32 @@ public class Main {
                 }
 
                 // Zoek naar de een (of twee, drie etc) na grootste tegel:
-                // Eerst alle tegels die kleiner zijn dan de huidige eerste tegel
-                ArrayList<Tile> smallerTiles = new ArrayList<>();
                 if (fieldStack.isEmpty()) {
-                    for (Tile tile : field.collection.tiles) {
-                        if (tile.width < biggestTile.width) {
-                            smallerTiles.add(tile);
+                    if(!Tiles.isEmpty()) {
+                        Tile nextBiggest = new Tile(0, 0, "xxx", false);
+                        for (Tile tile : Tiles) {
+                            System.out.println(tile.name);
+                            if (tile.width > nextBiggest.width) {
+                                nextBiggest = tile;
+                            }
                         }
+                        System.out.println(nextBiggest.name);
+                        biggestTile = nextBiggest;
                     }
-                    // Er zijn geen kleinere tegels, dus: alles al geprobeerd
-                    if (smallerTiles.isEmpty()) {
-                        System.out.println("geen oplossing");
+                    else{
+                        System.out.println("Geen oplossing gevonden");
                         solution = true;
                     }
-                    // Vind de grootste tegel van de kleinere tegels
-                    Tile nextBiggest = new Tile(0, 0, "xxx", false);
-                    for (Tile tile : smallerTiles) {
-                        if (tile.width > nextBiggest.width) {
-                            nextBiggest = tile;
-                        }
-                    }
-                    System.out.println(nextBiggest.name);
-                    biggestTile = nextBiggest;
-                } else {
+                }
+                else {
                     long endTime = System.nanoTime();
                     total = endTime - startTime;
                     solutionTime = total + combiRunTime;
                     System.out.println("vullen van het veld met tiles - RunTime: " + total + " nano seconden");
-                    System.out.println("Oplossing gevonden in totale  - RunTime: " + solutionTime + " nano seconden");
+                    System.out.println("Oplossing gevonden in totale  - RunTime: " + solutionTime +" nano seconden");
                     System.out.println("");
                     System.out.println("de oplossing van het tegelzetten!");
-                    System.out.println("");
-                    //fieldStack.peek().printVeld();
+                    fieldStack.peek().printVeld();
 
                     graphSolution.field = fieldStack.peek().field;
                     graphSolution.go();
@@ -185,9 +175,9 @@ public class Main {
                 }
             }
 
-        }
-    }
-}
+
+
+            }
 
 
 
@@ -206,5 +196,5 @@ public class Main {
        // }
 
 
-
+    }
 

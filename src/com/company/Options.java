@@ -23,13 +23,9 @@ public class Options {
                 break;
             }
             // archive.add(parent);
-            if(checkSum(parent)==fieldSize && parent.contains(biggestTile)){ // possible option
+            if(checkSum(parent)==fieldSize){ // possible option
                 options.add(parent);
             }
-            /*else if(!parent.contains(biggestTile) && checkSum(parent) + biggestTile.width <= fieldSize){
-                ArrayList<Tile> child = new ArrayList<>(parent);
-                child.add(biggestTile);
-            }*/
             else if(checkSum(parent)<fieldSize){
                 ArrayList<Tile> possChildren = new ArrayList<>(collection.tiles);
                 makeChildren(parent, possChildren);
@@ -80,26 +76,22 @@ public class Options {
     // create children (adding another tile)
     private void makeChildren(ArrayList<Tile> parent, ArrayList<Tile> childrenOptions){
 
-
-        // ARCHIVE: gebruikt voor het maken zonder permutaties
-        /*int x = 0;
-        while(x<childrenOptions.size() && childrenOptions.get(x)!=parent.get(0)){
-            childrenOptions.remove(x);
-            x++;
-        }*/
-
         // remove the tiles that are already in parent from childrenOptions
         for(Tile tile : parent){
             if(draaibaar) {
-            int index = childrenOptions.indexOf(tile);
+                childrenOptions.remove(tile);
+                childrenOptions.remove(tile);
+                /*int index = childrenOptions.indexOf(tile);
 
                 if (tile.turned) {
                     childrenOptions.remove(index);
-                    childrenOptions.remove(index - 1);
+                    System.out.println("index-1" + childrenOptions.get(index-1).name + childrenOptions.get(index-1).turned);
+
+                    childrenOptions.remove(index-1);
                 } else {
                     childrenOptions.remove(index + 1);
                     childrenOptions.remove(index);
-                }
+                }*/
             }
             else{
                 childrenOptions.remove(tile);
