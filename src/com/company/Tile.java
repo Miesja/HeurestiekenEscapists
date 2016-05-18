@@ -25,11 +25,8 @@ public class Tile {
         }
 
         Tile otherTile = (Tile)obj;
-        if( width==otherTile.width && length==otherTile.length){
-            return true;
-        }
+        return width == otherTile.width && length == otherTile.length;
 
-        return false;
     }
 
     @Override

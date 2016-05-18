@@ -170,7 +170,7 @@ public class Main {
                         System.out.println("de oplossing van het tegelzetten!");
                        // fieldStack.peek().printVeld();
 
-                        graphSolution.field = fieldStack.peek().field;
+                        GI.field = fieldStack.peek().field;
                         graphSolution.go();
                         solution = true;
 

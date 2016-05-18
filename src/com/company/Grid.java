@@ -36,20 +36,20 @@ public class Grid {
             collection.tiles.add(grid.collection.giveTile(i));
         }
         for(int x=0; x<breedte; x++){
+            System.arraycopy(grid.field[x], 0, field[x], 0, lengte);
+            /* Dit was:
             for(int y=0; y<lengte; y++){
-               field[x][y] = grid.field[x][y];
-
-            }
+                field[x][y] = grid.field[x][y];*/
         }
     }
 
     // kijkt hoeveel lege plekken in een rij
     public int emptyRowSize() {
-        for (int y = 0; y < this.lengte; y++) {
-            for (int x=0; x<this.breedte; x++) {
-                if (this.field[x][y].equals(" 0 ")) {
+        for (int y = 0; y < lengte; y++) {
+            for (int x=0; x<breedte; x++) {
+                if (field[x][y].equals(" 0 ")) {
                     int newX = x;
-                    while (newX < this.breedte && this.field[newX][y].equals(" 0 ")) {
+                    while (newX < breedte && field[newX][y].equals(" 0 ")) {
                         newX++;
 
                     }
@@ -63,9 +63,9 @@ public class Grid {
     //Plaatst tiles
     public Grid addTile(Tile tile){
         // zoekt het veld (naar de eerste "vrije" x,y coordinaat. en geeft deze door)
-        for (int y = 0; y <this.lengte; y++) {
-            for (int x=0; x<this.breedte; x++) {
-                if (this.field[x][y].equals(" 0 ")) {
+        for (int y = 0; y <lengte; y++) {
+            for (int x=0; x<breedte; x++) {
+                if (field[x][y].equals(" 0 ")) {
                    //de oude "setTile"
                     if (spaceUnoccupied(tile, x, y)) {
                         Grid newGrid = new Grid(this);
@@ -77,8 +77,8 @@ public class Grid {
                         }
                         int index = newGrid.collection.tiles.indexOf(tile);
                         if(draaibaar) {
-                            newGrid.collection.tiles.remove(tile);
-                            newGrid.collection.tiles.remove(tile);
+                            newGrid.collection.removeTile(tile);
+                            newGrid.collection.removeTile(tile);
                             /*if (tile.turned) {
                                 newGrid.collection.tiles.remove(index);
                                 newGrid.collection.tiles.remove(index - 1);
@@ -140,7 +140,7 @@ public class Grid {
     //Controleert of er geen tegel ligt waar de nieuwe tegel geplaatst wilt worden
     public boolean spaceUnoccupied(Tile tile, int XPoint, int YPoint){
         int empty = 0;
-        if ((XPoint + tile.width) <= this.breedte && (YPoint+tile.length)<= this.lengte){
+        if ((XPoint + tile.width) <= breedte && (YPoint+tile.length)<= lengte){
             for (int x = XPoint; x < (XPoint + tile.width); x++) {
                 for (int y = YPoint; y < (YPoint + tile.length); y++) {
                     if(field[x][y].equals(" 0 ")){
@@ -150,10 +150,7 @@ public class Grid {
             }
         }
         //Controleert of alle plaatsen leeg zijn
-        if(empty==(tile.width*tile.length)){
-            return true;
-        }
-        return false;
+        return empty == (tile.width * tile.length);
     }
 
 
@@ -170,10 +167,7 @@ public class Grid {
                 }
             }
         }
-        if(filled==(lengte*breedte)) {
-            return true;
-        }
-        return false;
+        return filled == (lengte * breedte);
     }
 
     //Het printen van het veld.

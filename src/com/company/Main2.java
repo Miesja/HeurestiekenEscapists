@@ -113,7 +113,7 @@ public class Main2 {
                         newField.collection.removeTile(tile);
                         fieldStack.push(newField);
                         if (fieldStack.peek().collection.tiles.isEmpty()) {
-                            graphSolution.field = fieldStack.peek().field;
+                            GI.field = fieldStack.peek().field;
                             graphSolution.go();
                             System.out.println("solution Found!");
                             while (!fieldStack.isEmpty()) {
