@@ -27,7 +27,7 @@ public class Main {
                 // maakt het begin Grid (field) en de tegels (tile) van het probleem
                 // adhv de waarde die in een txt.file staan (resources/problem"")
                 try {
-                    Scanner sc = new Scanner(new FileReader("resources/problemA"));
+                    Scanner sc = new Scanner(new FileReader("resources/problem7a"));
                     int breedte = sc.nextInt();
                     int lengte = sc.nextInt();
                     field = new Grid(breedte, lengte, draaibaar);
@@ -149,16 +149,14 @@ public class Main {
                         if (!Tiles.isEmpty()) {
                             Tile nextBiggest = new Tile(0, 0, "xxx", false);
                             for (Tile tile : Tiles) {
-                                System.out.println(tile.name);
                                 if (tile.width > nextBiggest.width) {
                                     nextBiggest = tile;
                                 }
                             }
-                            System.out.println(nextBiggest.name);
                             biggestTile = nextBiggest;
                         } else {
                             System.out.println("Geen oplossing gevonden");
-                            solution = true;
+                            return;
                         }
                     } else {
                         long endTime = System.nanoTime();
