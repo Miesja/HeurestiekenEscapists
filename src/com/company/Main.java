@@ -156,7 +156,8 @@ public class Main {
                             biggestTile = nextBiggest;
                         } else {
                             System.out.println("Geen oplossing gevonden");
-                            return;
+                            //solution = true // wel loop als geen oplossing
+                            return; // geen loop als geen oplossing
                         }
                     } else {
                         long endTime = System.nanoTime();
