@@ -153,6 +153,7 @@ public class Main {
                                     nextBiggest = tile;
                                 }
                             }
+                            System.out.println("New biggestTile is " +nextBiggest.name);
                             biggestTile = nextBiggest;
                         } else {
                             System.out.println("Geen oplossing gevonden");
