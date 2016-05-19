@@ -19,7 +19,7 @@ package com.company;
                 int iLengte = GI.field.length;
                 int jLengte = GI.field[1].length;
 
-                int tileSize = 20;
+                int tileSize = 10;
 
                 for (int i = 0; i < iLengte; i ++) {
                     for (int j = 0; j < jLengte; j ++) {
@@ -111,7 +111,6 @@ package com.company;
 
 
                     }
-
                 }
             }
 
@@ -174,8 +173,11 @@ package com.company;
 
 
             DrawPanel dpnl = new DrawPanel();
+            if(field!=null) {
+                dpnl.setPreferredSize(new Dimension(field.length * 10, field[1].length * 10));
+            }
             add(dpnl);
-            setSize(1000, 1000);
+            pack();
 
             setTitle("Solution");
             setLocationRelativeTo(null);
