@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        for (int c = 0; c < 1; c++) {
+        for (int c = 0; c < 100; c++) {
             boolean draaibaar = true;
             long total = 0;
             long solutionTime = 0;
