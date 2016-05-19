@@ -11,7 +11,7 @@ public class Options {
 
 
     // The options for the first row should have the biggest tile on the first spot
-    public Options(int size, TileCollection collection, Tile biggestTile, boolean draai){
+    public Options(int size, ArrayList<Tile> collection, Tile biggestTile, boolean draai){
         draaibaar = draai;
         fieldSize = size;
         ArrayList<Tile> first = new ArrayList<>();
@@ -27,17 +27,17 @@ public class Options {
                 options.add(parent);
             }
             else if(checkSum(parent)<fieldSize){
-                ArrayList<Tile> possChildren = new ArrayList<>(collection.tiles);
+                ArrayList<Tile> possChildren = new ArrayList<>(collection);
                 makeChildren(parent, possChildren);
             }
         }
     }
 
     // Options for the rest of the rows
-    public Options(int size, TileCollection collection, boolean draai){
+    public Options(int size, ArrayList<Tile> collection, boolean draai){
         draaibaar = draai;
         fieldSize = size;
-        makeStartQueue(collection.tiles);
+        makeStartQueue(collection);
         while(true){
             ArrayList parent = queue.poll();
             if(parent==null){
@@ -48,7 +48,7 @@ public class Options {
                 options.add(parent);
             }
             else if(checkSum(parent)<fieldSize){
-                ArrayList<Tile> possChildren = new ArrayList<>(collection.tiles);
+                ArrayList<Tile> possChildren = new ArrayList<>(collection);
                 makeChildren(parent, possChildren);
             }
         }

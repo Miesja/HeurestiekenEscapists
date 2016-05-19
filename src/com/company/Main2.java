@@ -35,10 +35,10 @@ public class Main2 {
                     int length = sc.nextInt();
                     String name = " " + sc.next() + " ";
                     Tile tile1 = new Tile(width, length, name, false);
-                    field.collection.tiles.add(tile1);
+                    field.tiles.add(tile1);
                     if (draaibaar) {
                         Tile tile2 = new Tile(length, width, name, true);
-                        field.collection.tiles.add(tile2);
+                        field.tiles.add(tile2);
                     }
                 }
             } catch (Exception e) {
@@ -58,7 +58,7 @@ public class Main2 {
 
             //maakt de combi opties en slaat deze op in een 2D Array <Opties<opties<combi van tiles>>>
 
-            Options opties = new Options(field.breedte, field.collection, draaibaar);
+            Options opties = new Options(field.breedte, field.tiles, draaibaar);
 
 
             // telt het aantal combinaties
@@ -106,13 +106,13 @@ public class Main2 {
 
             while (!fieldStack.isEmpty()) {
                 Grid currentField = fieldStack.pop();
-                for (int i = 0; i < currentField.collection.tiles.size(); i++) {
-                    Tile tile = currentField.collection.giveTile(i);
+                for (int i = 0; i < currentField.tiles.size(); i++) {
+                    Tile tile = currentField.giveTile(i);
                     Grid newField = currentField.addTile(tile);
                     if (newField != null) {
-                        newField.collection.removeTile(tile);
+                        newField.removeFromCollection(tile);
                         fieldStack.push(newField);
-                        if (fieldStack.peek().collection.tiles.isEmpty()) {
+                        if (fieldStack.peek().tiles.isEmpty()) {
                             GI.field = fieldStack.peek().field;
                             graphSolution.go();
                             System.out.println("solution Found!");

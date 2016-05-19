@@ -38,11 +38,11 @@ public class Main {
                         int length = sc.nextInt();
                         String name = " " + sc.next() + " ";
                         Tile tile1 = new Tile(width, length, name, false);
-                        field.collection.tiles.add(tile1);
+                        field.tiles.add(tile1);
                         Tiles.add(tile1);
                         if (draaibaar) {
                             Tile tile2 = new Tile(length, width, name, true);
-                            field.collection.tiles.add(tile2);
+                            field.tiles.add(tile2);
                             Tiles.add(tile1);
                         }
                     }
@@ -62,7 +62,7 @@ public class Main {
 
                 //maakt de combi opties en slaat deze op in een 2D Array <Opties<opties<combi van tiles>>>
                 Tile biggestTile = new Tile(0, 0, "xx", false);
-                for (Tile tile : field.collection.tiles) {
+                for (Tile tile : field.tiles) {
                     if (tile.width > biggestTile.width) {
                         biggestTile = tile;
                     }
@@ -71,7 +71,7 @@ public class Main {
                 while (!solution) {
                     Tiles.remove(biggestTile);
                     long combiTime = System.nanoTime();
-                    Options opties = new Options(field.breedte, field.collection, biggestTile, draaibaar);
+                    Options opties = new Options(field.breedte, field.tiles, biggestTile, draaibaar);
 
                     //telt het aantal cycli
                     System.out.print("Cyclus nr: " +c + " ");
@@ -124,7 +124,7 @@ public class Main {
                                 fieldStack.push(currentfield);
                                 break;
                             }
-                            Options fillspace = new Options(space, currentfield.collection, draaibaar);
+                            Options fillspace = new Options(space, currentfield.tiles, draaibaar);
                             if (fillspace.options.isEmpty()) {
                                 continue;
                             }

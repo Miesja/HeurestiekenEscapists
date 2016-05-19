@@ -10,7 +10,22 @@ public class Grid {
     int Xcoordinaat;
     int breedte;
     String[][] field;
-    TileCollection collection = new TileCollection();
+
+
+    ArrayList<Tile> tiles = new ArrayList<>();
+
+    //Haalt een specifieke tile uit de collectie en geeft deze terug zodat er
+    // verder mee gewerkt kan worden
+    public Tile giveTile(int index){
+        Tile x = tiles.get(index);
+        return x;
+    }
+
+    //Haalt een tile uit de collectie zodat deze niet nogmaals gebruikt kan
+    //worden in een Grid
+    public void removeFromCollection(Tile tile){
+        tiles.remove(tile);
+    }
 
     //Constructor om het veld met lengte l en breedte b, gevuld met " 0 ", te maken.
     public Grid(int b, int l, boolean draai) {
@@ -32,8 +47,8 @@ public class Grid {
         lengte = grid.lengte;
         breedte = grid.breedte;
         field = new String [breedte][lengte];
-        for(int i=0; i<grid.collection.tiles.size(); i++){
-            collection.tiles.add(grid.collection.giveTile(i));
+        for(int i=0; i<grid.tiles.size(); i++){
+            tiles.add(grid.giveTile(i));
         }
         for(int x=0; x<breedte; x++){
             System.arraycopy(grid.field[x], 0, field[x], 0, lengte);
@@ -75,20 +90,12 @@ public class Grid {
                                 newGrid.field[i][j] = tile.name;
                             }
                         }
-                        int index = newGrid.collection.tiles.indexOf(tile);
                         if(draaibaar) {
-                            newGrid.collection.removeTile(tile);
-                            newGrid.collection.removeTile(tile);
-                            /*if (tile.turned) {
-                                newGrid.collection.tiles.remove(index);
-                                newGrid.collection.tiles.remove(index - 1);
-                            } else {
-                                newGrid.collection.tiles.remove(index + 1);
-                                newGrid.collection.tiles.remove(index);
-                            }*/
+                            newGrid.removeFromCollection(tile);
+                            newGrid.removeFromCollection(tile);
                         }
                         else{
-                            newGrid.collection.removeTile(tile);
+                            newGrid.removeFromCollection(tile);
                         }
                         return newGrid;
                     }else{
@@ -112,7 +119,7 @@ public class Grid {
                 if (this.field[x][y].equals(" 0 ")) {
                     Grid newGrid = this.SetTile(tile, x, y);
                     if (newGrid != null) {
-                        newGrid.collection.removeTile(tile);
+                        newGrid.collection.removeFromCollection(tile);
                         newGrid.Xcoordinaat = newGrid.Xcoordinaat+tile.width;
                         return newGrid;
                     }
