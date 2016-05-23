@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        for (int c = 0; c < 100; c++) {
+        for (int c = 0; c < 1; c++) {
             boolean draaibaar = true;
             long total = 0;
             long solutionTime = 0;
@@ -27,7 +27,7 @@ public class Main {
                 // maakt het begin Grid (field) en de tegels (tile) van het probleem
                 // adhv de waarde die in een txt.file staan (resources/problem"")
                 try {
-                    Scanner sc = new Scanner(new FileReader("resources/problemA"));
+                    Scanner sc = new Scanner(new FileReader("resources/problem7a"));
                     int breedte = sc.nextInt();
                     int lengte = sc.nextInt();
                     field = new Grid(breedte, lengte, draaibaar);
@@ -43,7 +43,7 @@ public class Main {
                         if (draaibaar) {
                             Tile tile2 = new Tile(length, width, name, true);
                             field.tiles.add(tile2);
-                            Tiles.add(tile1);
+                            Tiles.add(tile2);
                         }
                     }
                 } catch (Exception e) {
@@ -153,7 +153,7 @@ public class Main {
                                     nextBiggest = tile;
                                 }
                             }
-                            System.out.println("New biggestTile is " +nextBiggest.name);
+                            System.out.println("New biggestTile is " +nextBiggest.name + nextBiggest.turned);
                             biggestTile = nextBiggest;
                         } else {
                             System.out.println("Geen oplossing gevonden");
