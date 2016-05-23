@@ -17,6 +17,11 @@ public class Tile {
         this.turned = turned;
     }
 
+    public Tile turnTile(){
+        Tile turnedTile = new Tile(this.length, this.width, this.name, turned);
+        return turnedTile;
+    }
+
     @Override
     public boolean equals(Object obj) {
 

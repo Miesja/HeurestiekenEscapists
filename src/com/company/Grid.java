@@ -11,7 +11,6 @@ public class Grid {
     int breedte;
     String[][] field;
 
-
     ArrayList<Tile> tiles = new ArrayList<>();
 
     //Haalt een specifieke tile uit de collectie en geeft deze terug zodat er
@@ -92,7 +91,8 @@ public class Grid {
                         }
                         if(draaibaar) {
                             newGrid.removeFromCollection(tile);
-                            newGrid.removeFromCollection(tile);
+                            Tile turned = tile.turnTile();
+                            newGrid.removeFromCollection(turned);
                         }
                         else{
                             newGrid.removeFromCollection(tile);

@@ -77,10 +77,12 @@ public class Options {
     private void makeChildren(ArrayList<Tile> parent, ArrayList<Tile> childrenOptions){
 
         // remove the tiles that are already in parent from childrenOptions
+
         for(Tile tile : parent){
             if(draaibaar) {
                 childrenOptions.remove(tile);
-                childrenOptions.remove(tile);
+                Tile turned = tile.turnTile();
+                childrenOptions.remove(turned);
                 /*int index = childrenOptions.indexOf(tile);
 
                 if (tile.turned) {

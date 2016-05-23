@@ -27,7 +27,7 @@ public class Main {
                 // maakt het begin Grid (field) en de tegels (tile) van het probleem
                 // adhv de waarde die in een txt.file staan (resources/problem"")
                 try {
-                    Scanner sc = new Scanner(new FileReader("resources/problem7a"));
+                    Scanner sc = new Scanner(new FileReader("resources/problem1"));
                     int breedte = sc.nextInt();
                     int lengte = sc.nextInt();
                     field = new Grid(breedte, lengte, draaibaar);
@@ -172,6 +172,7 @@ public class Main {
 
                         GI.field = fieldStack.peek().field;
                         graphSolution.go();
+                        fieldStack.peek().printVeld();
                         solution = true;
 
                     }
