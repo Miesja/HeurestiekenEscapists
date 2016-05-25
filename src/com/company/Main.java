@@ -8,31 +8,29 @@ public class Main {
 
     public static void main(String[] args) {
 
+        // adjust the number of cycles you wish the program to run.
         for (int c = 0; c < 1; c++) {
             boolean draaibaar = false;
             long total = 0;
             long solutionTime = 0;
             ArrayList<Tile> Tiles = new ArrayList<>();
 
-
             GI graphSolution = new GI();
 
             boolean solution = false;
-
 
                 Stack<Grid> fieldStack = new Stack();
                 Grid field;
 
 
-                // maakt het begin Grid (field) en de tegels (tile) van het probleem
-                // adhv de waarde die in een txt.file staan (resources/problem"")
+                // makes the starting grid (field) and the Tiles of the problem set
+                // based on the data collected from the textfile "resources/problem "
                 try {
                     Scanner sc = new Scanner(new FileReader("resources/problemC"));
                     System.out.println("problemC" + draaibaar);
                     int breedte = sc.nextInt();
                     int lengte = sc.nextInt();
                     field = new Grid(breedte, lengte, draaibaar);
-                    //field.printVeld();
                     System.out.println("");
                     while (sc.hasNext()) {
                         int width = sc.nextInt();
@@ -55,14 +53,15 @@ public class Main {
                     fieldStack.push(field);
                 }
     /*
+                // prints out the name of each tile and wether it has been turned
                 for(Tile tile : field.collection.tiles){
                     System.out.println(tile.name + " " + tile.turned);
                 }
     */
-                //klok kijken: begint voor het maken van de combi's
+                //CountingClock: begins before generating the intial combination option.
                 long combiTime = System.nanoTime();
 
-                //maakt de combi opties en slaat deze op in een 2D Array <Opties<opties<combi van tiles>>>
+                //searches through the tiles available for the "biggest Tile" to use for the firstRow option
                 Tile biggestTile = new Tile(0, 0, "xx", false);
                 for (Tile tile : field.tiles) {
                     if (tile.width > biggestTile.width) {
@@ -71,28 +70,28 @@ public class Main {
                 }
 
                 while (!solution) {
+                    // generates the possible options to fill the first Row,
+                    // using the BiggestTile as the first Tile placed on the Grid.
                     Tiles.remove(biggestTile);
-
                     Options opties = new Options(field.breedte, field.tiles, biggestTile, draaibaar);
 
-                    //telt het aantal cycli
+                    // counts the amount of Cycles
                     System.out.print("Cyclus nr: " +c + " ");
                     System.out.println("");
 
-                    // telt het aantal combinaties
+                    // Counts the number of initial options possible with the tiles.
                     int nCombinatie;
                     nCombinatie = opties.options.size();
                     System.out.print("Het aantal combinaties is: " + nCombinatie);
                     System.out.println("");
 
-                    //Klok kijken: meet hoelang het maken van de combinaties duurt
+                    //CountingClock: measures how long it takes to generate the inital Tile combination options.
                     long endCombi = System.nanoTime();
                     long combiRunTime = endCombi - combiTime;
                     System.out.println("Maken van de tile combinaties - Runtime :" + combiRunTime + " nano seconden");
 
-
-                    // print de gemaakte combi-opties uit.
-        /*        for (ArrayList<Tile) {
+                    // prints the options calculated.
+         /*        for (ArrayList<Tile) {
                     System.out.print("[");
                     for (int j = 0; j < opties.options.get(i).size(); j++) {
                         System.out.print(opties.options.get(i).get(j).name + ", ");
@@ -100,12 +99,11 @@ public class Main {
                     System.out.print("], ");
                 }
         */
-
-
-                    //klok kijken: begint voor je de combi's toevoegd aan de stack (voor de depth-first)
+                    
+                    //CountingClock: begins before the generated options are added to the stack. (for the search)
                     long startTime = System.nanoTime();
 
-                    // combi-options toegevoegd aan de stack.
+                    // combi-options added to the stack.
                     for (ArrayList<Tile> option : opties.options) {
                         Grid usefield = new Grid(field);
                         for (Tile tile : option) {
@@ -116,7 +114,8 @@ public class Main {
                         }
                     }
 
-                    // zoekt naar een oplossing mbv combi-opties depth-first search
+                    // looks for a solution through a depth-first search
+                    // by using combi-options to fill up the available empty space
                     int space = field.breedte;
                     while (!fieldStack.isEmpty()) {
                         Grid currentfield = fieldStack.pop();
@@ -126,6 +125,7 @@ public class Main {
                                 fieldStack.push(currentfield);
                                 break;
                             }
+                            // generates combi-options for the available empty space on the grid.
                             Options fillspace = new Options(space, currentfield.tiles, draaibaar);
                             if (fillspace.options.isEmpty()) {
                                 continue;
@@ -133,7 +133,6 @@ public class Main {
                             for (ArrayList<Tile> spaceOption : fillspace.options) {
                                 Grid newField = new Grid(currentfield);
                                 for (Tile tile : spaceOption) {
-                                    //System.out.println("aantal opties " + fillspace.options.size());
                                     if (newField == null) {
                                         break;
                                     }
@@ -146,7 +145,8 @@ public class Main {
                         }
                     }
 
-                    // Zoek naar de een (of twee, drie etc) na grootste tegel:
+                    // searches for the next biggest tile to fill the first row,
+                    // if using the biggestTile gave no solution.
                     if (fieldStack.isEmpty()) {
                         if (!Tiles.isEmpty()) {
                             Tile nextBiggest = new Tile(0, 0, "xxx", false);
@@ -159,9 +159,10 @@ public class Main {
                             biggestTile = nextBiggest;
                         } else {
                             System.out.println("Geen oplossing gevonden");
-                            //solution = true // wel loop als geen oplossing
-                            return; // geen loop als geen oplossing
+                            return;
                         }
+                    // concludes the program after finding a solution!
+                    // prints out runTimes and a graphic representation of the solution.
                     } else {
                         long endTime = System.nanoTime();
                         total = endTime - startTime;
@@ -169,35 +170,15 @@ public class Main {
                         System.out.println("vullen van het veld met tiles - RunTime: " + total + " nano seconden");
                         System.out.println("Oplossing gevonden in totale  - RunTime: " + solutionTime + " nano seconden");
                         System.out.println("");
-                        System.out.println("de oplossing van het t2egelzetten!");
-                       // fieldStack.peek().printVeld();
+                        System.out.println("de oplossing van het tegelzetten!");
+                        fieldStack.peek().printVeld();
 
                         GI.field = fieldStack.peek().field;
                         graphSolution.go();
-                        fieldStack.peek().printVeld();
                         solution = true;
-
                     }
                 }
-
-
             }
-
-
         }
-
-                //    int runTimeSec = (total)/(1*10^9);
-                //    System.out.println(runTimeSec);
-
-
-
-
-
-            /*Waarom zijn bananen krom?
-            Als ze recht zijn vallen ze om
-            pom pom pom
-            ze liggen krom van het lachen*/
-           // }
-
     }
 
