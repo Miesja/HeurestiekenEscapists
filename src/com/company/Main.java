@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
 
         for (int c = 0; c < 1; c++) {
-            boolean draaibaar = true;
+            boolean draaibaar = false;
             long total = 0;
             long solutionTime = 0;
             ArrayList<Tile> Tiles = new ArrayList<>();
@@ -27,7 +27,8 @@ public class Main {
                 // maakt het begin Grid (field) en de tegels (tile) van het probleem
                 // adhv de waarde die in een txt.file staan (resources/problem"")
                 try {
-                    Scanner sc = new Scanner(new FileReader("resources/problem1"));
+                    Scanner sc = new Scanner(new FileReader("resources/problemA"));
+                    System.out.println("problemA - false ");
                     int breedte = sc.nextInt();
                     int lengte = sc.nextInt();
                     field = new Grid(breedte, lengte, draaibaar);
@@ -59,6 +60,7 @@ public class Main {
                 }
     */
                 //klok kijken: begint voor het maken van de combi's
+                long combiTime = System.nanoTime();
 
                 //maakt de combi opties en slaat deze op in een 2D Array <Opties<opties<combi van tiles>>>
                 Tile biggestTile = new Tile(0, 0, "xx", false);
@@ -70,7 +72,7 @@ public class Main {
 
                 while (!solution) {
                     Tiles.remove(biggestTile);
-                    long combiTime = System.nanoTime();
+
                     Options opties = new Options(field.breedte, field.tiles, biggestTile, draaibaar);
 
                     //telt het aantal cycli
@@ -167,7 +169,7 @@ public class Main {
                         System.out.println("vullen van het veld met tiles - RunTime: " + total + " nano seconden");
                         System.out.println("Oplossing gevonden in totale  - RunTime: " + solutionTime + " nano seconden");
                         System.out.println("");
-                        System.out.println("de oplossing van het tegelzetten!");
+                        System.out.println("de oplossing van het t2egelzetten!");
                        // fieldStack.peek().printVeld();
 
                         GI.field = fieldStack.peek().field;
