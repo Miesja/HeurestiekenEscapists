@@ -161,6 +161,15 @@ public class Grid {
     }
 
 
+    public boolean isEmpy() {
+        if(field[0][0].equals(" 0 ")){
+            System.out.println("empty found");
+            return true;
+        }
+        return false;
+    }
+
+
 
 
     //Controleerd of het grid helemaal gevuld is, zo ja, dan wordt true gereturned

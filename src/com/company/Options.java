@@ -1,5 +1,7 @@
 package com.company;
 
+import com.sun.management.GarbageCollectionNotificationInfo;
+
 import java.util.*;
 public class Options {
 
@@ -18,7 +20,7 @@ public class Options {
         first.add(biggestTile);
         queue.add(first);
         while(true){
-            ArrayList parent = queue.poll();
+            ArrayList<Tile> parent = queue.poll();
             if(parent==null){ //queue is empty
                 break;
             }

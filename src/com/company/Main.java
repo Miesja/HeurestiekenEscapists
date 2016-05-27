@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
 
         for (int c = 0; c < 1; c++) {
-            boolean draaibaar = false;
+            boolean draaibaar = true;
             long total = 0;
             long solutionTime = 0;
             ArrayList<Tile> Tiles = new ArrayList<>();
@@ -28,7 +28,6 @@ public class Main {
                 // adhv de waarde die in een txt.file staan (resources/problem"")
                 try {
                     Scanner sc = new Scanner(new FileReader("resources/problemC"));
-                    System.out.println("problemC" + draaibaar);
                     int breedte = sc.nextInt();
                     int lengte = sc.nextInt();
                     field = new Grid(breedte, lengte, draaibaar);
@@ -68,9 +67,12 @@ public class Main {
                     if (tile.width > biggestTile.width) {
                         biggestTile = tile;
                     }
-                }
 
-                while (!solution) {
+                }
+            
+
+            while (!solution) {
+
                     Tiles.remove(biggestTile);
 
                     Options opties = new Options(field.breedte, field.tiles, biggestTile, draaibaar);
@@ -111,15 +113,22 @@ public class Main {
                         for (Tile tile : option) {
                             usefield = usefield.addTile(tile);
                         }
-                        if (usefield != null) {
+                        if (usefield != null && !usefield.field[0][0].equals(" 0 ")) {
                             fieldStack.push(usefield);
                         }
+
                     }
 
                     // zoekt naar een oplossing mbv combi-opties depth-first search
                     int space = field.breedte;
                     while (!fieldStack.isEmpty()) {
                         Grid currentfield = fieldStack.pop();
+
+                        // The last field in the fieldstack is the empty field, which should not be used when looking
+                        // for a solution.
+                        if(currentfield.isEmpy()){
+                            break;
+                        }
                         if (currentfield != null) {
                             space = currentfield.emptyRowSize();
                             if (space == 0) {
