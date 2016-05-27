@@ -26,7 +26,7 @@ public class Main {
                 // makes the starting grid (field) and the Tiles of the problem set
                 // based on the data collected from the textfile "resources/problem[problemnumber/letter] "
                 try {
-                    Scanner sc = new Scanner(new FileReader("resources/problem19a")); //change the problem
+                    Scanner sc = new Scanner(new FileReader("resources/problemA")); //change the problem
                     int FieldWidth = sc.nextInt();
                     int FieldLength = sc.nextInt();
                     field = new Grid(FieldWidth, FieldLength, turnable);
@@ -51,12 +51,7 @@ public class Main {
                 if (field != null) {
                     fieldStack.push(field);
                 }
-    /*
-                // prints out the name of each tile and wether it has been turned
-                for(Tile tile : field.collection.tiles){
-                    System.out.println(tile.name + " " + tile.turned);
-                }
-    */
+
                 //CountingClock: begins before generating the firstRow options.
                 long combiTime = System.nanoTime();
 
