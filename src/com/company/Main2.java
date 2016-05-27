@@ -8,11 +8,11 @@ public class Main2 {
 
 
 
-        boolean draaibaar =true;
+        boolean draaibaar =false;
 
         GI graphSolution = new GI();
 
-        for(int c = 0; c<100; c++) {
+        for(int c = 0; c<1; c++) {
             Stack<Grid> fieldStack = new Stack();
             Grid field;
             Grid printGrid;
@@ -24,11 +24,11 @@ public class Main2 {
             // maakt het begin Grid (field) en de tegels (tile) van het probleem
             // adhv de waarde die in een txt.file staan (resources/problem"")
             try {
-                Scanner sc = new Scanner(new FileReader("resources/problemC"));
+                Scanner sc = new Scanner(new FileReader("resources/problemA"));
                 int breedte = sc.nextInt();
                 int lengte = sc.nextInt();
                 field = new Grid(breedte, lengte, draaibaar);
-                //field.printVeld();
+                field.printVeld();
                 System.out.println("");
                 while (sc.hasNext()) {
                     int width = sc.nextInt();
@@ -118,6 +118,8 @@ public class Main2 {
                             System.out.println("solution Found!");
                             while (!fieldStack.isEmpty()) {
                                 fieldStack.pop();
+                                fieldStack.peek().printVeld();
+
                             }
                         }
                     }
@@ -128,7 +130,7 @@ public class Main2 {
             long endTime = System.nanoTime();
             long total = endTime - startTime;
             long solutionTime = total + combiRunTime;
-            //System.out.println("vullen van het veld met tiles - RunTime: " + total + " nano seconden");
+            System.out.println("vullen van het veld met tiles - RunTime: " + total + " nano seconden");
             System.out.println("Oplossing gevonden in totale  - RunTime: " + solutionTime + " nano seconden");
 
 

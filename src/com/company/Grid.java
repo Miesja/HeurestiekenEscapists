@@ -13,20 +13,18 @@ public class Grid {
 
     ArrayList<Tile> tiles = new ArrayList<>();
 
-    //Haalt een specifieke tile uit de collectie en geeft deze terug zodat er
-    // verder mee gewerkt kan worden
+    // takes a Tile out of the collection and returns it for use.
     public Tile giveTile(int index){
         Tile x = tiles.get(index);
         return x;
     }
 
-    //Haalt een tile uit de collectie zodat deze niet nogmaals gebruikt kan
-    //worden in een Grid
+    // removes a Tile from the collection to make sure it can't be used again.
     public void removeFromCollection(Tile tile){
         tiles.remove(tile);
     }
 
-    //Constructor om het veld met lengte l en breedte b, gevuld met " 0 ", te maken.
+    // Constructor to make the starting grid (filled with "0")
     public Grid(int b, int l, boolean draai) {
         draaibaar = draai;
         lengte = l;
@@ -40,7 +38,7 @@ public class Grid {
 
     }
 
-    //Het copiëren van een grid door een grid te maken adhv een andere grid.
+    // a method to copy a Grid, including the Tiles.
     public Grid(Grid grid) {
         draaibaar = grid.draaibaar;
         lengte = grid.lengte;
@@ -57,7 +55,8 @@ public class Grid {
         }
     }
 
-    // kijkt hoeveel lege plekken in een rij
+    // a method to calculate how many consecutive spaces there are in a row
+    // this "count" will be used to generate options to fill the emptyRow
     public int emptyRowSize() {
         for (int y = 0; y < lengte; y++) {
             for (int x=0; x<breedte; x++) {
@@ -74,54 +73,35 @@ public class Grid {
         }
         return 0;
     }
-    //Plaatst tiles
+
+    // a method that places a Tile onto the Grid.
     public Grid addTile(Tile tile){
-        // zoekt het veld (naar de eerste "vrije" x,y coordinaat. en geeft deze door)
+        // searches the Grid for the x and y coordinates of the first available space
         for (int y = 0; y <lengte; y++) {
             for (int x=0; x<breedte; x++) {
                 if (field[x][y].equals(" 0 ")) {
-                   //de oude "setTile"
+                    // checks to see if there is enough available space to place the Tile
                     if (spaceUnoccupied(tile, x, y)) {
                         Grid newGrid = new Grid(this);
-                        //vult de plek waar de tegel komt met de "tile.name"
+                        // fills the space in the Grid with the Tile.name
                         for (int i = x; i < (x + tile.width); i++) {
                             for (int j = y; j < (y + tile.length); j++) {
                                 newGrid.field[i][j] = tile.name;
                             }
                         }
+                        // removes the Tile and it's "turned" duplicate from the collection.
                         if(draaibaar) {
                             newGrid.removeFromCollection(tile);
                             Tile turned = tile.turnTile();
                             newGrid.removeFromCollection(turned);
                         }
+                        // removes the Tile, placed on the grid, from the collection.
                         else{
                             newGrid.removeFromCollection(tile);
                         }
                         return newGrid;
                     }else{
-                       return null; // meteen de for-loop uit, er is toch geen plaats. (SCHEELT 20% aan RUNTIME!)
-                    }
-                    // er is geen ruimte voor de tile (if spaceUnoccupied)
-                }
-                //NIET RETURN NULL, de for-loop is nog bezig.
-
-            }
-            //NIET RETURN NULL, de for-loop is nog bezig.
-        }
-        return null;
-    }
-
-/*
-    //Plaatst tiles
-    public Grid addTile(Tile tile){
-        for (int y = 0; y <this.lengte; y++) {
-            for (int x=0; x<this.breedte; x++) {
-                if (this.field[x][y].equals(" 0 ")) {
-                    Grid newGrid = this.SetTile(tile, x, y);
-                    if (newGrid != null) {
-                        newGrid.collection.removeFromCollection(tile);
-                        newGrid.Xcoordinaat = newGrid.Xcoordinaat+tile.width;
-                        return newGrid;
+                       return null;
                     }
                 }
             }
@@ -129,22 +109,8 @@ public class Grid {
         return null;
     }
 
-    //Het neerzetten van een tegel (tile.name) in het veld. vanaf coordinaat xPoint en yPoint
-    //controleert de plaats waar de tegel neergezet moet worden
-    public Grid SetTile(Tile tegel, int XPoint, int YPoint) {
-        if (spaceUnoccupied(tegel, XPoint, YPoint)) {
-            Grid copy = new Grid(this);
-            for (int x = XPoint; x < (XPoint + tegel.width); x++) {
-                for (int y = YPoint; y < YPoint + tegel.length; y++) {
-                        copy.field[x][y] = tegel.name;
-                }
-            }
-            return copy;
-        }
-        return null;
-    }
-*/
-    //Controleert of er geen tegel ligt waar de nieuwe tegel geplaatst wilt worden
+    // checks if the space on the grid where you want to place the Tile is unoccupied
+    // by counting the "0" on the grid where the Tile will be placed.
     public boolean spaceUnoccupied(Tile tile, int XPoint, int YPoint){
         int empty = 0;
         if ((XPoint + tile.width) <= breedte && (YPoint+tile.length)<= lengte){
@@ -156,11 +122,11 @@ public class Grid {
                 }
             }
         }
-        //Controleert of alle plaatsen leeg zijn
+        // if the "0" counted match the space needed by the Tile, it returns true.
         return empty == (tile.width * tile.length);
     }
 
-
+    // Checks to see if the grid is empty (first place isn't filled)
     public boolean isEmpy() {
         if(field[0][0].equals(" 0 ")){
             System.out.println("empty found");
@@ -172,7 +138,9 @@ public class Grid {
 
 
 
-    //Controleerd of het grid helemaal gevuld is, zo ja, dan wordt true gereturned
+
+    // Checks to see if the Grid is full by counting the "0" (empty spaces) on the Grid
+    // if there are none, the grid is full and it returns true.
     public boolean isFull() {
         int filled = 0;
         for (int x = 0; x < breedte; x++) {
@@ -186,7 +154,8 @@ public class Grid {
         return filled == (lengte * breedte);
     }
 
-    //Het printen van het veld.
+    // a method that prints the Grid
+    // Tiles placed are shown by their name, empty spaces are "0"
     public void printVeld(){
         for(int y = 0; y < lengte; y++) {
             for(int x = 0; x < breedte; x++ ) {

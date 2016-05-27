@@ -8,8 +8,8 @@ public class Tile {
     int length;
     String name;
     boolean turned;
-    //de constructor om een type:Tile te maken met een bepaalde breedte (width),
-    //lengte (length) en naam in het veld.
+
+    //constructor to make a tile.
     public Tile(int width, int length, String name, boolean turned) {
         this.width = width;
         this.length = length;
@@ -17,11 +17,13 @@ public class Tile {
         this.turned = turned;
     }
 
+    // method that "turns" a Tile (changes the boolean turned)
     public Tile turnTile(){
         Tile turnedTile = new Tile(this.length, this.width, this.name, turned);
         return turnedTile;
     }
 
+    // the redefinition of 'equals' as it applies to Tiles
     @Override
     public boolean equals(Object obj) {
 
@@ -34,6 +36,7 @@ public class Tile {
 
     }
 
+    // the hashCode used to store the options in a hashset.
     @Override
     public int hashCode() {
         return width^3+length*8-width*2;

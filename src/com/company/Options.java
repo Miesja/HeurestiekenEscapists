@@ -78,24 +78,12 @@ public class Options {
     // create children (adding another tile)
     private void makeChildren(ArrayList<Tile> parent, ArrayList<Tile> childrenOptions){
 
-        // remove the tiles that are already in parent from childrenOptions
-
+        // removes the tiles that are already in parent from childrenOptions
         for(Tile tile : parent){
             if(draaibaar) {
                 childrenOptions.remove(tile);
                 Tile turned = tile.turnTile();
                 childrenOptions.remove(turned);
-                /*int index = childrenOptions.indexOf(tile);
-
-                if (tile.turned) {
-                    childrenOptions.remove(index);
-                    System.out.println("index-1" + childrenOptions.get(index-1).name + childrenOptions.get(index-1).turned);
-
-                    childrenOptions.remove(index-1);
-                } else {
-                    childrenOptions.remove(index + 1);
-                    childrenOptions.remove(index);
-                }*/
             }
             else{
                 childrenOptions.remove(tile);
