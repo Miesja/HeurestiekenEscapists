@@ -10,7 +10,7 @@ public class Main {
 
         // adjust the number of cycles you wish the program to run.
         for (int c = 0; c < 1; c++) {
-            boolean draaibaar = false;
+            boolean turnable = true; //change whether turning the tiles should be allowed or not
             long total = 0;
             long solutionTime = 0;
             ArrayList<Tile> Tiles = new ArrayList<>();
@@ -24,12 +24,12 @@ public class Main {
 
 
                 // makes the starting grid (field) and the Tiles of the problem set
-                // based on the data collected from the textfile "resources/problem "
+                // based on the data collected from the textfile "resources/problem[problemnumber/letter] "
                 try {
-                    Scanner sc = new Scanner(new FileReader("resources/problem1"));
-                    int breedte = sc.nextInt();
-                    int lengte = sc.nextInt();
-                    field = new Grid(breedte, lengte, draaibaar);
+                    Scanner sc = new Scanner(new FileReader("resources/problem19a")); //change the problem
+                    int FieldWidth = sc.nextInt();
+                    int FieldLength = sc.nextInt();
+                    field = new Grid(FieldWidth, FieldLength, turnable);
                     System.out.println("");
                     while (sc.hasNext()) {
                         int width = sc.nextInt();
@@ -38,7 +38,7 @@ public class Main {
                         Tile tile1 = new Tile(width, length, name, false);
                         field.tiles.add(tile1);
                         Tiles.add(tile1);
-                        if (draaibaar) {
+                        if (turnable) {
                             Tile tile2 = new Tile(length, width, name, true);
                             field.tiles.add(tile2);
                             Tiles.add(tile2);
@@ -69,36 +69,26 @@ public class Main {
                 }
 
                 while (!solution) {
-                    // generates the possible options to fill the first Row,
-                    // using the BiggestTile as the first Tile placed on the Grid.
                     Tiles.remove(biggestTile);
 
-                    Options opties = new Options(field.breedte, field.tiles, biggestTile, draaibaar);
+                    /*  Generates the possible options to fill the first Row,
+                        using the BiggestTile as the first Tile placed on the Grid. */
+                    Options opties = new Options(field.width, field.tiles, biggestTile, turnable);
 
-                    // counts the amount of Cycles
+                    // Counts the amount of cycles
                     System.out.print("Cyclus nr: " +c + " ");
                     System.out.println("");
 
                     // Counts the number of initial options possible with the tiles.
                     int nCombinatie;
                     nCombinatie = opties.options.size();
-                    System.out.print("Het aantal combinaties is: " + nCombinatie);
+                    System.out.print("The number of initial options is: " + nCombinatie);
                     System.out.println("");
 
                     //CountingClock: measures how long it takes to generate the inital Tile combination options.
                     long endCombi = System.nanoTime();
                     long combiRunTime = endCombi - combiTime;
-                    System.out.println("Maken van de tile combinaties - Runtime :" + combiRunTime + " nano seconden");
-
-                    // prints the options calculated.
-         /*        for (ArrayList<Tile) {
-                    System.out.print("[");
-                    for (int j = 0; j < opties.options.get(i).size(); j++) {
-                        System.out.print(opties.options.get(i).get(j).name + ", ");
-                    }
-                    System.out.print("], ");
-                }
-        */
+                    System.out.println("Making of tile options - Runtime :" + combiRunTime + " nano seconds");
 
                     //CountingClock: begins before the generated options are added to the stack. (for the search)
                     long startTime = System.nanoTime();
@@ -116,7 +106,7 @@ public class Main {
 
                     // looks for a solution through a depth-first search
                     // by using combi-options to fill up the available empty space
-                    int space = field.breedte;
+                    int space;
                     while (!fieldStack.isEmpty()) {
                         Grid currentfield = fieldStack.pop();
 
@@ -132,7 +122,7 @@ public class Main {
                                 break;
                             }
                             // generates combi-options for the available empty space on the grid.
-                            Options fillspace = new Options(space, currentfield.tiles, draaibaar);
+                            Options fillspace = new Options(space, currentfield.tiles, turnable);
                             if (fillspace.options.isEmpty()) {
                                 continue;
                             }
@@ -164,7 +154,7 @@ public class Main {
                             System.out.println("New biggestTile is " +nextBiggest.name + nextBiggest.turned);
                             biggestTile = nextBiggest;
                         } else {
-                            System.out.println("Geen oplossing gevonden");
+                            System.out.println("No solution found");
                             return;
                         }
                     // concludes the program after finding a solution!
@@ -173,10 +163,10 @@ public class Main {
                         long endTime = System.nanoTime();
                         total = endTime - startTime;
                         solutionTime = total + combiRunTime;
-                        System.out.println("vullen van het veld met tiles - RunTime: " + total + " nano seconden");
-                        System.out.println("Oplossing gevonden in totale  - RunTime: " + solutionTime + " nano seconden");
+                        System.out.println("Completely filling the field with tiles - RunTime: " + total + " nano seconds");
+                        System.out.println("Solution found in total  - RunTime: " + solutionTime + " nano seconds");
                         System.out.println("");
-                        System.out.println("de oplossing van het tegelzetten!");
+                        System.out.println("The TileSetter-solution!");
                         fieldStack.peek().printVeld();
 
                         GI.field = fieldStack.peek().field;

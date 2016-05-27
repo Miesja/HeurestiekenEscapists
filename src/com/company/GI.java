@@ -12,8 +12,6 @@ package com.company;
 
             Graphics2D g2d = (Graphics2D) g;
 
-            //g2d.setColor(new Color(212, 212, 212));
-
             if (GI.field != null) {
 
                 int iLengte = GI.field.length;
@@ -26,6 +24,8 @@ package com.company;
                         int x = i * tileSize;
                         int y = j* tileSize;
                         g2d.drawRect(x, y, tileSize, tileSize);
+
+                        // Change the color of the tile, depending on which tile it is
 
                         if (GI.field[i][j].equals(" a ")) {
                             g2d.setColor(new Color(100, 40, 100));
@@ -123,44 +123,6 @@ package com.company;
                 }
             }
 
-
-
-
-            /*g2d.drawRect(10, 15, 90, 60);
-            g2d.drawRect(130, 15, 90, 60);
-            g2d.drawRect(250, 15, 90, 60);
-            g2d.drawRect(10, 105, 90, 60);
-            g2d.drawRect(130, 105, 90, 60);
-            g2d.drawRect(250, 105, 90, 60);
-            g2d.drawRect(10, 195, 90, 60);
-            g2d.drawRect(130, 195, 90, 60);
-            g2d.drawRect(250, 195, 90, 60);
-
-
-            g2d.setColor(new Color(42, 179, 231));
-            g2d.fillRect(130, 15, 90, 60);
-
-            g2d.setColor(new Color(70, 67, 123));
-            g2d.fillRect(250, 15, 90, 60);
-
-            g2d.setColor(new Color(130, 100, 84));
-            g2d.fillRect(10, 105, 90, 60);
-
-            g2d.setColor(new Color(252, 211, 61));
-            g2d.fillRect(130, 105, 90, 60);
-
-            g2d.setColor(new Color(241, 98, 69));
-            g2d.fillRect(250, 105, 90, 60);
-
-            g2d.setColor(new Color(217, 146, 54));
-            g2d.fillRect(10, 195, 90, 60);
-
-            g2d.setColor(new Color(63, 121, 186));
-            g2d.fillRect(130, 195, 90, 60);
-
-            g2d.setColor(new Color(31, 21, 1));
-            g2d.fillRect(250, 195, 90, 60);*/
-
         }
         @Override
         public void paintComponent(Graphics g) {
@@ -195,8 +157,6 @@ package com.company;
         }
 
         public  void go() {
-
-
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     GI ex = new GI();
@@ -206,14 +166,3 @@ package com.company;
         }
     }
 
-
-    /*public void makeCanvas(){
-        new Canvas();
-    }
-
-    //Maakt de tegels en plaatst ze op het canvas
-    public void makeTiles(int x, int y, int width, int length){
-        Point p = new Point(x*10, y*10);
-        Dimension d= new Dimension(width*10, length*10);
-        Rectangle tile= new Rectangle(p, d);
-    } */

@@ -5,10 +5,9 @@ import java.util.*;
 public class Grid {
 
     //Instance variables.
-    boolean draaibaar;
-    int lengte;
-    int Xcoordinaat;
-    int breedte;
+    boolean turnable;
+    int length;
+    int width;
     String[][] field;
 
     ArrayList<Tile> tiles = new ArrayList<>();
@@ -25,13 +24,13 @@ public class Grid {
     }
 
     // Constructor to make the starting grid (filled with "0")
-    public Grid(int b, int l, boolean draai) {
-        draaibaar = draai;
-        lengte = l;
-        breedte = b;
-        field = new String[breedte][lengte];
-        for (int y = 0; y < lengte; y++) {
-            for (int x = 0; x < breedte; x++) {
+    public Grid(int w, int l, boolean turn) {
+        turnable = turn;
+        length = l;
+        width = w;
+        field = new String[width][length];
+        for (int y = 0; y < length; y++) {
+            for (int x = 0; x < width; x++) {
                 field[x][y] = " 0 ";
             }
         }
@@ -40,29 +39,26 @@ public class Grid {
 
     // a method to copy a Grid, including the Tiles.
     public Grid(Grid grid) {
-        draaibaar = grid.draaibaar;
-        lengte = grid.lengte;
-        breedte = grid.breedte;
-        field = new String [breedte][lengte];
+        turnable = grid.turnable;
+        length = grid.length;
+        width = grid.width;
+        field = new String [width][length];
         for(int i=0; i<grid.tiles.size(); i++){
             tiles.add(grid.giveTile(i));
         }
-        for(int x=0; x<breedte; x++){
-            System.arraycopy(grid.field[x], 0, field[x], 0, lengte);
-            /* Dit was:
-            for(int y=0; y<lengte; y++){
-                field[x][y] = grid.field[x][y];*/
+        for(int x=0; x<width; x++){
+            System.arraycopy(grid.field[x], 0, field[x], 0, length);
         }
     }
 
-    // a method to calculate how many consecutive spaces there are in a row
-    // this "count" will be used to generate options to fill the emptyRow
+    /*  A method to calculate how many consecutive spaces there are in a row
+        this "count" will be used to generate options to fill the emptyRow */
     public int emptyRowSize() {
-        for (int y = 0; y < lengte; y++) {
-            for (int x=0; x<breedte; x++) {
+        for (int y = 0; y < length; y++) {
+            for (int x=0; x < width; x++) {
                 if (field[x][y].equals(" 0 ")) {
                     int newX = x;
-                    while (newX < breedte && field[newX][y].equals(" 0 ")) {
+                    while (newX < width && field[newX][y].equals(" 0 ")) {
                         newX++;
 
                     }
@@ -77,8 +73,8 @@ public class Grid {
     // a method that places a Tile onto the Grid.
     public Grid addTile(Tile tile){
         // searches the Grid for the x and y coordinates of the first available space
-        for (int y = 0; y <lengte; y++) {
-            for (int x=0; x<breedte; x++) {
+        for (int y = 0; y < length; y++) {
+            for (int x=0; x < width; x++) {
                 if (field[x][y].equals(" 0 ")) {
                     // checks to see if there is enough available space to place the Tile
                     if (spaceUnoccupied(tile, x, y)) {
@@ -90,7 +86,7 @@ public class Grid {
                             }
                         }
                         // removes the Tile and it's "turned" duplicate from the collection.
-                        if(draaibaar) {
+                        if(turnable) {
                             newGrid.removeFromCollection(tile);
                             Tile turned = tile.turnTile();
                             newGrid.removeFromCollection(turned);
@@ -113,7 +109,7 @@ public class Grid {
     // by counting the "0" on the grid where the Tile will be placed.
     public boolean spaceUnoccupied(Tile tile, int XPoint, int YPoint){
         int empty = 0;
-        if ((XPoint + tile.width) <= breedte && (YPoint+tile.length)<= lengte){
+        if ((XPoint + tile.width) <= width && (YPoint+tile.length) <= length){
             for (int x = XPoint; x < (XPoint + tile.width); x++) {
                 for (int y = YPoint; y < (YPoint + tile.length); y++) {
                     if(field[x][y].equals(" 0 ")){
@@ -129,7 +125,6 @@ public class Grid {
     // Checks to see if the grid is empty (first place isn't filled)
     public boolean isEmpy() {
         if(field[0][0].equals(" 0 ")){
-            System.out.println("empty found");
             return true;
         }
         return false;
@@ -143,22 +138,22 @@ public class Grid {
     // if there are none, the grid is full and it returns true.
     public boolean isFull() {
         int filled = 0;
-        for (int x = 0; x < breedte; x++) {
-            for (int y = lengte; y < lengte; y++) {
+        for (int x = 0; x < width; x++) {
+            for (int y = length; y < length; y++) {
                 String s = field[x][y];
                 if (!s.equals(" 0 ")) {
                     filled++;
                 }
             }
         }
-        return filled == (lengte * breedte);
+        return filled == (length * width);
     }
 
     // a method that prints the Grid
     // Tiles placed are shown by their name, empty spaces are "0"
     public void printVeld(){
-        for(int y = 0; y < lengte; y++) {
-            for(int x = 0; x < breedte; x++ ) {
+        for(int y = 0; y < length; y++) {
+            for(int x = 0; x < width; x++ ) {
                 System.out.print(this.field[x][y]);
             }
             System.out.println("");

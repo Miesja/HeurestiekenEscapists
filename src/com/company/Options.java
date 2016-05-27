@@ -5,55 +5,46 @@ import com.sun.management.GarbageCollectionNotificationInfo;
 import java.util.*;
 public class Options {
 
-    boolean draaibaar;
+    boolean turnable;
     int fieldSize;
     HashSet<ArrayList<Tile>> options = new HashSet<>();
     Queue<ArrayList<Tile>> queue = new LinkedList<>();
-    //ArrayList<ArrayList<Tile>> archive = new ArrayList<>();
 
+    public void makeOptions(ArrayList<Tile> collection){
+        while(true){
+            ArrayList<Tile> parent = queue.poll();
+            // Stop when the queue is empty
+            if(parent==null){
+                break;
+            }
+            if(checkSum(parent)==fieldSize){ // The current list is an option
+                options.add(parent);
+            }
+            else if(checkSum(parent)<fieldSize){
+                ArrayList<Tile> possChildren = new ArrayList<>(collection);
+                makeChildren(parent, possChildren);
+            }
+        }
+
+    }
 
     // The options for the first row should have the biggest tile on the first spot
-    public Options(int size, ArrayList<Tile> collection, Tile biggestTile, boolean draai){
-        draaibaar = draai;
+    public Options(int size, ArrayList<Tile> collection, Tile biggestTile, boolean turn){
+        turnable = turn;
         fieldSize = size;
         ArrayList<Tile> first = new ArrayList<>();
         first.add(biggestTile);
         queue.add(first);
-        while(true){
-            ArrayList<Tile> parent = queue.poll();
-            if(parent==null){ //queue is empty
-                break;
-            }
-            // archive.add(parent);
-            if(checkSum(parent)==fieldSize){ // possible option
-                options.add(parent);
-            }
-            else if(checkSum(parent)<fieldSize){
-                ArrayList<Tile> possChildren = new ArrayList<>(collection);
-                makeChildren(parent, possChildren);
-            }
-        }
+        makeOptions(collection);
+
     }
 
     // Options for the rest of the rows
-    public Options(int size, ArrayList<Tile> collection, boolean draai){
-        draaibaar = draai;
+    public Options(int size, ArrayList<Tile> collection, boolean turn){
+        turnable = turn;
         fieldSize = size;
         makeStartQueue(collection);
-        while(true){
-            ArrayList parent = queue.poll();
-            if(parent==null){
-                break;
-            }
-           // archive.add(parent);
-            if(checkSum(parent)==fieldSize){
-                options.add(parent);
-            }
-            else if(checkSum(parent)<fieldSize){
-                ArrayList<Tile> possChildren = new ArrayList<>(collection);
-                makeChildren(parent, possChildren);
-            }
-        }
+        makeOptions(collection);
     }
 
     // make the first arraylists, with one tile each
@@ -80,7 +71,7 @@ public class Options {
 
         // removes the tiles that are already in parent from childrenOptions
         for(Tile tile : parent){
-            if(draaibaar) {
+            if(turnable) {
                 childrenOptions.remove(tile);
                 Tile turned = tile.turnTile();
                 childrenOptions.remove(turned);

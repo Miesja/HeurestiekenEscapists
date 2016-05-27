@@ -4,6 +4,10 @@
     import java.util.*;
 public class Main2 {
 
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // !!!DELETE BEFORE HANDING IN!!!!!
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    
     public static void main (String[]args){
 
 
@@ -58,7 +62,7 @@ public class Main2 {
 
             //maakt de combi opties en slaat deze op in een 2D Array <Opties<opties<combi van tiles>>>
 
-            Options opties = new Options(field.breedte, field.tiles, draaibaar);
+            Options opties = new Options(field.width, field.tiles, draaibaar);
 
 
             // telt het aantal combinaties
