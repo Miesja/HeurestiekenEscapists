@@ -130,10 +130,6 @@ public class Grid {
         return false;
     }
 
-
-
-
-
     // Checks to see if the Grid is full by counting the "0" (empty spaces) on the Grid
     // if there are none, the grid is full and it returns true.
     public boolean isFull() {
@@ -160,6 +156,5 @@ public class Grid {
         }
 
     }
-
 
 }

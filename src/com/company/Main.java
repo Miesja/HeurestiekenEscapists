@@ -57,10 +57,10 @@ public class Main {
                     System.out.println(tile.name + " " + tile.turned);
                 }
     */
-                //CountingClock: begins before generating the intial combination option.
+                //CountingClock: begins before generating the firstRow options.
                 long combiTime = System.nanoTime();
 
-                //searches through the tiles available for the "biggest Tile" to use for the firstRow option
+                //searches through the tiles available for the "biggest Tile" to use for the firstRow options.
                 Tile biggestTile = new Tile(0, 0, "xx", false);
                 for (Tile tile : field.tiles) {
                     if (tile.width > biggestTile.width) {
@@ -85,7 +85,7 @@ public class Main {
                     System.out.print("The number of initial options is: " + nCombinatie);
                     System.out.println("");
 
-                    //CountingClock: measures how long it takes to generate the inital Tile combination options.
+                    //CountingClock: measures how long it takes to generate the firstRow Tile options.
                     long endCombi = System.nanoTime();
                     long combiRunTime = endCombi - combiTime;
                     System.out.println("Making of tile options - Runtime :" + combiRunTime + " nano seconds");
@@ -93,7 +93,7 @@ public class Main {
                     //CountingClock: begins before the generated options are added to the stack. (for the search)
                     long startTime = System.nanoTime();
 
-                    // combi-options added to the stack.
+                    // adds the options to the stack.
                     for (ArrayList<Tile> option : opties.options) {
                         Grid usefield = new Grid(field);
                         for (Tile tile : option) {
@@ -105,7 +105,7 @@ public class Main {
                     }
 
                     // looks for a solution through a depth-first search
-                    // by using combi-options to fill up the available empty space
+                    // by using combi-options to fill up the available empty space.
                     int space;
                     while (!fieldStack.isEmpty()) {
                         Grid currentfield = fieldStack.pop();
@@ -141,7 +141,7 @@ public class Main {
                         }
                     }
 
-                    // searches for the next biggest tile to fill the first row,
+                    // searches for the next biggest tile to start the first row,
                     // if using the biggestTile gave no solution.
                     if (fieldStack.isEmpty()) {
                         if (!Tiles.isEmpty()) {
