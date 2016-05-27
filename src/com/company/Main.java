@@ -26,8 +26,7 @@ public class Main {
                 // makes the starting grid (field) and the Tiles of the problem set
                 // based on the data collected from the textfile "resources/problem "
                 try {
-                    Scanner sc = new Scanner(new FileReader("resources/problemC"));
-                    System.out.println("problemC" + draaibaar);
+                    Scanner sc = new Scanner(new FileReader("resources/problem1"));
                     int breedte = sc.nextInt();
                     int lengte = sc.nextInt();
                     field = new Grid(breedte, lengte, draaibaar);
